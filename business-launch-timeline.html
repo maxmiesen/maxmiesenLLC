@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Launch Timeline — 2026 Roadmap</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --card-bg: #111118;
+    --border: #1e1e2a;
+    --text: #e8e8ef;
+    --text-muted: #6e6e82;
+    --march: #ff6b35;
+    --march-soft: rgba(255, 107, 53, 0.08);
+    --april: #00d4aa;
+    --april-soft: rgba(0, 212, 170, 0.08);
+    --may: #7c5cfc;
+    --may-soft: rgba(124, 92, 252, 0.08);
+    --june: #ff4d8d;
+    --june-soft: rgba(255, 77, 141, 0.08);
+    --july: #ffc233;
+    --july-soft: rgba(255, 194, 51, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .noise {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 24px 100px;
+    position: relative;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+    animation: fadeUp 0.8s ease-out;
+  }
+
+  .header .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 8px 20px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+
+  .header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    background: linear-gradient(135deg, #fff 0%, #888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .header p {
+    color: var(--text-muted);
+    font-size: 16px;
+    margin-top: 16px;
+    font-weight: 300;
+  }
+
+  /* Quick stats bar */
+  .stats-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 56px;
+    animation: fadeUp 0.6s ease-out 0.2s both;
+  }
+
+  .stat-pill {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+  }
+
+  .stat-pill strong { color: var(--text); }
+  .stat-pill span { color: var(--text-muted); font-weight: 400; }
+
+  /* Principles strip */
+  .principles {
+    background: linear-gradient(90deg, rgba(255,107,53,0.06), rgba(0,212,170,0.06), rgba(124,92,252,0.06));
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 28px;
+    margin-bottom: 56px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    animation: fadeUp 0.6s ease-out 0.3s both;
+  }
+
+  .principles span {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .principles span::before {
+    content: '✓ ';
+    color: var(--april);
+    font-weight: 700;
+  }
+
+  /* Timeline spine */
+  .timeline {
+    position: relative;
+    padding-left: 48px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      var(--border) 5%,
+      var(--border) 95%,
+      transparent
+    );
+  }
+
+  /* Month block */
+  .month {
+    position: relative;
+    margin-bottom: 56px;
+    animation: fadeUp 0.6s ease-out both;
+  }
+  .month:nth-child(1) { animation-delay: 0.1s; }
+  .month:nth-child(2) { animation-delay: 0.25s; }
+  .month:nth-child(3) { animation-delay: 0.4s; }
+  .month:nth-child(4) { animation-delay: 0.55s; }
+  .month:nth-child(5) { animation-delay: 0.7s; }
+
+  .month .dot {
+    position: absolute;
+    left: -48px;
+    top: 6px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  .month .dot::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: absolute;
+  }
+
+  .month .dot::after {
+    content: '';
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    position: absolute;
+    border: 2px solid;
+    opacity: 0.3;
+  }
+
+  .month[data-color="march"] .dot::before { background: var(--march); box-shadow: 0 0 16px var(--march); }
+  .month[data-color="march"] .dot::after { border-color: var(--march); }
+  .month[data-color="april"] .dot::before { background: var(--april); box-shadow: 0 0 16px var(--april); }
+  .month[data-color="april"] .dot::after { border-color: var(--april); }
+  .month[data-color="may"] .dot::before { background: var(--may); box-shadow: 0 0 16px var(--may); }
+  .month[data-color="may"] .dot::after { border-color: var(--may); }
+  .month[data-color="june"] .dot::before { background: var(--june); box-shadow: 0 0 16px var(--june); }
+  .month[data-color="june"] .dot::after { border-color: var(--june); }
+  .month[data-color="july"] .dot::before { background: var(--july); box-shadow: 0 0 16px var(--july); }
+  .month[data-color="july"] .dot::after { border-color: var(--july); }
+
+  .month-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .month-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .month[data-color="march"] .month-label { color: var(--march); }
+  .month[data-color="april"] .month-label { color: var(--april); }
+  .month[data-color="may"] .month-label { color: var(--may); }
+  .month[data-color="june"] .month-label { color: var(--june); }
+  .month[data-color="july"] .month-label { color: var(--july); }
+
+  .month-kpi {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 4px 10px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 6px;
+  }
+
+  .month-title {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 20px;
+  }
+
+  .tasks {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 12px;
+  }
+
+  .task {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+
+  .task:hover {
+    border-color: #2a2a3a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+
+  .month[data-color="march"] .task:hover { border-color: rgba(255,107,53,0.25); background: var(--march-soft); }
+  .month[data-color="april"] .task:hover { border-color: rgba(0,212,170,0.25); background: var(--april-soft); }
+  .month[data-color="may"] .task:hover { border-color: rgba(124,92,252,0.25); background: var(--may-soft); }
+  .month[data-color="june"] .task:hover { border-color: rgba(255,77,141,0.25); background: var(--june-soft); }
+  .month[data-color="july"] .task:hover { border-color: rgba(255,194,51,0.25); background: var(--july-soft); }
+
+  .task-icon {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .task-name {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+
+  .task-detail {
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .task-priority {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.06);
+    color: var(--text-muted);
+  }
+
+  .task-priority.critical { background: rgba(255,77,77,0.15); color: #ff6b6b; }
+
+  .phase-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-bottom: 14px;
+  }
+
+  .month[data-color="march"] .phase-badge { background: var(--march-soft); color: var(--march); border: 1px solid rgba(255,107,53,0.2); }
+  .month[data-color="april"] .phase-badge { background: var(--april-soft); color: var(--april); border: 1px solid rgba(0,212,170,0.2); }
+  .month[data-color="may"] .phase-badge { background: var(--may-soft); color: var(--may); border: 1px solid rgba(124,92,252,0.2); }
+  .month[data-color="june"] .phase-badge { background: var(--june-soft); color: var(--june); border: 1px solid rgba(255,77,141,0.2); }
+  .month[data-color="july"] .phase-badge { background: var(--july-soft); color: var(--july); border: 1px solid rgba(255,194,51,0.2); }
+
+  .connector {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    padding-left: 4px;
+    margin-bottom: 8px;
+  }
+
+  .connector span {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+    opacity: 0.5;
+  }
+
+  .critical-path {
+    background: rgba(255,77,77,0.06);
+    border: 1px dashed rgba(255,77,77,0.3);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .critical-path strong { color: #ff6b6b; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 640px) {
+    .container { padding: 40px 16px 80px; }
+    .timeline { padding-left: 36px; }
+    .timeline::before { left: 12px; }
+    .month .dot { left: -36px; width: 26px; height: 26px; }
+    .month .dot::before { width: 8px; height: 8px; }
+    .month .dot::after { width: 26px; height: 26px; }
+    .tasks { grid-template-columns: 1fr; }
+    .principles { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<div class="container">
+
+  <div class="header">
+    <div class="tag">2026 Business Launch Roadmap</div>
+    <h1>Foundation → Scale</h1>
+    <p>Strategic 5-month plan to launch, market, and grow 3 businesses under one LLC</p>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-pill"><strong>5</strong> <span>months</span></div>
+    <div class="stat-pill"><strong>3</strong> <span>brands</span></div>
+    <div class="stat-pill"><strong>5</strong> <span>phases</span></div>
+    <div class="stat-pill"><strong>26</strong> <span>key tasks</span></div>
+  </div>
+
+  <div class="principles">
+    <span>Batch similar work across brands</span>
+    <span>UGC-first creative strategy</span>
+    <span>Measure before scaling</span>
+    <span>Retention before acquisition</span>
+    <span>Automate early, hire late</span>
+  </div>
+
+  <div class="timeline">
+
+    <!-- MARCH -->
+    <div class="month" data-color="march">
+      <div class="dot"></div>
+      <div class="month-header">
+        <div class="month-label">March</div>
+        <div class="month-kpi">KPI: Legal & ops 100% complete</div>
+      </div>
+      <div class="month-title">Legal Foundation & Entity Setup</div>
+      <div class="phase-badge">Phase 1 — Build the Foundation</div>
+      <div class="tasks">
+        <div class="task">
+          <div class="task-icon">🏛️</div>
+          <div class="task-name">LLC Formation</div>
+          <div class="task-detail">File Articles of Organization with the state. Obtain EIN from the IRS (same-day online). Draft an Operating Agreement outlining ownership, management, and profit distribution across all 3 brands.</div>
+          <div class="task-priority critical">Critical path</div>
+        </div>
+        <div class="task">
+          <div class="task-icon">™️</div>
+          <div class="task-name">Trademark Applications (×3)</div>
+          <div class="task-detail">Conduct USPTO clearance searches first. File intent-to-use applications for brand names and logos. Budget ~$350–450 per class per brand. Consider TEAS Plus for lower fees.</div>
+        </div>
+        <div class="task">
+          <div class="task-icon">💳</div>
+          <div class="task-name">Business Banking & Credit</div>
+          <div class="task-detail">Open a business checking account (Mercury, Relay, or traditional bank). Apply for a business credit card to separate expenses and build credit. Set up accounting software (QuickBooks, Wave, or Xero) from day one.</div>
+          <div class="task-priority critical">Critical path</div>
+        </div>
+        <div class="task">
+          <div class="task-icon">📋</div>
+          <div class="task-name">Licenses & Compliance</div>
+          <div class="task-detail">Research state/local business licenses, sales tax permits, and industry permits. Register for state tax IDs. Set up sales tax collection in your e-commerce platform. Create a compliance checklist per brand.</div>
+        </div>
+        <div class="task">
+          <div class="task-icon">🌐</div>
+          <div class="task-name">Domain & Digital Presence</div>
+          <div class="task-detail">Secure domains for all 3 brands (consider .com + alternatives). Set up professional email (Google Workspace or custom). Claim handles on IG, TikTok, X, Pinterest, YouTube, LinkedIn. Use Namechk or similar to check availability.</div>
+        </div>
+        <div class="task">
+          <div class="task-icon">📦</div>
+          <div class="task-name">Brand Identity & Assets</div>
+          <div class="task-detail">Finalize logos, colors, typography, and brand guidelines for each business. Create asset kits: logos (SVG, PNG), social templates, and product photography style guide. Batch this work to save time.</div>
+        </div>
+      </div>
+      <div class="critical-path"><strong>Critical path:</strong> LLC + EIN + bank account must be done first. Everything else can run in parallel.</div>
+    </div>
+
+    <div class="connector"><span>▸ Foundation set — shift to visibility</span></div>
+
+    <!-- APRIL -->
+    <div class="month" data-color="april">
+      <div class="dot"></div>
+      <div class="month-header">
+        <div class="month-label">April</div>
+        <div class="month-kpi">KPI: 50+ UGC pieces, 1K+ email list</div>
+      </div>
+      <div class="month-title">Content Engine & Community Building</div>
+      <div class="phase-badge">Phase 2 — Create Presence</div>
+      <div class="tasks">
+        <div class="task">
+          <div class="task-icon">🎥</div>
+          <div class="task-name">UGC Creator Outreach</div>
+          <div class="task-detail">Identify 10–20 UGC creators per brand (1K–100K followers). Use Collabstr, Grin, or manual outreach. Negotiate flat rates ($50–200/video). Send briefs + products. Target 50+ pieces total by month-end.</div>
+          <div class="task-priority critical">Critical path</div>
+        </div>
+        <div class="task">
+          <div class="task-icon">📱</div>
+          <div class="task-name">Social Media Launch</div>
+          <div class="task-detail">Post 4–5× weekly on TikTok and Instagram Reels. Define 3–4 content pillars per brand. Engage daily in comments and DMs. Use trending sounds and hooks. Track which content gets saves/shares.</div>
+        </div>
+        <div class="task">
+          <div class="task-icon">📝</div>
+          <div class="task-name">Content Calendar & Batching</div>
+          <div class="task-detail">Build a 90-day content calendar in Notion or Airtable. Map content types: educational, BTS, testimonials, trends. Batch-produce 2–4 weeks ahead. Use Canva or CapCut for fast editing.</div>
+        </div>
+        <div class="task">
+          <div class="task-icon">🤝</div>
+          <div class="task-name">Micro-Influencer Seeding</div>
+          <div class="task-detail">Gift products to 20–50 micro-influencers (1K–50K) per brand with no obligation. Track who posts organically. Build a "creator roster" for future paid partnerships and whitelisting.</div>
+        </div>
+        <div class="task">
+          <div class="task-icon">📧</div>
+          <div class="task-name">Email & SMS Setup</div>
+          <div class="task-detail">Set up Klaviyo or Mailchimp. Build welcome flow, abandoned cart, and launch announcement. Create a lead magnet (discount, guide, or early access). Target 1K+ emails by end of April.</div>
+        </div>
+        <div class="task">
+          <div class="task-icon">🛒</div>
+          <div class="task-name">Website & Storefront Polish</div>
+          <div class="task-detail">Finalize Shopify (or similar) stores. Optimize product pages with UGC, lifestyle shots, and benefit-focused copy. Ensure mobile-first design, fast load times, and clear CTAs. Run a soft launch to friends/family first.</div>
+          <div class="task-priority critical">Critical path</div>
+        </div>
+      </div>
+      <div class="critical-path"><strong>Critical path:</strong> UGC + website must be ready before paid spend in May. Start collecting emails immediately.</div>
+    </div>
+
+    <div class="connector"><span>▸ Organic traction established — pour fuel on the fire</span></div>
+
+    <!-- MAY -->
+    <div class="month" data-color="may">
+      <div class="dot"></div>
+      <div class="month-header">
+        <div class="month-label">May</div>
+        <div class="month-kpi">KPI: ROAS &gt;2, CAC tracked</div>
+      </div>
+      <div class="month-title">Paid Acquisition & Growth Marketing</div>
+      <div class="phase-badge">Phase 3 — Scale with Paid</div>
+      <div class="tasks">
+        <div class="task">
+          <div class="task-icon">📊</div>
+          <div class="task-name">Meta Ads (Facebook + Instagram)</div>
+          <div class="task-detail">Launch with UGC creatives (no stock photos). Start broad, let algorithm optimize. Test 3–5 ad variations per brand. Budget: $50–100/day per brand, scale winners. Use Advantage+ Shopping for simplicity.</div>
+          <div class="task-priority critical">Critical path</div>
+        </div>
+        <div class="task">
+          <div class="task-icon">🎵</div>
+          <div class="task-name">TikTok Ads</div>
+          <div class="task-detail">Run Spark Ads using top organic content. Test TikTok Shop if eligible. Use Creative Center for trends. Target lookalikes of engaged users. Native, scroll-stopping creative outperforms polished ads.</div>
+        </div>
+        <div class="task">
+          <div class="task-icon">🔍</div>
+          <div class="task-name">Google Ads & SEO</div>
+          <div class="task-detail">Launch Google Shopping and branded search. Start SEO: keyword-optimized product descriptions and 2–4 blog posts per brand. Target long-tail keywords with purchase intent. Don't neglect Google Merchant Center setup.</div>
+        </div>
+        <div class="task">
+          <div class="task-icon">🔁</div>
+          <div class="task-name">Retargeting & Lookalikes</div>
+          <div class="task-detail">Install pixels (Meta, TikTok, Google). Build audiences: site visitors, email list, video viewers. Create 1–3% lookalikes for prospecting. Retarget cart abandoners within 24–72 hours.</div>
+        </div>
+        <div class="task">
+          <div class="task-icon">📈</div>
+          <div class="task-name">Analytics & Attribution</div>
+          <div class="task-detail">Set up GA4, server-side conversion APIs, UTM structure. Track ROAS, CAC, LTV weekly. Build a simple dashboard (Looker Studio or spreadsheet) for all 3 brands. Document baseline metrics.</div>
+        </div>
+        <div class="task">
+          <div class="task-icon">🧪</div>
+          <div class="task-name">A/B Testing Framework</div>
+          <div class="task-detail">Test landing pages, ad creatives, headlines, CTAs. One variable per test. Run for at least 7 days or 100+ conversions. Document learnings in a shared doc. Double down on winners.</div>
+        </div>
+      </div>
+      <div class="critical-path"><strong>Critical path:</strong> Don't scale spend until you have a profitable ad. Optimize for purchases, not clicks.</div>
+    </div>
+
+    <div class="connector"><span>▸ Paid channels optimized — diversify and deepen</span></div>
+
+    <!-- JUNE -->
+    <div class="month" data-color="june">
+      <div class="dot"></div>
+      <div class="month-header">
+        <div class="month-label">June</div>
+        <div class="month-kpi">KPI: Repeat rate &gt;15%, NPS tracked</div>
+      </div>
+      <div class="month-title">Retention, Partnerships & Revenue Optimization</div>
+      <div class="phase-badge">Phase 4 — Optimize & Retain</div>
+      <div class="tasks">
+        <div class="task">
+          <div class="task-icon">🔄</div>
+          <div class="task-name">Retention Marketing</div>
+          <div class="task-detail">Launch loyalty program (LoyaltyLion, Smile.io, or native). Add referral incentives (discount or free product). Consider subscription for replenishables. Build post-purchase flows: day 3, day 14, win-back at 30 days.</div>
+          <div class="task-priority critical">Critical path</div>
+        </div>
+        <div class="task">
+          <div class="task-icon">🤝</div>
+          <div class="task-name">Brand Collaborations</div>
+          <div class="task-detail">Partner with complementary (non-competing) brands for co-marketing, giveaways, and bundles. Explore wholesale and retail. Join relevant trade shows or online communities. Build a partnership pipeline.</div>
+        </div>
+        <div class="task">
+          <div class="task-icon">💰</div>
+          <div class="task-name">Revenue Optimization</div>
+          <div class="task-detail">Optimize pricing with A/B tests. Add upsells at checkout and post-purchase. Implement "frequently bought together." Analyze unit economics and margins. Cut or reposition underperformers.</div>
+        </div>
+        <div class="task">
+          <div class="task-icon">⭐</div>
+          <div class="task-name">Reviews & Social Proof</div>
+          <div class="task-detail">Implement Judge.me, Yotpo, or Loox. Automate review requests (post-purchase email + SMS). Curate top UGC and reviews into ad creatives and landing pages. Target 4.5+ star average with 20+ reviews per product.</div>
+        </div>
+      </div>
+      <div class="critical-path"><strong>Critical path:</strong> A repeat customer is 5–10× cheaper than a new one. Prioritize retention before scaling acquisition.</div>
+    </div>
+
+    <div class="connector"><span>▸ Retention engine running — plan for long-term growth</span></div>
+
+    <!-- JULY -->
+    <div class="month" data-color="july">
+      <div class="dot"></div>
+      <div class="month-header">
+        <div class="month-label">July</div>
+        <div class="month-kpi">KPI: Q2 P&L review, Q3 goals set</div>
+      </div>
+      <div class="month-title">Scale, Systemize & Expand</div>
+      <div class="phase-badge">Phase 5 — Compound Growth</div>
+      <div class="tasks">
+        <div class="task">
+          <div class="task-icon">⚙️</div>
+          <div class="task-name">Operations & Automation</div>
+          <div class="task-detail">Hire VAs or part-time help for customer service, fulfillment, and content scheduling. Automate with Zapier/Make: order sync, review requests, social posting. Streamline inventory and supplier communication.</div>
+          <div class="task-priority critical">Critical path</div>
+        </div>
+        <div class="task">
+          <div class="task-icon">🧩</div>
+          <div class="task-name">New Channel Expansion</div>
+          <div class="task-detail">Test Pinterest Ads, YouTube Shorts, Amazon, or Etsy. Launch affiliate program (Impact, Refersion). Explore podcast sponsorships and PR. Only add channels where you have proof of demand.</div>
+        </div>
+        <div class="task">
+          <div class="task-icon">📊</div>
+          <div class="task-name">Quarterly Review & Strategy</div>
+          <div class="task-detail">Full P&L review across all 3 brands. Identify top and bottom performers. Set Q3 revenue targets, ad budgets, and growth goals. Plan new SKUs or product expansions. Document what worked and what didn't.</div>
+        </div>
+        <div class="task">
+          <div class="task-icon">🚀</div>
+          <div class="task-name">Scaling Paid Media</div>
+          <div class="task-detail">Increase budgets on winning campaigns (max +20% per week to avoid algorithm reset). Order new UGC batches. Explore influencer whitelisting and creator ads. Test new creative angles before scaling.</div>
+        </div>
+      </div>
+      <div class="critical-path"><strong>Critical path:</strong> Don't scale until operations can handle volume. Fix bottlenecks before adding more traffic.</div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

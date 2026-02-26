@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css?v=3.1">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Max Miesen LLC</title>
+</head>
+
+<script src="script.js"></script>
+
+<body>
+    <div class="wrapper">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="menu-toggle">&#9776;</div>
+                <div class="nav-links">
+                    <a href="index.html">Max Miesen</a>
+                </div>
+            </div>
+        </nav>
+    
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const menuToggle = document.querySelector(".menu-toggle");
+                const navLinks = document.querySelector(".nav-links");
+        
+                menuToggle.addEventListener("click", function(event) {
+                    event.stopPropagation();
+                    navLinks.classList.toggle("active");
+                });
+        
+                document.addEventListener("click", function(event) {
+                    if (!menuToggle.contains(event.target) && !navLinks.contains(event.target)) {
+                        navLinks.classList.remove("active");
+                    }
+                });
+        
+                document.querySelectorAll(".nav-links a").forEach(link => {
+                    link.addEventListener("click", () => {
+                        navLinks.classList.remove("active");
+                    });
+                });
+            });
+        </script>
+        
+        <!-- Hero Section -->
+        <div class="index-hero">
+            <div class="hero-content">
+                <div class="llc-logo">
+                    <img src="llctitle.png" alt="Max Miesen LLC" class="llc-title-img">
+                </div>
+                <h1 class="hero-title"><em>My Portfolio + Services</em></h1>
+            </div>
+        </div>
+
+        <!-- Main Services Section -->
+        <div id="services" class="main-services-section">
+            <h2>My Services</h2>
+            <div class="services-grid">
+                <!-- Creative Services -->
+                <div class="service-category creative">
+                    <div class="service-icon">🎬</div>
+                    <h3>Creative Services</h3>
+                    <p>Professional video production and marketing content creation to elevate your brand.</p>
+                    <ul class="service-list">
+                        <li>Video Production & Editing</li>
+                        <li>Marketing Content Creation</li>
+                        <li>Brand Visual Identity</li>
+                        <li>Creative Consulting</li>
+                    </ul>
+                    <div class="service-links">
+                        <a href="mailto:maxmiesenfilms@gmail.com" class="service-link">Get Creative Services</a>
+                    </div>
+                </div>
+
+                <!-- Technical Services -->
+                <div class="service-category technical">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Technical Services</h3>
+                    <p>Expert business consulting, engineering solutions, and data analysis for technical challenges.</p>
+                    <ul class="service-list">
+                        <li>Business Strategy & Development</li>
+                        <li>Product Development Engineering</li>
+                        <li>Data Analysis & Analytics</li>
+                        <li>Technical Consulting</li>
+                    </ul>
+                    <div class="service-links">
+                        <a href="#projects" class="service-link">View Projects</a>
+                    </div>
+                </div>
+
+                <!-- Software Products -->
+                <div class="service-category software">
+                    <div class="service-icon">💻</div>
+                    <h3>Software Products</h3>
+                    <p>Innovative software solutions designed to enhance productivity and personal development.</p>
+                    <ul class="service-list">
+                        <li>Mobile App Development</li>
+                        <li>Custom Software Solutions</li>
+                        <li>Productivity Tools</li>
+                        <li>Data Visualization</li>
+                    </ul>
+                    <div class="service-links">
+                        <a href="#statz" class="service-link">Learn About Statz</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="about-section">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>
+                        Biomedical Engineering BS + Product Development Engineering MS at the University of Southern California.
+                        Experience in life sciences & engineering research. Proficient in data analysis using MATLAB, R, and Python.
+                    </p>
+                    <p>
+                        Startup experience with business operations, product design, software development, and growth/marketing.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <img src="profile.jpg" alt="Max Miesen" class="profile-img">
+                </div>
+            </div>
+        </div>
+
+        <!-- Reports Carousel Section -->
+        <div id="projects" class="reports-section">
+            <div class="reports-header">
+                <h2>Academic Reports & Research</h2>
+                <p class="reports-description">
+                    Explore my academic work and research projects from my time at USC, including biomedical engineering reports and technical analyses.
+                </p>
+            </div>
+            
+            <div class="reports-carousel-container">
+                <div class="carousel-wrapper">
+                    <button class="carousel-btn prev-btn" onclick="changeReportSlide(-1)">❮</button>
+                    <button class="carousel-btn next-btn" onclick="changeReportSlide(1)">❯</button>
+                    
+                    <div class="reports-carousel">
+                        <!-- Report 1: BME404 -->
+                        <div class="report-slide active">
+                            <div class="report-content">
+                                <h3>BME 404 - Orthopedic Biomechanics</h3>
+                                <div class="report-media">
+                                    <div class="pdf-container">
+                                        <iframe src="BME404report.pdf" type="application/pdf"></iframe>
+                                    </div>
+                                </div>
+                                <div class="report-description">
+                                    <p>Comprehensive biomedical engineering analysis covering advanced topics in medical device design and biological systems integration.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Report 2: BME405 -->
+                        <div class="report-slide">
+                            <div class="report-content">
+                                <h3>BME 405 - Senior Projects</h3>
+                                <div class="report-media">
+                                    <div class="pdf-container">
+                                        <iframe src="BME405report.pdf" type="application/pdf"></iframe>
+                                    </div>
+                                </div>
+                                <div class="report-description">
+                                    <p>Advanced study of biomedical systems engineering with focus on complex medical device integration and system optimization.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Report 3: BME410 -->
+                        <div class="report-slide">
+                            <div class="report-content">
+                                <h3>BME 410 - Tissue Engineering & Biomaterials</h3>
+                                <div class="report-media">
+                                    <div class="pdf-container">
+                                        <iframe src="BME410report.pdf" type="application/pdf"></iframe>
+                                    </div>
+                                </div>
+                                <div class="report-description">
+                                    <p>Detailed analysis of biomedical instrumentation principles, sensor technologies, and measurement systems in medical applications.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Report 4: BME499 -->
+                        <div class="report-slide">
+                            <div class="report-content">
+                                <h3>BME 499 - Special Topics</h3>
+                                <div class="report-media">
+                                    <div class="pdf-container">
+                                        <iframe src="BME499report.pdf" type="application/pdf"></iframe>
+                                    </div>
+                                </div>
+                                <div class="report-description">
+                                    <p>Capstone senior design project demonstrating comprehensive biomedical engineering skills and innovative solution development.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Report 5: EE202 -->
+                        <div class="report-slide">
+                            <div class="report-content">
+                                <h3>EE 202 - Linear Circuits</h3>
+                                <div class="report-media">
+                                    <div class="pdf-container">
+                                        <iframe src="EE202report.pdf" type="application/pdf"></iframe>
+                                    </div>
+                                </div>
+                                <div class="report-description">
+                                    <p>Fundamental electrical engineering concepts and applications in biomedical systems, covering circuit analysis and electronic design principles.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Report 6: Golf Journal -->
+                        <div class="report-slide">
+                            <div class="report-content">
+                                <h3>Golf Journal Article Abstract</h3>
+                                <div class="report-media">
+                                    <div class="pdf-container">
+                                        <iframe src="golfreport.pdf" type="application/pdf"></iframe>
+                                    </div>
+                                </div>
+                                <div class="report-description">
+                                    <p>Golf performance analysis using OpenCap software and 3D principal component analysis (PCA).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Carousel Indicators -->
+                <div class="carousel-indicators">
+                    <span class="indicator active" onclick="currentReportSlide(1)"></span>
+                    <span class="indicator" onclick="currentReportSlide(2)"></span>
+                    <span class="indicator" onclick="currentReportSlide(3)"></span>
+                    <span class="indicator" onclick="currentReportSlide(4)"></span>
+                    <span class="indicator" onclick="currentReportSlide(5)"></span>
+                    <span class="indicator" onclick="currentReportSlide(6)"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statz Section -->
+        <div id="statz" class="statz-section">
+            <div class="statz-header">
+                <img src="STATZwhite.png" alt="Statz" class="statz-logo">
+                <h2>Self-Improvement Lifestyle App</h2>
+                <p class="statz-description">
+                    Transform your data into actionable insights. Track fitness goals, productivity metrics, 
+                    and personal habits with beautiful visualizations and powerful analytics.
+                </p>
+            </div>
+            <!-- Statz Features -->
+            <div class="statz-features">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Comprehensive Tracking</h3>
+                        <p>Monitor fitness, productivity, habits, and personal metrics all in one place.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3>Beautiful Analytics</h3>
+                        <p>Visualize your progress with stunning charts and data-driven insights.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Goal Setting</h3>
+                        <p>Set targets and track your journey towards achieving your personal goals.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Real-time Updates</h3>
+                        <p>Get instant feedback and see your progress update in real-time.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statz Download -->
+            <div class="statz-download">
+                <h3>Ready to Start Your Journey?</h3>
+                <p>Join thousands of users who are already transforming their data into actionable insights.</p>
+                <div class="download-options">
+                    <a href="https://joinstatz.com" target="_blank" class="app-store-badge">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" 
+                             alt="Download on the App Store" style="max-width: 200px">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bink Section -->
+        <div id="bink" class="statz-section">
+            <div class="statz-header">
+                <img src="BINKwhite.png" alt="Bink" class="statz-logo">
+                <h2>Poker Bankroll Tracker</h2>
+                <p class="statz-description">
+                    Addressing the problem of poker players not knowing how much they are winning or losing due to payment methods being scattered: cash, Venmo, Zelle, cryptocurrency, etc. Losing players can manage their spending and improve. Winning players get insights on their game.
+                </p>
+            </div>
+            <!-- Bink Features -->
+            <div class="statz-features">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">💰</div>
+                        <h3>Multi-Payment Tracking</h3>
+                        <p>Track all your poker transactions across cash, Venmo, Zelle, cryptocurrency, and more in one place.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Bankroll Analytics</h3>
+                        <p>Get detailed insights into your poker performance with comprehensive analytics and reporting.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Spending Management</h3>
+                        <p>Losing players can better manage their spending and identify areas for improvement.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏆</div>
+                        <h3>Win Insights</h3>
+                        <p>Winning players get valuable insights on their game performance and profit patterns.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bink Download -->
+            <div class="statz-download">
+                <h3>Ready to Track Your Bankroll?</h3>
+                <p>Start managing your poker finances with precision and get the insights you need to improve your game.</p>
+                <div class="download-options">
+                    <a href="https://binkpoker.app" target="_blank" class="app-store-badge">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" 
+                             alt="Download on the App Store" style="max-width: 200px">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Bar -->
+    <div class="social-bar" aria-label="Social links">
+        <a class="social-btn instagram" href="https://instagram.com/bymiesen" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 24 24" role="img">
+                <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2" />
+                <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+                <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
+            </svg>
+        </a>
+        <a class="social-btn youtube" href="https://youtube.com/maxmiesen" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <span aria-hidden="true">▶</span>
+        </a>
+        <a class="social-btn linkedin" href="https://linkedin.com/in/maxmiesen" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <span aria-hidden="true">in</span>
+        </a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Max Miesen LLC | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // Statz Carousel specific variables
+        let statzSlideIndex = 1;
+        
+        // Initialize the Statz carousel when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            showStatzSlides(statzSlideIndex);
+            
+            // Auto-advance Statz slides every 4 seconds
+            setInterval(function() {
+                changeStatzSlide(1);
+            }, 4000);
+        });
+
+        function changeStatzSlide(n) {
+            showStatzSlides(statzSlideIndex += n);
+        }
+
+        function currentStatzSlide(n) {
+            showStatzSlides(statzSlideIndex = n);
+        }
+
+        function showStatzSlides(n) {
+            let i;
+            // Get slides and dots specifically from the Statz carousel section
+            let statzCarousel = document.querySelector('.statz-carousel-section');
+            let slides = statzCarousel.querySelectorAll(".slide");
+            let dots = statzCarousel.querySelectorAll(".dot");
+            
+            console.log('Statz slides found:', slides.length);
+            console.log('Statz dots found:', dots.length);
+            
+            if (n > slides.length) {statzSlideIndex = 1}
+            if (n < 1) {statzSlideIndex = slides.length}
+            
+            // Hide all slides
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            
+            // Remove active class from all dots
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            
+            // Show current slide and activate corresponding dot
+            if (slides[statzSlideIndex-1]) {
+                slides[statzSlideIndex-1].style.display = "block";
+            }
+            if (dots[statzSlideIndex-1]) {
+                dots[statzSlideIndex-1].className += " active";
+            }
+        }
+
+        // Make functions globally available for onclick handlers
+        window.changeSlide = changeStatzSlide;
+        window.currentSlide = currentStatzSlide;
+        
+    </script>
+</body>
+</html>

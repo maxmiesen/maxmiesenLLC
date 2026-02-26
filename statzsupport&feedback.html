@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Support & Feedback – Statz</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <style>
+    :root {
+      --primary: #20335b;
+      --text-color: #1f2937;
+      --bg-color: #f9fafb;
+      --card-bg: #ffffff;
+      --border-radius: 14px;
+      --max-width: 850px;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 3rem auto;
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      padding: 3rem 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #111827;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      margin-top: 2.5rem;
+      color: #111;
+    }
+
+    p {
+      margin: 0.9rem 0;
+    }
+
+    form {
+      margin-top: 1.5rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    label {
+      font-weight: 600;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    button {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.9rem 1.4rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.2s ease-in-out;
+    }
+
+    button:hover {
+      background-color: #1e40af;
+    }
+
+    .faq {
+      margin-top: 2rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .faq-item h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+      color: var(--primary);
+    }
+
+    footer {
+      text-align: center;
+      margin: 3rem 0 1rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 2rem 1.2rem;
+        margin: 1rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Support & Feedback</h1>
+    <p>If you're having trouble with the app or want to share feedback, you're in the right place. We're here to help and continuously improve Statz based on your experience.</p>
+
+    <h2>Contact Us</h2>
+    <form action= "https://formspree.io/f/mldbgkbb" method="POST">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" placeholder="Your name" required />
+    
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" placeholder="you@example.com" required />
+    
+      <label for="message">Message</label>
+      <textarea name="message" id="message" rows="6" placeholder="Describe your issue or feedback here..." required></textarea>
+    
+      <button type="submit">Send Message</button>
+    </form>
+    
+    <div id="success" style="display:none; color: green; margin-top: 1rem;">
+      ✅ Message sent successfully!
+    </div>
+    
+    <script>
+      const form = document.querySelector("form");
+      const success = document.getElementById("success");
+    
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const formData = new FormData(form);
+    
+        fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json"
+          }
+        }).then(response => {
+          if (response.ok) {
+            form.reset();
+            success.style.display = "block";
+          } else {
+            alert("There was an error submitting your message.");
+          }
+        });
+      });
+    </script>    
+
+    <div class="faq">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <h3>How do I reset my progress?</h3>
+        <p>You can reset by going to Profile > Settings (gear button on the top right corner).</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>How is my data stored?</h3>
+        <p>All your data is securely stored in the cloud using Firebase, with encryption in transit and at rest.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Can I delete my account?</h3>
+        <p>Yes. You can delete your account from the app settings at any time. All associated data will be permanently removed.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>&copy; 2025 Max Miesen LLC | All Rights Reserved</footer>
+
+</body>
+</html>
