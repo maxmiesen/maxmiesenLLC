@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="styles.css?v=3.1">
+    <link rel="stylesheet" href="styles.css?v=4.0">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -103,7 +103,7 @@
                         <li>Data Visualization</li>
                     </ul>
                     <div class="service-links">
-                        <a href="#statz" class="service-link">Learn About Statz</a>
+                        <a href="#products" class="service-link">Learn About Statz</a>
                     </div>
                 </div>
             </div>
@@ -247,102 +247,350 @@
             </div>
         </div>
 
-        <!-- Statz Section -->
-        <div id="statz" class="statz-section">
-            <div class="statz-header">
-                <img src="STATZwhite.png" alt="Statz" class="statz-logo">
-                <h2>Self-Improvement Lifestyle App</h2>
-                <p class="statz-description">
-                    Transform your data into actionable insights. Track fitness goals, productivity metrics, 
-                    and personal habits with beautiful visualizations and powerful analytics.
-                </p>
+        <!-- Products Tabbed Section -->
+        <div id="products" class="products-tabbed-section">
+            <div class="products-tabs">
+                <button class="products-tab active" data-tab="statz" aria-selected="true">Statz</button>
+                <button class="products-tab" data-tab="bink" aria-selected="false">Bink</button>
+                <button class="products-tab" data-tab="other" aria-selected="false">Other</button>
             </div>
-            <!-- Statz Features -->
-            <div class="statz-features">
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h3>Comprehensive Tracking</h3>
-                        <p>Monitor fitness, productivity, habits, and personal metrics all in one place.</p>
+
+            <!-- Statz Tab Content -->
+            <div id="tab-statz" class="tab-panel active">
+                <div class="statz-section">
+                    <div class="statz-header">
+                        <img src="STATZwhite.png" alt="Statz" class="statz-logo">
+                        <h2>Self-Improvement Lifestyle App</h2>
+                        <p class="statz-description">
+                            Transform your data into actionable insights. Track fitness goals, productivity metrics, 
+                            and personal habits with beautiful visualizations and powerful analytics.
+                        </p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📈</div>
-                        <h3>Beautiful Analytics</h3>
-                        <p>Visualize your progress with stunning charts and data-driven insights.</p>
+                    <div class="statz-features">
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon">📊</div>
+                                <h3>Comprehensive Tracking</h3>
+                                <p>Monitor fitness, productivity, habits, and personal metrics all in one place.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">📈</div>
+                                <h3>Beautiful Analytics</h3>
+                                <p>Visualize your progress with stunning charts and data-driven insights.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🎯</div>
+                                <h3>Goal Setting</h3>
+                                <p>Set targets and track your journey towards achieving your personal goals.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">⚡</div>
+                                <h3>Real-time Updates</h3>
+                                <p>Get instant feedback and see your progress update in real-time.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
-                        <h3>Goal Setting</h3>
-                        <p>Set targets and track your journey towards achieving your personal goals.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">⚡</div>
-                        <h3>Real-time Updates</h3>
-                        <p>Get instant feedback and see your progress update in real-time.</p>
+                    <div class="statz-download">
+                        <h3>Ready to Start Your Journey?</h3>
+                        <p>Join thousands of users who are already transforming their data into actionable insights.</p>
+                        <div class="download-options">
+                            <a href="https://joinstatz.com" target="_blank" class="app-store-badge">
+                                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" 
+                                     alt="Download on the App Store" style="max-width: 200px">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Statz Download -->
-            <div class="statz-download">
-                <h3>Ready to Start Your Journey?</h3>
-                <p>Join thousands of users who are already transforming their data into actionable insights.</p>
-                <div class="download-options">
-                    <a href="https://joinstatz.com" target="_blank" class="app-store-badge">
-                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" 
-                             alt="Download on the App Store" style="max-width: 200px">
-                    </a>
+            <!-- Bink Tab Content -->
+            <div id="tab-bink" class="tab-panel">
+                <div class="statz-section">
+                    <div class="statz-header">
+                        <img src="BINKwhite.png" alt="Bink" class="statz-logo">
+                        <h2>Poker Bankroll Tracker</h2>
+                        <p class="statz-description">
+                            Addressing the problem of poker players not knowing how much they are winning or losing due to payment methods being scattered: cash, Venmo, Zelle, cryptocurrency, etc. Losing players can manage their spending and improve. Winning players get insights on their game.
+                        </p>
+                    </div>
+                    <div class="statz-features">
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon">💰</div>
+                                <h3>Multi-Payment Tracking</h3>
+                                <p>Track all your poker transactions across cash, Venmo, Zelle, cryptocurrency, and more in one place.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">📊</div>
+                                <h3>Bankroll Analytics</h3>
+                                <p>Get detailed insights into your poker performance with comprehensive analytics and reporting.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🎯</div>
+                                <h3>Spending Management</h3>
+                                <p>Losing players can better manage their spending and identify areas for improvement.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🏆</div>
+                                <h3>Win Insights</h3>
+                                <p>Winning players get valuable insights on their game performance and profit patterns.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="statz-download">
+                        <h3>Ready to Track Your Bankroll?</h3>
+                        <p>Start managing your poker finances with precision and get the insights you need to improve your game.</p>
+                        <div class="download-options">
+                            <a href="https://binkpoker.app" target="_blank" class="app-store-badge">
+                                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" 
+                                     alt="Download on the App Store" style="max-width: 200px">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Tab Content (Business Launch Timeline) -->
+            <div id="tab-other" class="tab-panel">
+                <div class="timeline-section">
+                    <div class="timeline-header">
+                        <span class="timeline-tag">2026 Business Launch Roadmap</span>
+                        <h2>Foundation → Scale</h2>
+                        <p class="timeline-description">Strategic 5-month plan to launch, market, and grow 3 businesses under one LLC</p>
+                    </div>
+                    <div class="timeline-stats">
+                        <div class="timeline-stat-pill"><strong>5</strong> <span>months</span></div>
+                        <div class="timeline-stat-pill"><strong>3</strong> <span>brands</span></div>
+                        <div class="timeline-stat-pill"><strong>5</strong> <span>phases</span></div>
+                        <div class="timeline-stat-pill"><strong>26</strong> <span>key tasks</span></div>
+                    </div>
+                    <div class="timeline-principles">
+                        <span>✓ Batch similar work across brands</span>
+                        <span>✓ UGC-first creative strategy</span>
+                        <span>✓ Measure before scaling</span>
+                        <span>✓ Retention before acquisition</span>
+                        <span>✓ Automate early, hire late</span>
+                    </div>
+                    <div class="timeline-spine">
+                        <!-- March -->
+                        <div class="timeline-month" data-color="march">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-month-header">
+                                <span class="timeline-month-label">March</span>
+                                <span class="timeline-month-kpi">KPI: Legal & ops 100% complete</span>
+                            </div>
+                            <h3 class="timeline-month-title">Legal Foundation & Entity Setup</h3>
+                            <div class="timeline-phase-badge">Phase 1 — Build the Foundation</div>
+                            <div class="timeline-tasks">
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">🏛️</div>
+                                    <div class="timeline-task-name">LLC Formation</div>
+                                    <div class="timeline-task-detail">File Articles of Organization with the state. Obtain EIN from the IRS (same-day online). Draft an Operating Agreement outlining ownership, management, and profit distribution across all 3 brands.</div>
+                                    <span class="timeline-task-priority critical">Critical path</span>
+                                </div>
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">™️</div>
+                                    <div class="timeline-task-name">Trademark Applications (×3)</div>
+                                    <div class="timeline-task-detail">Conduct USPTO clearance searches first. File intent-to-use applications for brand names and logos. Budget ~$350–450 per class per brand. Consider TEAS Plus for lower fees.</div>
+                                </div>
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">💳</div>
+                                    <div class="timeline-task-name">Business Banking & Credit</div>
+                                    <div class="timeline-task-detail">Open a business checking account (Mercury, Relay, or traditional bank). Apply for a business credit card to separate expenses and build credit. Set up accounting software (QuickBooks, Wave, or Xero) from day one.</div>
+                                    <span class="timeline-task-priority critical">Critical path</span>
+                                </div>
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">📋</div>
+                                    <div class="timeline-task-name">Licenses & Compliance</div>
+                                    <div class="timeline-task-detail">Research state/local business licenses, sales tax permits, and industry permits. Register for state tax IDs. Set up sales tax collection in your e-commerce platform. Create a compliance checklist per brand.</div>
+                                </div>
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">🌐</div>
+                                    <div class="timeline-task-name">Domain & Digital Presence</div>
+                                    <div class="timeline-task-detail">Secure domains for all 3 brands (consider .com + alternatives). Set up professional email (Google Workspace or custom). Claim handles on IG, TikTok, X, Pinterest, YouTube, LinkedIn. Use Namechk or similar to check availability.</div>
+                                </div>
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">📦</div>
+                                    <div class="timeline-task-name">Brand Identity & Assets</div>
+                                    <div class="timeline-task-detail">Finalize logos, colors, typography, and brand guidelines for each business. Create asset kits: logos (SVG, PNG), social templates, and product photography style guide. Batch this work to save time.</div>
+                                </div>
+                            </div>
+                            <div class="timeline-critical-path"><strong>Critical path:</strong> LLC + EIN + bank account must be done first. Everything else can run in parallel.</div>
+                        </div>
+                        <div class="timeline-connector"><span>▸ Foundation set — shift to visibility</span></div>
+                        <!-- April -->
+                        <div class="timeline-month" data-color="april">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-month-header">
+                                <span class="timeline-month-label">April</span>
+                                <span class="timeline-month-kpi">KPI: 50+ UGC pieces, 1K+ email list</span>
+                            </div>
+                            <h3 class="timeline-month-title">Content Engine & Community Building</h3>
+                            <div class="timeline-phase-badge">Phase 2 — Create Presence</div>
+                            <div class="timeline-tasks">
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">🎥</div>
+                                    <div class="timeline-task-name">UGC Creator Outreach</div>
+                                    <div class="timeline-task-detail">Identify 10–20 UGC creators per brand (1K–100K followers). Use Collabstr, Grin, or manual outreach. Negotiate flat rates ($50–200/video). Send briefs + products. Target 50+ pieces total by month-end.</div>
+                                    <span class="timeline-task-priority critical">Critical path</span>
+                                </div>
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">📱</div>
+                                    <div class="timeline-task-name">Social Media Launch</div>
+                                    <div class="timeline-task-detail">Post 4–5× weekly on TikTok and Instagram Reels. Define 3–4 content pillars per brand. Engage daily in comments and DMs. Use trending sounds and hooks. Track which content gets saves/shares.</div>
+                                </div>
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">📝</div>
+                                    <div class="timeline-task-name">Content Calendar & Batching</div>
+                                    <div class="timeline-task-detail">Build a 90-day content calendar in Notion or Airtable. Map content types: educational, BTS, testimonials, trends. Batch-produce 2–4 weeks ahead. Use Canva or CapCut for fast editing.</div>
+                                </div>
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">🤝</div>
+                                    <div class="timeline-task-name">Micro-Influencer Seeding</div>
+                                    <div class="timeline-task-detail">Gift products to 20–50 micro-influencers (1K–50K) per brand with no obligation. Track who posts organically. Build a "creator roster" for future paid partnerships and whitelisting.</div>
+                                </div>
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">📧</div>
+                                    <div class="timeline-task-name">Email & SMS Setup</div>
+                                    <div class="timeline-task-detail">Set up Klaviyo or Mailchimp. Build welcome flow, abandoned cart, and launch announcement. Create a lead magnet (discount, guide, or early access). Target 1K+ emails by end of April.</div>
+                                </div>
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">🛒</div>
+                                    <div class="timeline-task-name">Website & Storefront Polish</div>
+                                    <div class="timeline-task-detail">Finalize Shopify (or similar) stores. Optimize product pages with UGC, lifestyle shots, and benefit-focused copy. Ensure mobile-first design, fast load times, and clear CTAs. Run a soft launch to friends/family first.</div>
+                                    <span class="timeline-task-priority critical">Critical path</span>
+                                </div>
+                            </div>
+                            <div class="timeline-critical-path"><strong>Critical path:</strong> UGC + website must be ready before paid spend in May. Start collecting emails immediately.</div>
+                        </div>
+                        <div class="timeline-connector"><span>▸ Organic traction established — pour fuel on the fire</span></div>
+                        <!-- May -->
+                        <div class="timeline-month" data-color="may">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-month-header">
+                                <span class="timeline-month-label">May</span>
+                                <span class="timeline-month-kpi">KPI: ROAS &gt;2, CAC tracked</span>
+                            </div>
+                            <h3 class="timeline-month-title">Paid Acquisition & Growth Marketing</h3>
+                            <div class="timeline-phase-badge">Phase 3 — Scale with Paid</div>
+                            <div class="timeline-tasks">
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">📊</div>
+                                    <div class="timeline-task-name">Meta Ads (Facebook + Instagram)</div>
+                                    <div class="timeline-task-detail">Launch with UGC creatives (no stock photos). Start broad, let algorithm optimize. Test 3–5 ad variations per brand. Budget: $50–100/day per brand, scale winners. Use Advantage+ Shopping for simplicity.</div>
+                                    <span class="timeline-task-priority critical">Critical path</span>
+                                </div>
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">🎵</div>
+                                    <div class="timeline-task-name">TikTok Ads</div>
+                                    <div class="timeline-task-detail">Run Spark Ads using top organic content. Test TikTok Shop if eligible. Use Creative Center for trends. Target lookalikes of engaged users. Native, scroll-stopping creative outperforms polished ads.</div>
+                                </div>
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">🔍</div>
+                                    <div class="timeline-task-name">Google Ads & SEO</div>
+                                    <div class="timeline-task-detail">Launch Google Shopping and branded search. Start SEO: keyword-optimized product descriptions and 2–4 blog posts per brand. Target long-tail keywords with purchase intent. Don't neglect Google Merchant Center setup.</div>
+                                </div>
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">🔁</div>
+                                    <div class="timeline-task-name">Retargeting & Lookalikes</div>
+                                    <div class="timeline-task-detail">Install pixels (Meta, TikTok, Google). Build audiences: site visitors, email list, video viewers. Create 1–3% lookalikes for prospecting. Retarget cart abandoners within 24–72 hours.</div>
+                                </div>
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">📈</div>
+                                    <div class="timeline-task-name">Analytics & Attribution</div>
+                                    <div class="timeline-task-detail">Set up GA4, server-side conversion APIs, UTM structure. Track ROAS, CAC, LTV weekly. Build a simple dashboard (Looker Studio or spreadsheet) for all 3 brands. Document baseline metrics.</div>
+                                </div>
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">🧪</div>
+                                    <div class="timeline-task-name">A/B Testing Framework</div>
+                                    <div class="timeline-task-detail">Test landing pages, ad creatives, headlines, CTAs. One variable per test. Run for at least 7 days or 100+ conversions. Document learnings in a shared doc. Double down on winners.</div>
+                                </div>
+                            </div>
+                            <div class="timeline-critical-path"><strong>Critical path:</strong> Don't scale spend until you have a profitable ad. Optimize for purchases, not clicks.</div>
+                        </div>
+                        <div class="timeline-connector"><span>▸ Paid channels optimized — diversify and deepen</span></div>
+                        <!-- June -->
+                        <div class="timeline-month" data-color="june">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-month-header">
+                                <span class="timeline-month-label">June</span>
+                                <span class="timeline-month-kpi">KPI: Repeat rate &gt;15%, NPS tracked</span>
+                            </div>
+                            <h3 class="timeline-month-title">Retention, Partnerships & Revenue Optimization</h3>
+                            <div class="timeline-phase-badge">Phase 4 — Optimize & Retain</div>
+                            <div class="timeline-tasks">
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">🔄</div>
+                                    <div class="timeline-task-name">Retention Marketing</div>
+                                    <div class="timeline-task-detail">Launch loyalty program (LoyaltyLion, Smile.io, or native). Add referral incentives (discount or free product). Consider subscription for replenishables. Build post-purchase flows: day 3, day 14, win-back at 30 days.</div>
+                                    <span class="timeline-task-priority critical">Critical path</span>
+                                </div>
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">🤝</div>
+                                    <div class="timeline-task-name">Brand Collaborations</div>
+                                    <div class="timeline-task-detail">Partner with complementary (non-competing) brands for co-marketing, giveaways, and bundles. Explore wholesale and retail. Join relevant trade shows or online communities. Build a partnership pipeline.</div>
+                                </div>
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">💰</div>
+                                    <div class="timeline-task-name">Revenue Optimization</div>
+                                    <div class="timeline-task-detail">Optimize pricing with A/B tests. Add upsells at checkout and post-purchase. Implement "frequently bought together." Analyze unit economics and margins. Cut or reposition underperformers.</div>
+                                </div>
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">⭐</div>
+                                    <div class="timeline-task-name">Reviews & Social Proof</div>
+                                    <div class="timeline-task-detail">Implement Judge.me, Yotpo, or Loox. Automate review requests (post-purchase email + SMS). Curate top UGC and reviews into ad creatives and landing pages. Target 4.5+ star average with 20+ reviews per product.</div>
+                                </div>
+                            </div>
+                            <div class="timeline-critical-path"><strong>Critical path:</strong> A repeat customer is 5–10× cheaper than a new one. Prioritize retention before scaling acquisition.</div>
+                        </div>
+                        <div class="timeline-connector"><span>▸ Retention engine running — plan for long-term growth</span></div>
+                        <!-- July -->
+                        <div class="timeline-month" data-color="july">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-month-header">
+                                <span class="timeline-month-label">July</span>
+                                <span class="timeline-month-kpi">KPI: Q2 P&L review, Q3 goals set</span>
+                            </div>
+                            <h3 class="timeline-month-title">Scale, Systemize & Expand</h3>
+                            <div class="timeline-phase-badge">Phase 5 — Compound Growth</div>
+                            <div class="timeline-tasks">
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">⚙️</div>
+                                    <div class="timeline-task-name">Operations & Automation</div>
+                                    <div class="timeline-task-detail">Hire VAs or part-time help for customer service, fulfillment, and content scheduling. Automate with Zapier/Make: order sync, review requests, social posting. Streamline inventory and supplier communication.</div>
+                                    <span class="timeline-task-priority critical">Critical path</span>
+                                </div>
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">🧩</div>
+                                    <div class="timeline-task-name">New Channel Expansion</div>
+                                    <div class="timeline-task-detail">Test Pinterest Ads, YouTube Shorts, Amazon, or Etsy. Launch affiliate program (Impact, Refersion). Explore podcast sponsorships and PR. Only add channels where you have proof of demand.</div>
+                                </div>
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">📊</div>
+                                    <div class="timeline-task-name">Quarterly Review & Strategy</div>
+                                    <div class="timeline-task-detail">Full P&L review across all 3 brands. Identify top and bottom performers. Set Q3 revenue targets, ad budgets, and growth goals. Plan new SKUs or product expansions. Document what worked and what didn't.</div>
+                                </div>
+                                <div class="timeline-task">
+                                    <div class="timeline-task-icon">🚀</div>
+                                    <div class="timeline-task-name">Scaling Paid Media</div>
+                                    <div class="timeline-task-detail">Increase budgets on winning campaigns (max +20% per week to avoid algorithm reset). Order new UGC batches. Explore influencer whitelisting and creator ads. Test new creative angles before scaling.</div>
+                                </div>
+                            </div>
+                            <div class="timeline-critical-path"><strong>Critical path:</strong> Don't scale until operations can handle volume. Fix bottlenecks before adding more traffic.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Bink Section -->
-        <div id="bink" class="statz-section">
-            <div class="statz-header">
-                <img src="BINKwhite.png" alt="Bink" class="statz-logo">
-                <h2>Poker Bankroll Tracker</h2>
-                <p class="statz-description">
-                    Addressing the problem of poker players not knowing how much they are winning or losing due to payment methods being scattered: cash, Venmo, Zelle, cryptocurrency, etc. Losing players can manage their spending and improve. Winning players get insights on their game.
-                </p>
-            </div>
-            <!-- Bink Features -->
-            <div class="statz-features">
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">💰</div>
-                        <h3>Multi-Payment Tracking</h3>
-                        <p>Track all your poker transactions across cash, Venmo, Zelle, cryptocurrency, and more in one place.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h3>Bankroll Analytics</h3>
-                        <p>Get detailed insights into your poker performance with comprehensive analytics and reporting.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
-                        <h3>Spending Management</h3>
-                        <p>Losing players can better manage their spending and identify areas for improvement.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🏆</div>
-                        <h3>Win Insights</h3>
-                        <p>Winning players get valuable insights on their game performance and profit patterns.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bink Download -->
-            <div class="statz-download">
-                <h3>Ready to Track Your Bankroll?</h3>
-                <p>Start managing your poker finances with precision and get the insights you need to improve your game.</p>
-                <div class="download-options">
-                    <a href="https://binkpoker.app" target="_blank" class="app-store-badge">
-                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" 
-                             alt="Download on the App Store" style="max-width: 200px">
-                    </a>
-                </div>
-            </div>
-        </div>
+    <!-- Vercel Deploy Link -->
+    <div class="vercel-deploy-section">
+        <a href="https://vercel.com/new" target="_blank" rel="noopener noreferrer" class="vercel-deploy-link">
+            <span class="vercel-deploy-icon">▲</span>
+            Deploy on Vercel
+        </a>
+        <p class="vercel-deploy-note">Import this project for instant deployment • Free hosting • SSL included</p>
     </div>
 
     <!-- Social Bar -->
@@ -367,63 +615,29 @@
     </footer>
 
     <script>
-        // Statz Carousel specific variables
-        let statzSlideIndex = 1;
-        
-        // Initialize the Statz carousel when the page loads
+        // Products tab switching
         document.addEventListener('DOMContentLoaded', function() {
-            showStatzSlides(statzSlideIndex);
+            const tabs = document.querySelectorAll('.products-tab');
+            const panels = document.querySelectorAll('.tab-panel');
             
-            // Auto-advance Statz slides every 4 seconds
-            setInterval(function() {
-                changeStatzSlide(1);
-            }, 4000);
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+                    
+                    tabs.forEach(t => {
+                        t.classList.remove('active');
+                        t.setAttribute('aria-selected', 'false');
+                    });
+                    panels.forEach(p => {
+                        p.classList.remove('active');
+                    });
+                    
+                    this.classList.add('active');
+                    this.setAttribute('aria-selected', 'true');
+                    document.getElementById('tab-' + targetTab).classList.add('active');
+                });
+            });
         });
-
-        function changeStatzSlide(n) {
-            showStatzSlides(statzSlideIndex += n);
-        }
-
-        function currentStatzSlide(n) {
-            showStatzSlides(statzSlideIndex = n);
-        }
-
-        function showStatzSlides(n) {
-            let i;
-            // Get slides and dots specifically from the Statz carousel section
-            let statzCarousel = document.querySelector('.statz-carousel-section');
-            let slides = statzCarousel.querySelectorAll(".slide");
-            let dots = statzCarousel.querySelectorAll(".dot");
-            
-            console.log('Statz slides found:', slides.length);
-            console.log('Statz dots found:', dots.length);
-            
-            if (n > slides.length) {statzSlideIndex = 1}
-            if (n < 1) {statzSlideIndex = slides.length}
-            
-            // Hide all slides
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            
-            // Remove active class from all dots
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            
-            // Show current slide and activate corresponding dot
-            if (slides[statzSlideIndex-1]) {
-                slides[statzSlideIndex-1].style.display = "block";
-            }
-            if (dots[statzSlideIndex-1]) {
-                dots[statzSlideIndex-1].className += " active";
-            }
-        }
-
-        // Make functions globally available for onclick handlers
-        window.changeSlide = changeStatzSlide;
-        window.currentSlide = currentStatzSlide;
-        
     </script>
 </body>
 </html>
