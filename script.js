@@ -189,104 +189,66 @@ document.addEventListener('keydown', function(event) {
 });
 
 // ========================================
-// REPORTS CAROUSEL FUNCTIONALITY
+// RESEARCH CAROUSEL FUNCTIONALITY
 // ========================================
 
-// Reports Carousel Variables
 let currentReportIndex = 1;
 const totalReports = 6;
 
 function showReportSlide(n) {
-    const slides = document.querySelectorAll('.report-slide');
-    const indicators = document.querySelectorAll('.reports-carousel-container .indicator');
-    
-    console.log(`🔄 Showing report slide ${n}, found ${slides.length} slides and ${indicators.length} indicators`);
-    
+    currentReportIndex = n;
     if (n > totalReports) currentReportIndex = 1;
     if (n < 1) currentReportIndex = totalReports;
-    
-    // Hide all slides
-    slides.forEach(slide => {
-        slide.classList.remove('active');
+
+    const slides = document.querySelectorAll('#tab-research .report-slide');
+    const dots = document.querySelectorAll('#tab-research .research-dot');
+    const counterEl = document.getElementById('currentReportNum');
+
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === currentReportIndex - 1));
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentReportIndex - 1);
+        dot.setAttribute('aria-selected', i === currentReportIndex - 1);
     });
-    
-    // Remove active class from all indicators
-    indicators.forEach(indicator => {
-        indicator.classList.remove('active');
-    });
-    
-    // Show current slide
-    if (slides[currentReportIndex - 1]) {
-        slides[currentReportIndex - 1].classList.add('active');
-        console.log(`✅ Activated slide ${currentReportIndex}`);
-    }
-    
-    // Activate current indicator
-    if (indicators[currentReportIndex - 1]) {
-        indicators[currentReportIndex - 1].classList.add('active');
-        console.log(`✅ Activated indicator ${currentReportIndex}`);
-    }
+    if (counterEl) counterEl.textContent = currentReportIndex;
 }
 
 function changeReportSlide(direction) {
-    currentReportIndex += direction;
-    showReportSlide(currentReportIndex);
+    showReportSlide(currentReportIndex + direction);
 }
 
-function currentReportSlide(n) {
-    currentReportIndex = n;
-    showReportSlide(currentReportIndex);
+function goToReportSlide(n) {
+    showReportSlide(parseInt(n, 10));
 }
 
-// Auto-advance reports carousel (optional)
 let reportsAutoAdvanceInterval;
-
 function startReportsAutoAdvance() {
-    reportsAutoAdvanceInterval = setInterval(() => {
-        changeReportSlide(1);
-    }, 10000); // Change report every 10 seconds
+    reportsAutoAdvanceInterval = setInterval(() => changeReportSlide(1), 8000);
 }
-
 function stopReportsAutoAdvance() {
-    if (reportsAutoAdvanceInterval) {
-        clearInterval(reportsAutoAdvanceInterval);
-    }
+    if (reportsAutoAdvanceInterval) clearInterval(reportsAutoAdvanceInterval);
 }
 
-// Initialize reports carousel when page loads
 document.addEventListener('DOMContentLoaded', function() {
-    // Only initialize if we're on a page with the reports carousel
-    const reportsContainer = document.querySelector('.reports-carousel-container');
-    if (reportsContainer) {
-        console.log('✅ Reports carousel container found, initializing...');
-        showReportSlide(1);
-        startReportsAutoAdvance();
-        
-        // Pause auto-advance on hover
-        reportsContainer.addEventListener('mouseenter', stopReportsAutoAdvance);
-        reportsContainer.addEventListener('mouseleave', startReportsAutoAdvance);
-        console.log('✅ Reports carousel initialized successfully');
-    } else {
-        console.log('❌ Reports carousel container not found');
-    }
+    const researchCarousel = document.querySelector('.research-carousel');
+    if (!researchCarousel) return;
+
+    showReportSlide(1);
+    startReportsAutoAdvance();
+    researchCarousel.addEventListener('mouseenter', stopReportsAutoAdvance);
+    researchCarousel.addEventListener('mouseleave', startReportsAutoAdvance);
+
+    researchCarousel.querySelectorAll('.research-dot').forEach(dot => {
+        dot.addEventListener('click', () => goToReportSlide(dot.dataset.dot));
+    });
 });
 
-// Keyboard navigation for reports carousel
-document.addEventListener('keydown', function(event) {
-    // Only handle reports carousel if it exists and projects carousel doesn't
-    const reportsContainer = document.querySelector('.reports-carousel-container');
-    const projectsContainer = document.querySelector('.projects-carousel-container');
-    
-    if (reportsContainer && !projectsContainer) {
-        if (event.key === 'ArrowLeft') {
-            changeReportSlide(-1);
-        } else if (event.key === 'ArrowRight') {
-            changeReportSlide(1);
-        }
-    }
+document.addEventListener('keydown', function(e) {
+    const researchCarousel = document.querySelector('.research-carousel');
+    if (!researchCarousel) return;
+    if (e.key === 'ArrowLeft') changeReportSlide(-1);
+    else if (e.key === 'ArrowRight') changeReportSlide(1);
 });
 
-// Make functions globally available for onclick handlers
 window.changeReportSlide = changeReportSlide;
-window.currentReportSlide = currentReportSlide;
+window.currentReportSlide = goToReportSlide;
 
