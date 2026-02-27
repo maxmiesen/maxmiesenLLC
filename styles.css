@@ -1418,7 +1418,7 @@ img:not([src]) {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 48px 32px 56px;
+    padding: 32px 32px 40px;
     position: relative;
 }
 
@@ -1512,7 +1512,7 @@ img:not([src]) {
 
 /* About Section - Roadmap style */
 .about-section {
-    padding: 56px 32px 56px;
+    padding: 32px 32px 48px;
     background: var(--primary-bg);
 }
 
@@ -1674,7 +1674,7 @@ img:not([src]) {
 
 /* Main Services Section - Roadmap style */
 .main-services-section {
-    padding: 48px 32px 64px;
+    padding: 32px 32px 48px;
     background: var(--primary-bg);
 }
 
@@ -1844,7 +1844,7 @@ img:not([src]) {
     
     /* Hero section mobile optimization */
     .index-hero {
-        padding: 40px 20px 48px;
+        padding: 24px 20px 32px;
     }
     
     .llc-logo {
@@ -1871,7 +1871,7 @@ img:not([src]) {
     }
     
     .about-section {
-        padding: 40px 20px 48px;
+        padding: 24px 20px 40px;
     }
     
     .about-content {
@@ -1908,9 +1908,9 @@ img:not([src]) {
     }
     
     .main-services-section {
-        padding: 60px 15px;
+        padding: 32px 15px 40px;
     }
-    
+
     .main-services-section h2 {
         font-size: 2rem;
         margin-bottom: 40px;
@@ -2838,9 +2838,9 @@ img:not([src]) {
     }
     
     .index-hero {
-        padding: 32px 16px 40px;
+        padding: 20px 16px 28px;
     }
-    
+
     .llc-logo {
         margin-bottom: 24px;
         padding: 4px 0;
@@ -2863,9 +2863,9 @@ img:not([src]) {
     }
     
     .about-section {
-        padding: 32px 16px 40px;
+        padding: 20px 16px 32px;
     }
-    
+
     .cta-button {
         min-width: 180px;
         font-size: 0.9rem;
@@ -2873,9 +2873,9 @@ img:not([src]) {
     }
     
     .main-services-section {
-        padding: 40px 10px;
+        padding: 24px 10px 32px;
     }
-    
+
     .main-services-section h2 {
         font-size: 1.6rem;
         margin-bottom: 25px;
@@ -4562,13 +4562,13 @@ a.project-link.external {
 
 /* Reports Section - Roadmap style */
 .reports-section {
-    padding: 64px 24px 80px;
+    padding: 40px 16px 48px;
     background: var(--primary-bg);
     text-align: center;
 }
 
 .reports-header {
-    margin-bottom: 48px;
+    margin-bottom: 32px;
 }
 
 .reports-header h2 {
@@ -4598,7 +4598,7 @@ a.project-link.external {
 .reports-carousel-container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 32px 48px;
+    padding: 16px 24px;
     position: relative;
     width: 100%;
     box-sizing: border-box;
@@ -4623,7 +4623,7 @@ a.project-link.external {
 .report-slide {
     min-width: 100%;
     display: none;
-    padding: 30px;
+    padding: 16px;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
     height: 650px;
@@ -4655,7 +4655,7 @@ a.project-link.external {
 }
 
 .report-media {
-    margin: 20px 0;
+    margin: 12px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -4767,12 +4767,12 @@ a.project-link.external {
 @media (min-width: 1400px) {
     .reports-carousel-container {
         max-width: 1400px;
-        padding: 50px 100px;
+        padding: 24px 48px;
     }
     
     .report-slide {
         height: 700px;
-        padding: 40px;
+        padding: 20px;
     }
     
     .report-media .pdf-container {
@@ -4802,12 +4802,12 @@ a.project-link.external {
 @media (min-width: 1600px) {
     .reports-carousel-container {
         max-width: 1600px;
-        padding: 60px 120px;
+        padding: 24px 56px;
     }
     
     .report-slide {
         height: 750px;
-        padding: 50px;
+        padding: 24px;
     }
     
     .report-media .pdf-container {
@@ -4836,13 +4836,13 @@ a.project-link.external {
 
 @media (max-width: 1200px) {
     .reports-carousel-container {
-        padding: 30px 60px;
+        padding: 20px 40px;
     }
 }
 
 @media (max-width: 768px) {
     .reports-section {
-        padding: 80px 20px;
+        padding: 48px 16px;
     }
     
     .reports-header h2 {
@@ -4855,11 +4855,11 @@ a.project-link.external {
     }
     
     .reports-carousel-container {
-        padding: 20px 60px;
+        padding: 16px 40px;
     }
     
     .report-slide {
-        padding: 25px;
+        padding: 16px;
     }
     
     .report-media .pdf-container {
@@ -4883,7 +4883,7 @@ a.project-link.external {
 
 @media (max-width: 480px) {
     .reports-section {
-        padding: 60px 15px;
+        padding: 40px 12px;
     }
     
     .reports-header h2 {
@@ -4898,11 +4898,11 @@ a.project-link.external {
     }
     
     .reports-carousel-container {
-        padding: 15px 50px;
+        padding: 12px 32px;
     }
     
     .report-slide {
-        padding: 20px;
+        padding: 12px;
     }
     
     .report-media .pdf-container {
