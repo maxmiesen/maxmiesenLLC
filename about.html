@@ -18,11 +18,17 @@
                 </a>
                 <div class="menu-toggle" aria-label="Toggle menu">&#9776;</div>
                 <div class="nav-tabs">
-                    <a href="about.html" class="nav-tab active" aria-selected="true">About Me</a>
-                    <a href="index.html" class="nav-tab" aria-selected="false">Statz</a>
+                    <a href="index.html" class="nav-tab active" aria-selected="true">About Me</a>
+                    <a href="statz.html" class="nav-tab" aria-selected="false">Statz</a>
                     <a href="bink.html" class="nav-tab" aria-selected="false">Bink</a>
-                    <a href="other.html" class="nav-tab" aria-selected="false">Other</a>
-                    <a href="research.html" class="nav-tab" aria-selected="false">Research</a>
+                    <div class="nav-tab-dropdown">
+                        <button class="nav-tab nav-tab-trigger" data-dropdown="other" aria-expanded="false" aria-haspopup="true">Other ▾</button>
+                        <div class="nav-dropdown-menu" id="dropdown-other">
+                            <a href="senseishiesty.html" class="nav-dropdown-item">Sensei Shiesty</a>
+                            <a href="https://linnaxcreationsllc.vercel.app" target="_blank" rel="noopener noreferrer" class="nav-dropdown-item">LINNAX</a>
+                            <a href="research.html" class="nav-dropdown-item">Research</a>
+                        </div>
+                    </div>
                     <div class="nav-tab-dropdown">
                         <button class="nav-tab nav-tab-trigger" data-dropdown="ngos" aria-expanded="false" aria-haspopup="true">NGOs ▾</button>
                         <div class="nav-dropdown-menu" id="dropdown-ngos">
@@ -82,7 +88,7 @@
                             <li>Data Visualization</li>
                         </ul>
                         <div class="service-links">
-                            <a href="index.html" class="service-link">Learn About Statz</a>
+                            <a href="statz.html" class="service-link">Learn About Statz</a>
                         </div>
                     </div>
                 </div>
