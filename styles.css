@@ -1596,41 +1596,6 @@ img:not([src]) {
     line-height: 1.7;
 }
 
-/* Sensei Shiesty Section */
-.senseishiesty-section {
-    padding: 80px 24px 100px;
-    background: var(--primary-bg);
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.senseishiesty-logo {
-    max-width: 280px;
-    width: 100%;
-    margin: 0 auto 32px auto;
-    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.4));
-    display: block;
-}
-
-.senseishiesty-title {
-    font-family: var(--font-display);
-    font-size: clamp(28px, 4vw, 42px);
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    margin-bottom: 16px;
-    background: linear-gradient(135deg, #fff 0%, #888 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.senseishiesty-subtitle {
-    color: var(--text-muted);
-    font-size: 1.1rem;
-    font-weight: 300;
-    line-height: 1.7;
-}
 
 /* Index Statz Carousel */
 .statz-carousel-section h3 {
@@ -4857,7 +4822,7 @@ a.project-link.external {
     text-decoration: none;
 }
 
-/* NGOs dropdown */
+/* Nav dropdown */
 .nav-tab-dropdown {
     position: relative;
     display: inline-block;
@@ -4931,30 +4896,6 @@ a.project-link.external {
     animation: fadeEffect 0.3s ease;
 }
 
-.ngos-section {
-    padding: 80px 24px;
-    text-align: center;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.ngos-section h2 {
-    font-family: var(--font-display);
-    font-size: clamp(28px, 4vw, 40px);
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    margin-bottom: 24px;
-    background: linear-gradient(135deg, #fff 0%, #888 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.ngos-placeholder {
-    color: var(--text-muted);
-    font-size: 1rem;
-    font-weight: 300;
-}
 
 @media (max-width: 768px) {
     .top-tabs-nav .menu-toggle {
@@ -5066,12 +5007,6 @@ a.project-link.external {
     margin-bottom: 40px;
 }
 
-.linnax-logo {
-    max-width: 180px;
-    margin: 0 auto 24px auto;
-    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.4));
-    display: block;
-}
 
 .timeline-tag {
     display: inline-block;
