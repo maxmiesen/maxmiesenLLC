@@ -1457,6 +1457,22 @@ img:not([src]) {
     background-clip: text;
 }
 
+.hero-subtitle {
+    font-family: var(--font-family);
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: center;
+    margin: 20px 0 0;
+    padding: 0 20px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+}
+
 .hero-description {
     font-size: 1.3rem;
     color: rgba(255,255,255,0.9);
@@ -1594,6 +1610,268 @@ img:not([src]) {
     max-width: 560px;
     margin: 0 auto;
     line-height: 1.7;
+}
+
+/* ——— Bink product page ——— */
+.bink-page {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+}
+
+.bink-hero {
+    position: relative;
+    padding: 48px 24px 56px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.bink-hero__glow {
+    position: absolute;
+    inset: -40% -20% auto;
+    height: 120%;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(168, 85, 247, 0.18) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+.bink-hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.bink-hero__eyebrow {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-primary);
+    margin: 0 0 16px;
+}
+
+.bink-hero__logo {
+    display: block;
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto 28px;
+    filter: drop-shadow(0 12px 40px rgba(0, 0, 0, 0.45));
+}
+
+.bink-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin: 0 0 16px;
+    background: linear-gradient(135deg, #fff 0%, #9ca3af 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.bink-hero__lede {
+    font-size: clamp(1rem, 2.2vw, 1.125rem);
+    font-weight: 400;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin: 0;
+    max-width: 52ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bink-metrics {
+    padding: 40px 24px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.bink-metrics__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 700px) {
+    .bink-metrics__grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+.bink-metric-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 120px;
+    padding: 24px 20px;
+    background: linear-gradient(165deg, rgba(17, 17, 24, 0.95) 0%, rgba(26, 26, 34, 0.6) 100%);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+    transition: border-color var(--transition-normal), box-shadow var(--transition-normal), transform var(--transition-fast);
+}
+
+.bink-metric-card:hover {
+    border-color: rgba(168, 85, 247, 0.35);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    transform: translateY(-2px);
+}
+
+.bink-metric-card__value {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    line-height: 1.1;
+}
+
+.bink-metric-card__label {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.bink-features {
+    padding: 24px 24px 64px;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.bink-section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.375rem, 3vw, 1.75rem);
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: -0.02em;
+    margin: 0 0 40px;
+    color: var(--text-primary);
+}
+
+.bink-features__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.bink-feature-card {
+    text-align: left;
+    padding: 28px 24px;
+    background: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    transition: border-color var(--transition-normal), background var(--transition-normal);
+}
+
+.bink-feature-card:hover {
+    border-color: rgba(168, 85, 247, 0.25);
+    background: var(--tertiary-bg);
+}
+
+.bink-feature-card__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 18px;
+    border-radius: 12px;
+    background: rgba(168, 85, 247, 0.08);
+    color: var(--accent-primary);
+}
+
+.bink-feature-card__title {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin: 0 0 10px;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+
+.bink-feature-card__text {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.bink-cta {
+    padding: 0 24px 100px;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.bink-cta__panel {
+    text-align: center;
+    padding: 40px 32px 44px;
+    border-radius: 20px;
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    background: linear-gradient(180deg, rgba(30, 30, 42, 0.5) 0%, rgba(17, 17, 24, 0.9) 100%);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+}
+
+.bink-cta__title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0 0 12px;
+    color: var(--text-primary);
+}
+
+.bink-cta__copy {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin: 0 0 28px;
+    line-height: 1.6;
+    max-width: 36ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bink-cta__store {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.bink-cta__store:hover {
+    opacity: 0.92;
+    transform: scale(1.02);
+}
+
+.bink-cta__store:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 4px;
+}
+
+.bink-cta__store img {
+    display: block;
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bink-metric-card:hover,
+    .bink-cta__store:hover {
+        transform: none;
+    }
 }
 
 
@@ -4784,8 +5062,11 @@ a.project-link.external {
 }
 
 .top-tabs-nav .nav-logo img {
-    max-height: 36px;
+    max-height: 44px;
     width: auto;
+    height: auto;
+    display: block;
+    object-fit: contain;
 }
 
 .top-tabs-nav .nav-tabs {
@@ -4820,58 +5101,6 @@ a.project-link.external {
 
 .top-tabs-nav a.nav-tab {
     text-decoration: none;
-}
-
-/* Nav dropdown */
-.nav-tab-dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.nav-tab-trigger {
-    cursor: pointer;
-}
-
-.nav-dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    margin-top: 4px;
-    min-width: 220px;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 8px 0;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-    z-index: 1001;
-}
-
-.nav-dropdown-menu.active {
-    display: block;
-}
-
-.nav-dropdown-item {
-    display: block;
-    padding: 10px 16px;
-    color: var(--text-primary);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: background 0.2s ease;
-}
-
-.nav-dropdown-item:hover {
-    background: rgba(168, 85, 247, 0.1);
-    color: var(--accent-primary);
-}
-
-.nav-dropdown-item:first-child {
-    border-radius: 8px 8px 0 0;
-}
-
-.nav-dropdown-item:last-child {
-    border-radius: 0 0 8px 8px;
 }
 
 .top-tabs-nav .menu-toggle {
@@ -4923,20 +5152,6 @@ a.project-link.external {
         width: 100%;
         text-align: left;
         padding: 12px 16px;
-    }
-    
-    .nav-tab-dropdown {
-        width: 100%;
-    }
-    
-    .nav-tab-trigger {
-        width: 100%;
-        text-align: left;
-    }
-    
-    .nav-dropdown-menu {
-        margin-top: 8px;
-        min-width: 100%;
     }
 }
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=6.0">
+    <link rel="stylesheet" href="styles.css?v=6.2">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,21 +13,16 @@
     <div class="wrapper">
         <nav class="navbar top-tabs-nav">
             <div class="nav-container">
-                <a href="index.html" class="nav-logo">
-                    <img src="llctitle.png" alt="Max Miesen LLC" class="llc-title-img">
+                <a href="index.html" class="nav-logo" aria-label="Home">
+                    <img src="MM.png" alt="" class="nav-mm-logo">
                 </a>
                 <div class="menu-toggle" aria-label="Toggle menu">&#9776;</div>
                 <div class="nav-tabs">
                     <a href="index.html" class="nav-tab" aria-selected="false">About Me</a>
                     <a href="statz.html" class="nav-tab active" aria-selected="true">Statz</a>
                     <a href="bink.html" class="nav-tab" aria-selected="false">Bink</a>
-                    <div class="nav-tab-dropdown">
-                        <button class="nav-tab nav-tab-trigger" data-dropdown="other" aria-expanded="false" aria-haspopup="true">Other ▾</button>
-                        <div class="nav-dropdown-menu" id="dropdown-other">
-                            <a href="research.html" class="nav-dropdown-item">Research</a>
-                            <a href="https://chess-poker.vercel.app" target="_blank" rel="noopener noreferrer" class="nav-dropdown-item">Chess Poker</a>
-                        </div>
-                    </div>
+                    <a href="research.html" class="nav-tab" aria-selected="false">Research</a>
+                    <a href="https://chess-poker.vercel.app" target="_blank" rel="noopener noreferrer" class="nav-tab" aria-selected="false">Chess Poker</a>
                 </div>
             </div>
         </nav>
@@ -124,22 +119,6 @@
                     }
                 });
             }
-            const dropdownTriggers = document.querySelectorAll('.nav-tab-trigger');
-            dropdownTriggers.forEach(trigger => {
-                trigger.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const dropdownId = this.getAttribute('data-dropdown');
-                    const menu = document.getElementById('dropdown-' + dropdownId);
-                    const isOpen = menu.classList.contains('active');
-                    document.querySelectorAll('.nav-dropdown-menu').forEach(m => m.classList.remove('active'));
-                    if (!isOpen) menu.classList.add('active');
-                    this.setAttribute('aria-expanded', !isOpen);
-                });
-            });
-            document.addEventListener('click', function() {
-                document.querySelectorAll('.nav-dropdown-menu').forEach(m => m.classList.remove('active'));
-                document.querySelectorAll('.nav-tab-trigger').forEach(t => t.setAttribute('aria-expanded', 'false'));
-            });
         });
     </script>
 </body>
