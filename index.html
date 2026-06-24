@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>document.documentElement.classList.add('js');</script>
+<title>Max Miesen — engineer, builder, and maker in Encinitas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="site.css" />
+<style>
+  /* ---------- page-specific: home ---------- */
+  .index-hero {
+    padding: 72px 32px 56px;
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .hello-line {
+    font-size: 15px; font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 18px;
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .hello-line::before { content: ''; width: 22px; height: 1.5px; background: var(--accent); }
+
+  .index-hero h1 {
+    font-family: var(--font-display); font-weight: 600;
+    font-size: clamp(40px, 5.6vw, 68px);
+    line-height: 1.06; letter-spacing: -0.015em;
+    color: var(--ink); margin: 0 0 22px;
+  }
+  .index-hero h1 em {
+    font-family: var(--font-serif);
+    font-style: italic; font-weight: 500;
+    color: var(--accent);
+  }
+  .hero-lede {
+    font-size: 18.5px; line-height: 1.6;
+    color: var(--ink-2); max-width: 50ch; font-weight: 400;
+  }
+
+  /* a plain, human "right now" list — no mono, no labels-as-code */
+  .now-list {
+    margin-top: 34px;
+    display: flex; flex-direction: column; gap: 18px;
+    max-width: 52ch;
+  }
+  .now-list .row {
+    display: grid; grid-template-columns: 96px 1fr;
+    gap: 18px; align-items: baseline;
+  }
+  .now-list .lbl {
+    font-size: 13px; font-weight: 600; color: var(--ink-3);
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .now-list .val { font-size: 15.5px; color: var(--ink); line-height: 1.5; }
+  .now-list .val.live { display: inline-flex; align-items: center; gap: 9px; color: var(--accent); font-weight: 500; }
+  .now-list .live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+
+  /* signature: a taped photo print */
+  .portrait-wrap {
+    display: flex; justify-content: center;
+  }
+  .portrait {
+    position: relative;
+    width: 100%; max-width: 340px;
+    background: #fff;
+    padding: 14px 14px 0;
+    border-radius: 4px;
+    box-shadow: 0 18px 44px rgba(34, 32, 28, 0.16);
+    transform: rotate(-2.2deg);
+    transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease;
+  }
+  .portrait:hover { transform: rotate(0deg) translateY(-4px); box-shadow: 0 26px 60px rgba(34,32,28,0.20); }
+  .portrait::before {
+    /* strip of tape at the top */
+    content: '';
+    position: absolute; top: -13px; left: 50%; transform: translateX(-50%) rotate(1.5deg);
+    width: 92px; height: 26px;
+    background: rgba(207, 138, 79, 0.32);
+    border: 1px solid rgba(207, 138, 79, 0.28);
+    border-radius: 1px;
+  }
+  .portrait .frame {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--paper-3);
+  }
+  .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .portrait-label {
+    font-family: var(--font-display); font-style: italic;
+    font-size: 17px; color: var(--ink-2);
+    text-align: center;
+    padding: 14px 6px 16px;
+  }
+
+  /* about */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 28px; margin-top: 8px;
+  }
+  .about-block {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 30px 30px;
+  }
+  .about-block h4 {
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 14px;
+  }
+  .about-block p { font-size: 16px; line-height: 1.7; color: var(--ink-2); }
+  .about-block strong { color: var(--ink); font-weight: 600; }
+
+  @media (max-width: 980px) {
+    .index-hero { grid-template-columns: 1fr; gap: 48px; }
+    .portrait-wrap { justify-content: flex-start; }
+    .about-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .index-hero { padding-left: 22px; padding-right: 22px; }
+    .now-list .row { grid-template-columns: 84px 1fr; gap: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-left">
+      <a href="index.html" class="nav-logo" aria-label="Home"><img src="MM.png" alt="Max Miesen" /></a>
+      <div class="brand-rail" aria-hidden="true"><div class="rail-stack"><span>engineer</span><span>builder</span><span>maker</span><span>filmmaker</span><span>engineer</span></div></div>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+    <div class="nav-tabs">
+      <a href="index.html" class="nav-tab active" aria-current="page">About</a>
+      <a href="statz.html" class="nav-tab">Statz</a>
+      <a href="bink.html" class="nav-tab">Bink</a>
+      <a href="tfe.html" class="nav-tab">TFE</a>
+      <a href="research.html" class="nav-tab">Research</a>
+      <a href="creative.html" class="nav-tab">Creative</a>
+    </div>
+  </div>
+</nav>
+
+<main class="main">
+
+  <section class="index-hero">
+    <div>
+      <div class="hello-line">Hi, I'm Max</div>
+      <h1>I build things, and I'd love to <em>help you build yours</em>.</h1>
+      <p class="hero-lede">
+        I'm an entrepreneurial engineer with research experience. I shoot video for everywhere from small businesses and brands to startups and product launches. If you have a project that needs a careful, hands-on person, you're in the right place.
+      </p>
+
+      <div class="now-list">
+        <div class="row">
+          <span class="lbl">Studying</span>
+          <span class="val">A biomedical engineering BS plus a product development engineering MS at USC — using engineering to solve healthcare and medical problems, with a management focus on building products.</span>
+        </div>
+        <div class="row">
+          <span class="lbl">Building</span>
+          <span class="val">Two SaaS platforms I've built and scaled: Statz and Bink.</span>
+        </div>
+        <div class="row">
+          <span class="lbl">Right now</span>
+          <span class="val live"><span class="live-dot"></span>Open to new work and happy to chat</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="portrait-wrap">
+      <figure class="portrait">
+        <div class="frame">
+          <img src="profile.jpg" alt="Portrait of Max Miesen" />
+        </div>
+        <figcaption class="portrait-label">Encinitas, California</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <section class="section">
+    <div class="section-eyebrow">What I do</div>
+    <h2 class="section-title">Three kinds of work, one person doing it.</h2>
+    <div class="card-grid">
+
+      <article class="card">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
+        </div>
+        <h3 class="card-title">Video & creative</h3>
+        <p class="card-desc">I film and edit videos and make the kind of content that helps a brand look its best.</p>
+        <ul class="card-list">
+          <li>Filming and editing video</li>
+          <li>Content for ads and social media</li>
+          <li>A consistent look for your brand</li>
+          <li>A second set of eyes on creative ideas</li>
+        </ul>
+        <a href="mailto:maxmiesenfilms@gmail.com" class="card-cta">Work with me <span>&rarr;</span></a>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
+        <h3 class="card-title">Engineering & strategy</h3>
+        <p class="card-desc">Hands-on help for projects that need a technical mind — building things, making sense of data, and thinking through the business side.</p>
+        <ul class="card-list">
+          <li>Planning and growing a business</li>
+          <li>Designing and building products</li>
+          <li>Making sense of messy data</li>
+          <li>Straightforward technical advice</li>
+        </ul>
+        <a href="research.html" class="card-cta">See my projects <span>&rarr;</span></a>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3 class="card-title">Apps & software</h3>
+        <p class="card-desc">Simple apps that help you keep track of the things you care about — from your daily habits to your money.</p>
+        <ul class="card-list">
+          <li>Building apps for your phone</li>
+          <li>Custom tools made to fit your needs</li>
+          <li>Little tools that keep you organized</li>
+          <li>Turning numbers into clear, simple charts</li>
+        </ul>
+        <a href="statz.html" class="card-cta">Meet Statz <span>&rarr;</span></a>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <section class="section">
+    <div class="section-eyebrow">A bit about me</div>
+    <h2 class="section-title">The short version.</h2>
+    <div class="about-grid">
+      <div class="about-block">
+        <h4>Where I come from</h4>
+        <p>
+          I'm studying biomedical engineering at USC (BS), with a product development engineering master's on the way. I've spent time in labs working on health and science research, and I'm comfortable digging through data to find what actually matters — using tools like <strong>MATLAB, R, and Python</strong> to crunch the numbers.
+        </p>
+      </div>
+      <div class="about-block">
+        <h4>What I've been up to</h4>
+        <p>
+          I've worn a lot of hats at small startups — running the day-to-day, designing products, writing the code, and helping things grow. Right now I'm building two apps, <strong>Statz</strong> and <strong>Bink</strong>, that real people use every day.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-left">
+    <div class="bigtype">Made by hand in Encinitas, California.</div>
+    <p>Max Miesen LLC<br />Always happy to talk about a new project.</p>
+  </div>
+  <div class="footer-right">
+    <span class="lbl">Find me</span>
+    <a href="https://instagram.com/maxmiesen" target="_blank" rel="noopener noreferrer">Instagram &rarr;</a>
+    <a href="https://youtube.com/maxmiesen" target="_blank" rel="noopener noreferrer">YouTube &rarr;</a>
+    <a href="https://linkedin.com/in/maxmiesen" target="_blank" rel="noopener noreferrer">LinkedIn &rarr;</a>
+    <a href="mailto:maxmiesenfilms@gmail.com">Email &rarr;</a>
+  </div>
+</footer>
+<div class="copyright">© 2025 Max Miesen LLC</div>
+
+<script src="site.js"></script>
+</body>
+</html>

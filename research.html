@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>document.documentElement.classList.add('js');</script>
+<title>Research — Max Miesen LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="site.css" />
+<style>
+  /* page-specific */
+  .toc {
+    padding: 28px 32px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+  }
+  .toc-label {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3);
+  }
+  .toc-list { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; justify-content: center; }
+  .toc-chip {
+    font-size: 13px; font-weight: 500; letter-spacing: 0.01em;
+    color: var(--ink-2); background: var(--paper-2);
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 7px 14px; cursor: pointer; transition: all .18s ease;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .toc-chip:hover { border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); color: var(--ink); }
+  .toc-chip.active { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
+  .toc-chip .num { font-size: 11px; color: var(--ink-4); }
+  .toc-chip.active .num { color: var(--accent); opacity: 0.7; }
+  .counter { font-size: 13px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .counter strong { color: var(--accent); font-weight: 600; }
+  .viewer-wrap { padding: 40px 32px 32px; }
+  .viewer {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    min-height: 640px;
+  }
+  .sidebar {
+    background: var(--paper-3); border-right: 1px solid var(--line);
+    padding: 28px 24px;
+    display: flex; flex-direction: column; gap: 8px;
+    overflow-y: auto; max-height: 720px;
+  }
+  .sidebar-h {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3);
+    padding: 0 4px 12px; border-bottom: 1px solid var(--line-soft);
+    margin-bottom: 8px; display: flex; justify-content: space-between;
+  }
+  .report-card {
+    text-align: left; background: transparent;
+    border: 1px solid transparent; border-radius: 10px;
+    padding: 14px; cursor: pointer; transition: all .18s ease;
+    position: relative; color: inherit; font-family: inherit;
+  }
+  .report-card:hover { background: var(--paper-2); border-color: var(--line); }
+  .report-card.active { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 40%, transparent); }
+  .report-card.active::before {
+    content: ''; position: absolute; left: -25px; top: 14px; bottom: 14px;
+    width: 3px; border-radius: 2px; background: var(--accent);
+  }
+  .rc-row1 { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .rc-num { font-size: 11px; font-weight: 600; color: var(--ink-4); letter-spacing: 0.04em; }
+  .report-card.active .rc-num { color: var(--accent); }
+  .rc-tag {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--ink-3);
+    padding: 2px 8px; border: 1px solid var(--line);
+    border-radius: 5px; background: var(--paper-2);
+  }
+  .report-card.active .rc-tag { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, transparent); background: var(--accent-soft); }
+  .rc-title {
+    font-family: var(--font-display); font-size: 17px; font-weight: 600;
+    color: var(--ink); line-height: 1.25; letter-spacing: -0.01em; margin-bottom: 4px;
+  }
+  .rc-meta { font-size: 11px; color: var(--ink-4); letter-spacing: 0.02em; }
+  .stage { display: flex; flex-direction: column; min-width: 0; }
+  .stage-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 24px; border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, var(--paper-3) 0%, var(--paper-2) 100%);
+    gap: 16px;
+  }
+  .stage-titlewrap { min-width: 0; flex: 1; }
+  .stage-eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 5px;
+  }
+  .stage-title {
+    font-family: var(--font-display); font-size: 24px; font-weight: 600;
+    color: var(--ink); letter-spacing: -0.01em; line-height: 1.2;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .stage-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .stage-nav {
+    width: 38px; height: 38px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--paper-2); border: 1px solid var(--line); border-radius: 8px;
+    color: var(--ink-2); cursor: pointer; transition: all .18s ease;
+    font-size: 16px;
+  }
+  .stage-nav:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .stage-counter { font-size: 12px; color: var(--ink-3); padding: 0 10px; font-variant-numeric: tabular-nums; }
+  .stage-counter strong { color: var(--ink); font-weight: 600; }
+  .open-link {
+    font-size: 12px; font-weight: 500; color: var(--accent);
+    text-decoration: none; padding: 8px 14px;
+    border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); border-radius: 8px;
+    background: var(--accent-soft); transition: all .18s ease;
+    display: inline-flex; align-items: center; gap: 6px; margin-left: 6px;
+  }
+  .open-link:hover { background: color-mix(in srgb, var(--accent) 20%, transparent); border-color: var(--accent); }
+  .pdf-frame { flex: 1; background: var(--paper-3); position: relative; min-height: 480px; }
+  .pdf-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+  .stage-foot {
+    padding: 18px 24px; border-top: 1px solid var(--line);
+    background: var(--paper-3);
+    display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center;
+  }
+  .stage-desc { font-size: 14.5px; color: var(--ink-2); line-height: 1.6; max-width: 70ch; }
+  .stage-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+  .stage-tag {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--ink-3); padding: 4px 9px;
+    border: 1px solid var(--line); border-radius: 5px; background: var(--paper-2);
+  }
+  .dots { display: flex; justify-content: center; gap: 10px; padding: 24px; }
+  .dot {
+    width: 38px; height: 4px; border-radius: 4px;
+    background: var(--line); border: none; cursor: pointer;
+    transition: all .25s ease; padding: 0;
+  }
+  .dot:hover { background: var(--ink-4); }
+  .dot.active { background: var(--accent); width: 56px; }
+
+  @media (max-width: 980px) {
+    .viewer { grid-template-columns: 1fr; }
+    .sidebar { max-height: none; border-right: none; border-bottom: 1px solid var(--line); }
+    .stage-foot { grid-template-columns: 1fr; }
+    .stage-tags { justify-content: flex-start; }
+  }
+  @media (max-width: 768px) {
+    .viewer-wrap { padding-left: 20px; padding-right: 20px; }
+    .toc { padding-left: 20px; padding-right: 20px; }
+    .stage-bar { flex-wrap: wrap; }
+    .open-link { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="noise" aria-hidden="true"></div>
+<div class="progress" id="progress"></div>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-left">
+      <a href="index.html" class="nav-logo" aria-label="Home"><img src="MM.png" alt="Max Miesen" /></a>
+      <div class="brand-rail" aria-hidden="true"><div class="rail-stack"><span>engineer</span><span>builder</span><span>maker</span><span>filmmaker</span><span>engineer</span></div></div>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+    <div class="nav-tabs" id="navTabs">
+      <a href="index.html" class="nav-tab">About</a>
+      <a href="statz.html" class="nav-tab">Statz</a>
+      <a href="bink.html" class="nav-tab">Bink</a>
+      <a href="tfe.html" class="nav-tab">TFE</a>
+      <a href="research.html" class="nav-tab active" aria-current="page">Research</a>
+      <a href="creative.html" class="nav-tab">Creative</a>
+    </div>
+  </div>
+</nav>
+
+<main class="main">
+
+  <header class="page-header">
+    <div>
+      <div class="eyebrow">Research log · USC · 2022—2025</div>
+      <h1 class="page-title">Academic <em>reports</em> &amp; technical analyses.</h1>
+      <p class="page-lede">
+        Selected biomedical engineering and electrical engineering coursework from USC, plus a published article on golf biomechanics. Each report is a primary source — read inline or open the full PDF.
+      </p>
+    </div>
+    <div class="header-meta">
+      <div class="row"><span class="lbl">Reports</span><span class="val">06 filed</span></div>
+      <div class="row"><span class="lbl">Domain</span><span class="val">BME · EE · Biomech</span></div>
+      <div class="row"><span class="lbl">Status</span><span class="val live"><span class="live-dot"></span>Updated quarterly</span></div>
+    </div>
+  </header>
+
+  <div class="toc">
+    <span class="toc-label">Filter</span>
+    <div class="toc-list" id="tocList">
+      <button class="toc-chip active" data-filter="all">All <span class="num">06</span></button>
+      <button class="toc-chip" data-filter="BME">BME <span class="num">04</span></button>
+      <button class="toc-chip" data-filter="EE">EE <span class="num">01</span></button>
+      <button class="toc-chip" data-filter="Article">Article <span class="num">01</span></button>
+    </div>
+    <span class="counter">viewing <strong id="viewingCount">06</strong> of <strong>06</strong></span>
+  </div>
+
+  <div class="viewer-wrap">
+    <div class="viewer">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-h"><span>Index</span><span id="sidebarTotal">06</span></div>
+      </aside>
+      <section class="stage">
+        <div class="stage-bar">
+          <div class="stage-titlewrap">
+            <div class="stage-eyebrow" id="stageEyebrow">BME 404 · Biomech</div>
+            <div class="stage-title" id="stageTitle">Orthopedic Biomechanics</div>
+          </div>
+          <div class="stage-actions">
+            <button class="stage-nav" id="prevBtn" aria-label="Previous">‹</button>
+            <span class="stage-counter"><strong id="curIdx">1</strong> / <span id="totIdx">6</span></span>
+            <button class="stage-nav" id="nextBtn" aria-label="Next">›</button>
+            <a class="open-link" id="openLink" href="#" target="_blank" rel="noopener">open ↗</a>
+          </div>
+        </div>
+        <div class="pdf-frame">
+          <iframe id="pdfFrame" src="" title="Report PDF"></iframe>
+        </div>
+        <div class="stage-foot">
+          <p class="stage-desc" id="stageDesc">—</p>
+          <div class="stage-tags" id="stageTags"></div>
+        </div>
+        <div class="dots" id="dots"></div>
+      </section>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-left">
+    <div class="bigtype">Built &amp; maintained out of Encinitas, CA.</div>
+    <p>Max Miesen LLC · Biomedical Engineering, USC<br />Open to collaboration on biomech, instrumentation, and applied analytics.</p>
+  </div>
+  <div class="footer-right">
+    <span class="lbl">Elsewhere</span>
+    <a href="https://instagram.com/maxmiesen" target="_blank" rel="noopener noreferrer">instagram →</a>
+    <a href="https://youtube.com/maxmiesen" target="_blank" rel="noopener noreferrer">youtube →</a>
+    <a href="https://linkedin.com/in/maxmiesen" target="_blank" rel="noopener noreferrer">linkedin →</a>
+    <a href="mailto:maxmiesenfilms@gmail.com">email →</a>
+  </div>
+</footer>
+<div class="copyright">© 2025 Max Miesen LLC · all rights reserved</div>
+
+<div class="social-bar" aria-label="Social links">
+  <a class="social-btn" href="https://instagram.com/maxmiesen" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+    </svg>
+  </a>
+  <a class="social-btn" href="https://youtube.com/maxmiesen" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><span>▶</span></a>
+  <a class="social-btn" href="https://linkedin.com/in/maxmiesen" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><span>in</span></a>
+</div>
+
+<script src="site.js"></script>
+<script>
+const REPORTS = [
+  { num:"01", code:"BME 404", cat:"BME", catLabel:"Biomech", title:"Orthopedic Biomechanics", file:"BME404report.pdf", semester:"Fall 2024", desc:"Biomedical engineering analysis of orthopedic systems — medical device design and biological-systems integration. Covers load-bearing implants, joint mechanics, and the constraints of in-vivo material selection.", tags:["Biomechanics","Implants","Materials"] },
+  { num:"02", code:"BME 405", cat:"BME", catLabel:"Senior Projects", title:"Biomedical Senior Projects", file:"BME405report.pdf", semester:"Spring 2025", desc:"Biomedical systems engineering with medical-device integration and end-to-end system optimization. Documents design tradeoffs, validation methodology, and team-level engineering process.", tags:["Systems","Devices","Optimization"] },
+  { num:"03", code:"BME 410", cat:"BME", catLabel:"Tissue & Biomaterials", title:"Tissue Engineering & Biomaterials", file:"BME410report.pdf", semester:"Fall 2023", desc:"Biomedical instrumentation, sensor technologies, and measurement systems applied to medical-grade biomaterials. Examines characterization protocols and calibration strategies.", tags:["Tissue","Sensors","Measurement"] },
+  { num:"04", code:"BME 499", cat:"BME", catLabel:"Capstone", title:"Special Topics — Capstone Senior Design", file:"BME499report.pdf", semester:"Spring 2025", desc:"Capstone senior-design project consolidating biomedical engineering coursework into an end-to-end design problem. Covers ideation, prototyping, and validation under industry-style constraints.", tags:["Capstone","Design","Prototype"] },
+  { num:"05", code:"EE 202", cat:"EE", catLabel:"Linear Circuits", title:"Linear Circuits Analysis", file:"EE202report.pdf", semester:"Fall 2022", desc:"Electrical engineering fundamentals: circuit analysis, electronic design, and the application of linear-system principles in biomedical instrumentation contexts.", tags:["Circuits","EE","Analysis"] },
+  { num:"06", code:"Article", cat:"Article", catLabel:"Published", title:"Golf Performance — 3D PCA via OpenCap", file:"golfreport.pdf", semester:"2025", desc:"Published journal article: golf-swing performance analysis using OpenCap markerless motion capture and 3D principal-component analysis. Quantifies swing-plane variance across skill levels.", tags:["Biomech","PCA","Motion-capture"] }
+];
+
+const $ = (s) => document.querySelector(s);
+const sidebar = $('#sidebar');
+const dotsWrap = $('#dots');
+let visible = REPORTS.slice();
+let currentIdx = 0;
+
+function renderSidebar() {
+  sidebar.querySelectorAll('.report-card').forEach(el => el.remove());
+  visible.forEach((r, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'report-card' + (i === currentIdx ? ' active' : '');
+    btn.innerHTML = `<div class="rc-row1"><span class="rc-num">${r.num}</span><span class="rc-tag">${r.code}</span></div><div class="rc-title">${r.title}</div><div class="rc-meta">${r.semester} · ${r.catLabel}</div>`;
+    btn.addEventListener('click', () => goTo(i));
+    sidebar.appendChild(btn);
+  });
+  $('#sidebarTotal').textContent = String(visible.length).padStart(2,'0');
+  $('#totIdx').textContent = visible.length;
+  $('#viewingCount').textContent = String(visible.length).padStart(2,'0');
+}
+function renderDots() {
+  dotsWrap.innerHTML = '';
+  visible.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === currentIdx ? ' active' : '');
+    d.setAttribute('aria-label', 'Report ' + (i + 1));
+    d.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(d);
+  });
+}
+function renderStage() {
+  if (!visible.length) return;
+  const r = visible[currentIdx];
+  $('#stageEyebrow').textContent = `${r.code} · ${r.catLabel}`;
+  $('#stageTitle').textContent = r.title;
+  $('#curIdx').textContent = currentIdx + 1;
+  $('#stageDesc').textContent = r.desc;
+  $('#openLink').href = r.file;
+  const frame = $('#pdfFrame');
+  if (frame.getAttribute('data-src') !== r.file) {
+    frame.src = r.file + '#view=FitH&toolbar=0';
+    frame.setAttribute('data-src', r.file);
+  }
+  const tagsWrap = $('#stageTags');
+  tagsWrap.innerHTML = '';
+  r.tags.forEach(t => {
+    const s = document.createElement('span');
+    s.className = 'stage-tag';
+    s.textContent = t;
+    tagsWrap.appendChild(s);
+  });
+  sidebar.querySelectorAll('.report-card').forEach((el, i) => el.classList.toggle('active', i === currentIdx));
+  dotsWrap.querySelectorAll('.dot').forEach((el, i) => el.classList.toggle('active', i === currentIdx));
+}
+function goTo(i) { if (!visible.length) return; currentIdx = (i + visible.length) % visible.length; renderStage(); }
+
+$('#prevBtn').addEventListener('click', () => goTo(currentIdx - 1));
+$('#nextBtn').addEventListener('click', () => goTo(currentIdx + 1));
+document.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if (e.key === 'ArrowLeft') goTo(currentIdx - 1);
+  else if (e.key === 'ArrowRight') goTo(currentIdx + 1);
+});
+document.querySelectorAll('.toc-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.toc-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    const f = chip.dataset.filter;
+    visible = (f === 'all') ? REPORTS.slice() : REPORTS.filter(r => r.cat === f);
+    currentIdx = 0;
+    renderSidebar(); renderDots(); renderStage();
+  });
+});
+
+renderSidebar(); renderDots(); renderStage();
+</script>
+</body>
+</html>
