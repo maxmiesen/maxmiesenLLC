@@ -1,0 +1,23 @@
+# Don't cache HTML pages — always fetch the latest so updates appear immediately.
+<FilesMatch "\.html$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </IfModule>
+</FilesMatch>
+
+# Versioned assets (site.css?v=, site.js?v=) can cache for a long time.
+# Bumping the ?v= query in the HTML forces a fresh download.
+<FilesMatch "\.(css|js)$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "max-age=31536000, public"
+  </IfModule>
+</FilesMatch>
+
+# Images can cache for a week.
+<FilesMatch "\.(png|jpg|jpeg|gif|ico|svg)$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "max-age=604800, public"
+  </IfModule>
+</FilesMatch>
