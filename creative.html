@@ -11,8 +11,16 @@
 <link rel="stylesheet" href="site.css" />
 <style>
   /* page-specific */
+  .reel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 880px;
+    margin: 0 auto;
+  }
   .reel-embed {
     max-width: 420px;
+    width: 100%;
     margin: 0 auto;
     aspect-ratio: 9 / 16;
     border-radius: 18px;
@@ -104,7 +112,6 @@
   <div class="nav-container">
     <div class="nav-left">
       <a href="index.html" class="nav-logo" aria-label="Home"><img src="MM.png" alt="Max Miesen" /></a>
-      <div class="brand-rail" aria-hidden="true"><div class="rail-stack"><span>engineer</span><span>builder</span><span>maker</span><span>filmmaker</span><span>engineer</span></div></div>
     </div>
     <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
     <div class="nav-tabs">
@@ -131,10 +138,15 @@
   <div class="rule"></div>
 
   <section class="section">
-    <div class="section-eyebrow">01 · Featured Reel</div>
+    <div class="section-eyebrow">01 · Featured Reels</div>
     <h2 class="section-title">Featured on Instagram.</h2>
-    <div class="reel-embed">
-      <iframe src="https://www.instagram.com/reel/DZJRL7KpuaT/embed" title="Instagram reel" allowtransparency="true" allowfullscreen scrolling="no"></iframe>
+    <div class="reel-grid">
+      <div class="reel-embed">
+        <iframe src="https://www.instagram.com/reel/DZJRL7KpuaT/embed" title="Instagram reel" allowtransparency="true" allowfullscreen scrolling="no"></iframe>
+      </div>
+      <div class="reel-embed">
+        <iframe src="https://www.instagram.com/reel/DPmmqqpCeqt/embed" title="Instagram reel" allowtransparency="true" allowfullscreen scrolling="no"></iframe>
+      </div>
     </div>
   </section>
 

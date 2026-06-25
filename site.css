@@ -181,7 +181,8 @@ body::after {
 .page-title {
   font-family: var(--font-display); font-weight: 720;
   font-size: clamp(42px, 6.4vw, 82px);
-  line-height: 1.02; letter-spacing: -0.03em;
+  line-height: 1.06; letter-spacing: -0.03em;
+  overflow: visible;
   color: var(--ink); margin: 0 0 24px;
 }
 .page-title em {
