@@ -1,3 +1,18 @@
+# Serve extensionless clean URLs (e.g. /creative -> creative.html).
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Redirect direct .html requests to the clean URL (browser address bar updates).
+  # THE_REQUEST matches only the original client request, so the internal rewrite below
+  # doesn't trigger a redirect loop.
+  RewriteCond %{THE_REQUEST} \s/+([^.\s]+)\.html[\s?] [NC]
+  RewriteRule ^ /%1 [R=301,L]
+
+  # If the extensionless request has a matching .html file, serve it.
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^(.+?)/?$ $1.html [L]
+</IfModule>
+
 # Don't cache HTML pages — always fetch the latest so updates appear immediately.
 <FilesMatch "\.html$">
   <IfModule mod_headers.c>

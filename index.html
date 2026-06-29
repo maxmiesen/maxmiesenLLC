@@ -5,171 +5,433 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script>document.documentElement.classList.add('js');</script>
 <title>Max Miesen — engineer, builder, and maker in Encinitas</title>
+<meta name="description" content="Max Miesen LLC — film, engineering, and apps from the California coast. Creative work, research, and products (Statz, Bink, The Food Truck Exchange) — one operator, one issue." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500;1,6..72,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="site.css?v=20260624" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,500;0,600;0,700;0,800;0,900;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="site.css?v=20260628a" />
 <style>
-  /* ---------- page-specific: home ---------- */
-  .index-hero {
-    padding: 72px 32px 56px;
-    display: grid;
-    grid-template-columns: 1.35fr 1fr;
-    gap: 64px;
-    align-items: center;
-  }
-  .hello-line {
-    font-size: 15px; font-weight: 500;
-    color: var(--accent);
-    margin-bottom: 18px;
-    display: inline-flex; align-items: center; gap: 12px;
-  }
-  .hello-line::before { content: ''; width: 22px; height: 1.5px; background: var(--accent); }
+  /* ============================================================
+     Single-page magazine — page-specific layout
+     ============================================================ */
 
-  .index-hero h1 {
-    font-family: var(--font-display); font-weight: 600;
-    font-size: clamp(40px, 5.6vw, 68px);
-    line-height: 1.06; letter-spacing: -0.015em;
-    color: var(--ink); margin: 0 0 22px;
+  /* ---------- text wordmark (nav, left) ---------- */
+  .nav-wordmark {
+    font-family: var(--font-display); font-weight: 900;
+    font-size: 17px; letter-spacing: -0.01em; text-transform: uppercase;
+    color: var(--ink); line-height: 1;
   }
-  .index-hero h1 em {
-    font-family: var(--font-serif);
-    font-style: italic; font-weight: 500;
-    color: var(--accent);
+  .nav-wordmark .spot { color: var(--accent); }
+
+  /* ---------- masthead / cover ---------- */
+  .cover { padding: 30px 32px 8px; }
+  .masthead-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+    font-family: var(--font-display); font-weight: 800;
+    font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink-3);
+    padding-bottom: 14px; border-bottom: 2px solid var(--line-2);
   }
-  .hero-lede {
-    font-size: 18.5px; line-height: 1.6;
-    color: var(--ink-2); max-width: 50ch; font-weight: 400;
+  .masthead-bar .spot { color: var(--accent); }
+  .masthead-title {
+    font-family: var(--font-display); font-weight: 900;
+    font-size: clamp(44px, 12vw, 150px); line-height: 0.9;
+    letter-spacing: -0.04em; text-transform: uppercase;
+    white-space: nowrap; text-align: center;
+    color: var(--ink); margin: 16px 0 6px;
+  }
+  .masthead-sub {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+    font-family: var(--font-display); font-weight: 700;
+    font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--ink-2);
+    padding: 12px 0 0; border-top: 2px solid var(--line-2);
   }
 
-  /* a plain, human "right now" list — no mono, no labels-as-code */
-  .now-list {
-    margin-top: 34px;
-    display: flex; flex-direction: column; gap: 18px;
-    max-width: 52ch;
+  /* ---------- cover body: headline + portrait ---------- */
+  .cover-body {
+    padding: 40px 32px 56px;
+    display: grid; grid-template-columns: 1.55fr 1fr;
+    gap: 48px; align-items: stretch;
   }
+  .cover-left { display: flex; flex-direction: column; }
+  .cover-body h1 {
+    font-family: var(--font-display); font-weight: 900;
+    font-size: clamp(42px, 7.6vw, 104px);
+    line-height: 0.9; letter-spacing: -0.045em;
+    text-transform: uppercase;
+    color: var(--ink); margin: 14px 0 24px;
+  }
+  .cover-body h1 em { font-style: italic; color: var(--accent); }
+  .cover-lede {
+    font-size: 17.5px; line-height: 1.55;
+    color: var(--ink-2); max-width: 48ch; font-weight: 400;
+  }
+  .cover-lede strong { color: var(--ink); font-weight: 700; }
+  .cover-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+  /* "right now" list — hard rows, all-caps labels */
+  .now-list { margin-top: auto; padding-top: 32px; display: flex; flex-direction: column; }
   .now-list .row {
-    display: grid; grid-template-columns: 96px 1fr;
+    display: grid; grid-template-columns: 116px 1fr;
     gap: 18px; align-items: baseline;
+    padding: 16px 0; border-top: 1px solid var(--line);
   }
+  .now-list .row:last-child { border-bottom: 1px solid var(--line); }
   .now-list .lbl {
-    font-size: 13px; font-weight: 600; color: var(--ink-3);
-    letter-spacing: 0.04em; text-transform: uppercase;
+    font-family: var(--font-display);
+    font-size: 12px; font-weight: 800; color: var(--accent);
+    letter-spacing: 0.1em; text-transform: uppercase;
   }
-  .now-list .val { font-size: 15.5px; color: var(--ink); line-height: 1.5; }
-  .now-list .val.live { display: inline-flex; align-items: center; gap: 9px; color: var(--accent); font-weight: 500; }
-  .now-list .live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .now-list .val { font-size: 15px; color: var(--ink); line-height: 1.5; }
+  .now-list .val.live { display: inline-flex; align-items: center; gap: 9px; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 13px; }
+  .now-list .live-dot { width: 9px; height: 9px; border-radius: 0; background: var(--accent); }
 
-  /* signature: a taped photo print */
-  .portrait-wrap {
-    display: flex; justify-content: center;
-  }
+  /* portrait: hard-framed cover image with a black caption bar */
+  .portrait-wrap { display: flex; }
   .portrait {
-    position: relative;
-    width: 100%; max-width: 340px;
-    background: #fff;
-    padding: 14px 14px 0;
-    border-radius: 4px;
-    box-shadow: 0 18px 44px rgba(34, 32, 28, 0.16);
-    transform: rotate(-2.2deg);
-    transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease;
+    position: relative; width: 100%;
+    background: var(--paper-2);
+    border: 2px solid var(--line-2);
+    display: flex; flex-direction: column;
+    transition: border-color .12s ease, box-shadow .12s ease, transform .12s ease;
   }
-  .portrait:hover { transform: rotate(0deg) translateY(-4px); box-shadow: 0 26px 60px rgba(34,32,28,0.20); }
-  .portrait::before {
-    /* strip of tape at the top */
-    content: '';
-    position: absolute; top: -13px; left: 50%; transform: translateX(-50%) rotate(1.5deg);
-    width: 92px; height: 26px;
-    background: rgba(207, 138, 79, 0.32);
-    border: 1px solid rgba(207, 138, 79, 0.28);
-    border-radius: 1px;
+  .portrait:hover { border-color: var(--accent); transform: translate(-4px,-4px); box-shadow: 10px 10px 0 0 var(--accent); }
+  .portrait .frame { flex: 1; min-height: 0; overflow: hidden; background: var(--paper-3); }
+  .portrait img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: grayscale(1) contrast(1.05);
+    transition: filter .2s ease;
   }
-  .portrait .frame {
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-    border-radius: 2px;
-    background: var(--paper-3);
-  }
-  .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .portrait:hover img { filter: none; }
   .portrait-label {
-    font-family: var(--font-display); font-style: italic;
-    font-size: 17px; color: var(--ink-2);
-    text-align: center;
-    padding: 14px 6px 16px;
+    border-top: 2px solid var(--line-2);
+    background: var(--ink); color: var(--paper);
+    font-family: var(--font-display); font-weight: 800;
+    font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 12px 16px;
+    display: flex; align-items: center; justify-content: space-between;
   }
 
-  /* about */
-  .about-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 28px; margin-top: 8px;
+  /* ---------- magazine "contents" strip ---------- */
+  .contents {
+    padding: 28px 32px; border-top: 2px solid var(--line-2);
+    border-bottom: 2px solid var(--line-2);
+    display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center;
   }
-  .about-block {
-    background: var(--paper-2);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 30px 30px;
+  .contents-h {
+    font-family: var(--font-display); font-weight: 900;
+    font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink);
   }
-  .about-block h4 {
-    font-size: 13px; font-weight: 600;
+  .contents-list { display: flex; flex-wrap: wrap; gap: 6px 8px; justify-content: flex-end; }
+  .contents-list a {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--ink-2); border: 2px solid var(--line-2);
+    padding: 7px 13px; display: inline-flex; align-items: center; gap: 8px;
+    transition: background .12s ease, color .12s ease, transform .12s ease;
+  }
+  .contents-list a .n { color: var(--accent); font-size: 11px; }
+  .contents-list a:hover { background: var(--ink); color: var(--paper); transform: translate(-2px,-2px); }
+  .contents-list a:hover .n { color: var(--paper); }
+
+  /* ---------- magazine running head (feature divider) ---------- */
+  .running-head {
+    display: flex; align-items: flex-end; gap: 22px;
+    padding: 64px 0 16px; margin-bottom: 36px;
+    border-bottom: 3px solid var(--line-2);
+  }
+  .rh-no {
+    font-family: var(--font-display); font-weight: 900;
+    font-size: clamp(46px, 8vw, 96px); line-height: 0.74;
+    letter-spacing: -0.05em; color: var(--accent);
+  }
+  .rh-meta { display: flex; flex-direction: column; gap: 4px; }
+  .rh-role {
+    font-family: var(--font-display); font-weight: 800;
+    font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .rh-cat {
+    font-family: var(--font-display); font-weight: 900;
+    font-size: clamp(18px, 2.4vw, 26px); letter-spacing: -0.01em;
+    text-transform: uppercase; color: var(--ink);
+  }
+  .rh-spine {
+    margin-left: auto; align-self: stretch; display: flex; align-items: flex-end;
+    font-family: var(--font-display); font-weight: 800;
+    font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* feature wrapper spacing */
+  .feature { padding: 0 32px; }
+  .feature .section { padding-left: 0; padding-right: 0; }
+
+  /* ---------- combined PRODUCTS strip ---------- */
+  .product-strip {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+    border: 2px solid var(--line-2);
+  }
+  .prod-card {
+    background: var(--paper-2); padding: 30px 26px 26px;
+    display: flex; flex-direction: column;
+    box-shadow: inset 0 6px 0 0 var(--accent);
+    transition: background .12s ease;
+  }
+  .prod-card + .prod-card { border-left: 2px solid var(--line-2); }
+  .prod-card:hover { background: var(--paper-3); }
+  .prod-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 30px; margin-bottom: 18px; }
+  .prod-logo { height: 24px; width: auto; display: block; filter: invert(1); }
+  .prod-mark {
+    font-family: var(--font-display); font-weight: 900; font-size: 26px;
+    letter-spacing: -0.02em; text-transform: uppercase; color: var(--accent); line-height: 1;
+  }
+  .prod-role {
+    font-family: var(--font-display); font-weight: 800;
+    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-3); text-align: right;
+  }
+  .prod-name {
+    font-family: var(--font-display); font-weight: 900;
+    font-size: 30px; letter-spacing: -0.02em; text-transform: uppercase;
+    color: var(--ink); line-height: 1; margin-bottom: 12px;
+  }
+  .prod-desc { font-size: 14.5px; line-height: 1.55; color: var(--ink-2); margin-bottom: 18px; }
+  .prod-meta { list-style: none; margin: 0 0 22px; padding: 14px 0 0; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 9px; }
+  .prod-meta li { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .prod-meta span { font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+  .prod-meta b { font-size: 13.5px; font-weight: 700; color: var(--ink); text-align: right; }
+  .prod-meta b.live { display: inline-flex; align-items: center; gap: 7px; color: var(--accent); }
+  .prod-meta b.live::before { content: ''; width: 8px; height: 8px; background: var(--accent); }
+  .prod-cta {
+    margin-top: auto; align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-display); font-size: 12px; font-weight: 800;
     letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 14px;
+    color: var(--ink-on-accent); background: var(--accent);
+    border: 2px solid var(--accent); padding: 11px 16px;
+    transition: background .14s ease, color .14s ease, transform .14s ease;
   }
+  .prod-cta:hover { background: transparent; color: var(--accent); transform: translateY(-2px); }
+  .prod-cta span { transition: transform .2s ease; }
+  .prod-cta:hover span { transform: translate(2px,-2px); }
+
+  /* per-product spot colors (darkened for contrast on white) */
+  .sec-statz { --accent:#1f8fd6; }
+  .sec-bink  { --accent:#ea7317; }
+  .sec-tfe   { --accent:#e23b3b; }
+
+  /* ---------- research viewer ---------- */
+  .toc {
+    padding: 28px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  }
+  .toc-label { font-family: var(--font-display); font-size: 12px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+  .toc-list { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; justify-content: center; }
+  .toc-chip {
+    font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--ink-2); background: var(--paper-2);
+    border: 2px solid var(--line-2); border-radius: 0;
+    padding: 7px 14px; cursor: pointer; transition: all .14s ease;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .toc-chip:hover { background: var(--ink); color: var(--paper); }
+  .toc-chip.active { background: var(--accent); border-color: var(--accent); color: var(--ink-on-accent); }
+  .toc-chip .num { font-size: 11px; color: var(--ink-4); }
+  .toc-chip.active .num, .toc-chip:hover .num { color: inherit; opacity: 0.8; }
+  .counter { font-size: 13px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .counter strong { color: var(--accent); font-weight: 700; }
+  .viewer-wrap { padding: 40px 0 8px; }
+  .viewer {
+    background: var(--paper-2); border: 2px solid var(--line-2); border-radius: 0;
+    overflow: hidden; box-shadow: 10px 10px 0 0 var(--line-2);
+    display: grid; grid-template-columns: 320px 1fr; min-height: 640px;
+  }
+  .sidebar {
+    background: var(--paper-3); border-right: 2px solid var(--line-2);
+    padding: 28px 24px; display: flex; flex-direction: column; gap: 8px;
+    overflow-y: auto; max-height: 720px;
+  }
+  .sidebar-h {
+    font-family: var(--font-display); font-size: 11px; font-weight: 800;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3);
+    padding: 0 4px 12px; border-bottom: 1px solid var(--line); margin-bottom: 8px;
+    display: flex; justify-content: space-between;
+  }
+  .report-card {
+    text-align: left; background: transparent; border: 1px solid transparent; border-radius: 0;
+    padding: 14px; cursor: pointer; transition: all .14s ease; position: relative; color: inherit; font-family: inherit;
+  }
+  .report-card:hover { background: var(--paper-2); border-color: var(--line); }
+  .report-card.active { background: var(--accent-soft); border-color: var(--accent); }
+  .report-card.active::before { content: ''; position: absolute; left: -25px; top: 14px; bottom: 14px; width: 4px; background: var(--accent); }
+  .rc-row1 { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .rc-num { font-size: 11px; font-weight: 700; color: var(--ink-4); letter-spacing: 0.04em; }
+  .report-card.active .rc-num { color: var(--accent); }
+  .rc-tag {
+    font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--ink-3); padding: 2px 8px; border: 1px solid var(--line); border-radius: 0; background: var(--paper-2);
+  }
+  .report-card.active .rc-tag { color: var(--accent); border-color: var(--accent); }
+  .rc-title { font-family: var(--font-display); font-size: 16px; font-weight: 800; text-transform: uppercase; color: var(--ink); line-height: 1.2; margin-bottom: 4px; }
+  .rc-meta { font-size: 11px; color: var(--ink-4); letter-spacing: 0.02em; }
+  .stage { display: flex; flex-direction: column; min-width: 0; }
+  .stage-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 24px; border-bottom: 2px solid var(--line-2); background: var(--paper-3); gap: 16px;
+  }
+  .stage-titlewrap { min-width: 0; flex: 1; }
+  .stage-eyebrow { font-family: var(--font-display); font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 5px; }
+  .stage-title { font-family: var(--font-display); font-size: 24px; font-weight: 800; text-transform: uppercase; color: var(--ink); letter-spacing: -0.015em; line-height: 1.15; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .stage-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .stage-nav {
+    width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;
+    background: var(--paper-2); border: 2px solid var(--line-2); border-radius: 0; color: var(--ink); cursor: pointer; transition: all .14s ease; font-size: 16px;
+  }
+  .stage-nav:hover { background: var(--accent); color: var(--ink-on-accent); border-color: var(--accent); }
+  .stage-counter { font-size: 12px; color: var(--ink-3); padding: 0 10px; font-variant-numeric: tabular-nums; }
+  .stage-counter strong { color: var(--ink); font-weight: 700; }
+  .open-link {
+    font-family: var(--font-display); font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--ink-on-accent); padding: 9px 14px; border: 2px solid var(--accent); border-radius: 0; background: var(--accent);
+    transition: all .14s ease; display: inline-flex; align-items: center; gap: 6px; margin-left: 6px;
+  }
+  .open-link:hover { background: transparent; color: var(--accent); }
+  .pdf-frame { flex: 1; background: var(--paper-3); position: relative; min-height: 480px; }
+  .pdf-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+  .stage-foot { padding: 18px 24px; border-top: 2px solid var(--line-2); background: var(--paper-3); display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
+  .stage-desc { font-size: 14.5px; color: var(--ink-2); line-height: 1.6; max-width: 70ch; }
+  .stage-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+  .stage-tag { font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); padding: 4px 9px; border: 1px solid var(--line); border-radius: 0; background: var(--paper-2); }
+  .dots { display: flex; justify-content: center; gap: 10px; padding: 24px 0 8px; }
+  .dot { width: 38px; height: 5px; border-radius: 0; background: var(--line); border: none; cursor: pointer; transition: all .25s ease; padding: 0; }
+  .dot:hover { background: var(--ink-4); }
+  .dot.active { background: var(--accent); width: 56px; }
+
+  /* ---------- creative ---------- */
+  .reel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 880px; margin: 0 auto; }
+  .reel-embed {
+    max-width: 420px; width: 100%; margin: 0 auto; aspect-ratio: 9 / 16;
+    border-radius: 0; overflow: hidden; border: 2px solid var(--line-2);
+    box-shadow: 10px 10px 0 0 var(--accent); background: var(--paper-2);
+  }
+  .reel-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .video-frame {
+    position: relative; aspect-ratio: 16 / 9; border-radius: 0; overflow: hidden;
+    border: 2px solid var(--line-2); box-shadow: 8px 8px 0 0 var(--line-2); background: var(--paper-2);
+  }
+  .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+
+  /* ---------- about ---------- */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 8px; border: 2px solid var(--line-2); }
+  .about-block { background: var(--paper-2); padding: 34px 32px; }
+  .about-block + .about-block { border-left: 2px solid var(--line-2); }
+  .about-block h4 { font-family: var(--font-display); font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
   .about-block p { font-size: 16px; line-height: 1.7; color: var(--ink-2); }
-  .about-block strong { color: var(--ink); font-weight: 600; }
+  .about-block strong { color: var(--ink); font-weight: 700; }
 
   @media (max-width: 980px) {
-    .index-hero { grid-template-columns: 1fr; gap: 48px; }
-    .portrait-wrap { justify-content: flex-start; }
+    .cover-body { grid-template-columns: 1fr; gap: 36px; }
+    .portrait { min-height: 420px; }
     .about-grid { grid-template-columns: 1fr; }
+    .about-block + .about-block { border-left: none; border-top: 2px solid var(--line-2); }
+    .product-strip { grid-template-columns: 1fr; }
+    .prod-card + .prod-card { border-left: none; border-top: 2px solid var(--line-2); }
+    .viewer { grid-template-columns: 1fr; }
+    .sidebar { max-height: none; border-right: none; border-bottom: 2px solid var(--line-2); }
+    .stage-foot { grid-template-columns: 1fr; }
+    .stage-tags { justify-content: flex-start; }
+    .contents { grid-template-columns: 1fr; gap: 16px; }
+    .contents-list { justify-content: flex-start; }
+    .video-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 768px) {
-    .index-hero { padding-left: 22px; padding-right: 22px; }
-    .now-list .row { grid-template-columns: 84px 1fr; gap: 14px; }
+    .cover, .cover-body, .contents, .feature { padding-left: 22px; padding-right: 22px; }
+    .now-list .row { grid-template-columns: 92px 1fr; gap: 14px; }
+    .running-head { flex-wrap: wrap; gap: 14px; }
+    .rh-spine { display: none; }
+    .open-link { display: none; }
   }
 </style>
 </head>
 <body>
+<div class="crop-marks" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i></div>
 <div class="progress" id="progress"></div>
 
 <nav class="navbar">
   <div class="nav-container">
     <div class="nav-left">
-      <a href="index.html" class="nav-logo" aria-label="Home"><img src="MM.png" alt="Max Miesen" /></a>
+      <a href="#top" class="nav-wordmark" aria-label="Home">Max Miesen <span class="spot">LLC</span></a>
     </div>
     <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
     <div class="nav-tabs">
-      <a href="index.html" class="nav-tab active" aria-current="page">About</a>
-      <a href="statz.html" class="nav-tab">Statz</a>
-      <a href="bink.html" class="nav-tab">Bink</a>
-      <a href="tfe.html" class="nav-tab">TFE</a>
-      <a href="research.html" class="nav-tab">Research</a>
-      <a href="creative.html" class="nav-tab">Creative</a>
+      <a href="#top" class="nav-tab active" aria-current="page">About</a>
+      <a href="#creative" class="nav-tab">Creative</a>
+      <a href="#research" class="nav-tab">Research</a>
+      <a href="#products" class="nav-tab">Products</a>
     </div>
   </div>
 </nav>
 
 <main class="main">
 
-  <section class="index-hero">
-    <div>
-      <div class="hello-line">Hi, I'm Max</div>
-      <h1>I build things, and I'd love to <em>help you build yours</em>.</h1>
-      <p class="hero-lede">
-        I'm an entrepreneurial engineer with research experience. I shoot video for everywhere from small businesses and brands to startups and product launches. If you have a project that needs a careful, hands-on person, you're in the right place.
+  <!-- ============ COVER / MASTHEAD ============ -->
+  <header class="cover" id="top">
+    <div class="masthead-bar">
+      <span>Max Miesen <span class="spot">LLC</span></span>
+      <span>Issue 01 — Film · Engineering · Apps</span>
+      <span>Encinitas, California</span>
+    </div>
+    <div class="masthead-title">Max Miesen</div>
+    <div class="masthead-sub">
+      <span>The independent operator's quarterly</span>
+      <span>Vol. 01 · 2026</span>
+    </div>
+    <div class="hero-band" aria-hidden="true">
+      <span class="hb-halftone"></span>
+      <svg class="chart-bg hb-line" viewBox="0 0 1000 40" preserveAspectRatio="none">
+        <line x1="0" y1="20" x2="1000" y2="20" stroke="#14110d" stroke-width="1" opacity="0.35" />
+        <path stroke="#b794f6" fill="none" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"
+              d="M0 20 L70 20 L92 6 L120 34 L150 14 L300 14 L322 28 L360 4 L392 24 L520 24 L560 8 L600 32 L640 18 L820 18 L848 6 L884 30 L920 16 L1000 16" />
+      </svg>
+      <svg class="hb-target" viewBox="0 0 42 42">
+        <circle cx="21" cy="21" r="16" fill="none" stroke="#14110d" stroke-width="1.5" />
+        <circle cx="21" cy="21" r="7"  fill="none" stroke="#b794f6" stroke-width="1.5" />
+        <line x1="21" y1="1" x2="21" y2="41" stroke="#14110d" stroke-width="1" />
+        <line x1="1" y1="21" x2="41" y2="21" stroke="#14110d" stroke-width="1" />
+      </svg>
+    </div>
+  </header>
+
+  <section class="cover-body">
+    <div class="cover-left">
+      <div class="eyebrow">Cover story · Encinitas, CA</div>
+      <h1>Engineering skills<br />with an <em>artist's eye</em>.</h1>
+      <p class="cover-lede">
+        Engineer, videographer, and software-builder on the California coast. One careful, hands-on person across three crafts — <strong>film</strong>, <strong>engineering</strong>, and <strong>apps</strong>.
       </p>
+
+      <div class="cover-actions">
+        <a href="mailto:maxmiesenfilms@gmail.com" class="btn-primary">Work with me <span>↗</span></a>
+      </div>
 
       <div class="now-list">
         <div class="row">
           <span class="lbl">Studying</span>
-          <span class="val">A biomedical engineering BS plus a product development engineering MS at USC — using engineering to solve healthcare and medical problems, with a management focus on building products.</span>
+          <span class="val">A biomedical engineering BS plus a product development engineering MS at USC — engineering for healthcare, with a focus on building products.</span>
         </div>
         <div class="row">
           <span class="lbl">Building</span>
-          <span class="val">Two SaaS platforms I've built and scaled: Statz and Bink.</span>
+          <span class="val">Two SaaS platforms I've built and scaled — Statz and Bink.</span>
         </div>
         <div class="row">
           <span class="lbl">Right now</span>
-          <span class="val live"><span class="live-dot"></span>Open to new work and happy to chat</span>
+          <span class="val live"><span class="live-dot"></span>Open to new work</span>
         </div>
       </div>
     </div>
@@ -179,86 +441,280 @@
         <div class="frame">
           <img src="profile.jpg" alt="Portrait of Max Miesen" />
         </div>
-        <figcaption class="portrait-label">Encinitas, California</figcaption>
+        <figcaption class="portrait-label"><span>Max Miesen</span><span>Encinitas, CA</span></figcaption>
       </figure>
     </div>
   </section>
 
-  <div class="rule"></div>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Video &amp; Creative</span><span>Engineering &amp; Strategy</span><span>Apps &amp; Software</span><span>Made by Hand</span><span>Video &amp; Creative</span><span>Engineering &amp; Strategy</span><span>Apps &amp; Software</span><span>Made by Hand</span>
+    </div>
+  </div>
 
-  <section class="section">
-    <div class="section-eyebrow">What I do</div>
-    <h2 class="section-title">Three kinds of work, one person doing it.</h2>
+  <!-- ============ CONTENTS ============ -->
+  <div class="contents">
+    <span class="contents-h">In this issue</span>
+    <div class="contents-list">
+      <a href="#creative"><span class="n">01</span> Creative</a>
+      <a href="#research"><span class="n">02</span> Research</a>
+      <a href="#products"><span class="n">03</span> Products</a>
+    </div>
+  </div>
+
+  <!-- ============ WORK / THREE CRAFTS ============ -->
+  <section class="section" id="work">
+    <div class="section-eyebrow">The work</div>
+    <h2 class="section-title">Three crafts.<br />One operator.</h2>
     <div class="card-grid">
 
       <article class="card">
-        <div class="card-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
-        </div>
-        <h3 class="card-title">Video & creative</h3>
-        <p class="card-desc">I film and edit videos and make the kind of content that helps a brand look its best.</p>
+        <span class="card-num">01</span>
+        <h3 class="card-title">Video &amp; Creative</h3>
+        <p class="card-desc">I film and edit the kind of content that makes a brand look its best — and I do it end to end.</p>
         <ul class="card-list">
           <li>Filming and editing video</li>
           <li>Content for ads and social media</li>
           <li>A consistent look for your brand</li>
           <li>A second set of eyes on creative ideas</li>
         </ul>
-        <a href="mailto:maxmiesenfilms@gmail.com" class="card-cta">Work with me <span>&rarr;</span></a>
+        <a href="#creative" class="card-cta">See the reels <span>&rarr;</span></a>
       </article>
 
       <article class="card">
-        <div class="card-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-        </div>
-        <h3 class="card-title">Engineering & strategy</h3>
-        <p class="card-desc">Hands-on help for projects that need a technical mind — building things, making sense of data, and thinking through the business side.</p>
+        <span class="card-num">02</span>
+        <h3 class="card-title">Engineering &amp; Strategy</h3>
+        <p class="card-desc">Hands-on help for projects that need a technical mind — building, making sense of data, and the business side.</p>
         <ul class="card-list">
           <li>Planning and growing a business</li>
           <li>Designing and building products</li>
           <li>Making sense of messy data</li>
           <li>Straightforward technical advice</li>
         </ul>
-        <a href="research.html" class="card-cta">See my projects <span>&rarr;</span></a>
+        <a href="#research" class="card-cta">See the research <span>&rarr;</span></a>
       </article>
 
       <article class="card">
-        <div class="card-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        </div>
-        <h3 class="card-title">Apps & software</h3>
-        <p class="card-desc">Simple apps that help you keep track of the things you care about — from your daily habits to your money.</p>
+        <span class="card-num">03</span>
+        <h3 class="card-title">Apps &amp; Software</h3>
+        <p class="card-desc">Simple apps that help you track what you care about — from your daily habits to your money.</p>
         <ul class="card-list">
           <li>Building apps for your phone</li>
           <li>Custom tools made to fit your needs</li>
           <li>Little tools that keep you organized</li>
-          <li>Turning numbers into clear, simple charts</li>
+          <li>Turning numbers into clear charts</li>
         </ul>
-        <a href="statz.html" class="card-cta">Meet Statz <span>&rarr;</span></a>
+        <a href="#products" class="card-cta">Meet the products <span>&rarr;</span></a>
       </article>
 
     </div>
   </section>
 
-  <div class="rule"></div>
+  <div class="divider-graphic" aria-hidden="true">
+    <span class="dg-tick"></span>
+    <span class="dg-line"></span>
+    <span class="dg-star">✶</span>
+    <span class="dg-line"></span>
+    <span class="dg-tick"></span>
+  </div>
 
-  <section class="section">
-    <div class="section-eyebrow">A bit about me</div>
-    <h2 class="section-title">The short version.</h2>
-    <div class="about-grid">
-      <div class="about-block">
-        <h4>Where I come from</h4>
-        <p>
-          I'm studying biomedical engineering at USC (BS), with a product development engineering master's on the way. I've spent time in labs working on health and science research, and I'm comfortable digging through data to find what actually matters — using tools like <strong>MATLAB, R, and Python</strong> to crunch the numbers.
-        </p>
+  <section class="section section--chart">
+    <div class="chart-bg" aria-hidden="true">
+      <svg viewBox="0 0 1180 360" preserveAspectRatio="none">
+        <path fill="#b794f6"
+              d="M0 300 L131 282 L262 300 L393 232 L524 252 L655 182 L786 204 L917 120 L1048 152 L1180 72 L1180 360 L0 360 Z" />
+        <path stroke="#b794f6" fill="none" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              d="M0 300 L131 282 L262 300 L393 232 L524 252 L655 182 L786 204 L917 120 L1048 152 L1180 72" />
+      </svg>
+    </div>
+    <div class="section-eyebrow">By the numbers</div>
+    <h2 class="section-title">Numbers,<br />not narratives.</h2>
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">3</div><div class="metric-lbl">Crafts under one roof</div></div>
+      <div class="metric"><div class="metric-val">2</div><div class="metric-lbl">SaaS platforms shipped</div></div>
+      <div class="metric"><div class="metric-val">BS+MS</div><div class="metric-lbl">USC engineering</div></div>
+      <div class="metric"><div class="metric-val">100%</div><div class="metric-lbl">Hands-on, end to end</div></div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURE 01 — CREATIVE ============ -->
+  <section class="feature" id="creative">
+    <div class="running-head">
+      <span class="rh-ghost" aria-hidden="true">01</span>
+      <span class="rh-no">01</span>
+      <div class="rh-meta">
+        <span class="rh-role">Creative services</span>
+        <span class="rh-cat">Stories, shot &amp; cut</span>
       </div>
-      <div class="about-block">
-        <h4>What I've been up to</h4>
-        <p>
-          I've worn a lot of hats at small startups — running the day-to-day, designing products, writing the code, and helping things grow. Right now I'm building two apps, <strong>Statz</strong> and <strong>Bink</strong>, that real people use every day.
-        </p>
+      <span class="rh-spine">Video &amp; Creative</span>
+    </div>
+
+    <header style="padding: 8px 0 8px;">
+      <h2 class="page-title">Stories, <em>shot &amp; cut</em>.</h2>
+      <p class="page-lede">
+        Video production, marketing content, and visual identity built to ship. A selection of recent work below.
+      </p>
+    </header>
+
+    <section class="section">
+      <div class="section-eyebrow">01 · Featured Reels</div>
+      <h3 class="section-title">Featured on Instagram.</h3>
+      <div class="reel-grid">
+        <div class="reel-embed">
+          <iframe src="https://www.instagram.com/reel/DZJRL7KpuaT/embed" title="Instagram reel" allowtransparency="true" allowfullscreen scrolling="no"></iframe>
+        </div>
+        <div class="reel-embed">
+          <iframe src="https://www.instagram.com/reel/DPmmqqpCeqt/embed" title="Instagram reel" allowtransparency="true" allowfullscreen scrolling="no"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-eyebrow">02 · Video Work</div>
+      <h3 class="section-title">Films and client-work.</h3>
+      <div class="video-grid">
+        <div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/Yf-1s-MbgWU" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/UaEqSVQbv9M" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/oTlm4zahPZg" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/G2_V5_4qfik" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+      </div>
+    </section>
+
+    <div class="cta-panel">
+      <h2>Have a project?</h2>
+      <p>Video production, marketing content, and creative consulting — let's make something worth watching.</p>
+      <a href="mailto:maxmiesenfilms@gmail.com" class="btn-primary">Get creative services <span>↗</span></a>
+    </div>
+  </section>
+
+  <!-- ============ FEATURE 02 — RESEARCH ============ -->
+  <section class="feature" id="research">
+    <div class="running-head">
+      <span class="rh-ghost" aria-hidden="true">02</span>
+      <span class="rh-no">02</span>
+      <div class="rh-meta">
+        <span class="rh-role">Research log · USC · 2022—2025</span>
+        <span class="rh-cat">Research &amp; technical analyses</span>
+      </div>
+      <span class="rh-spine">Engineering &amp; Strategy</span>
+    </div>
+
+    <header style="padding: 8px 0 8px;">
+      <h2 class="page-title">Academic <em>reports</em> &amp; technical analyses.</h2>
+      <p class="page-lede">
+        Selected biomedical engineering and electrical engineering coursework from USC, plus a published article on golf biomechanics. Each report is a primary source — read inline or open the full PDF.
+      </p>
+    </header>
+
+    <div class="toc">
+      <span class="toc-label">Filter</span>
+      <div class="toc-list" id="tocList">
+        <button class="toc-chip active" data-filter="all">All <span class="num">06</span></button>
+        <button class="toc-chip" data-filter="BME">BME <span class="num">04</span></button>
+        <button class="toc-chip" data-filter="EE">EE <span class="num">01</span></button>
+        <button class="toc-chip" data-filter="Article">Article <span class="num">01</span></button>
+      </div>
+      <span class="counter">viewing <strong id="viewingCount">06</strong> of <strong>06</strong></span>
+    </div>
+
+    <div class="viewer-wrap">
+      <div class="viewer">
+        <aside class="sidebar" id="sidebar">
+          <div class="sidebar-h"><span>Index</span><span id="sidebarTotal">06</span></div>
+        </aside>
+        <section class="stage">
+          <div class="stage-bar">
+            <div class="stage-titlewrap">
+              <div class="stage-eyebrow" id="stageEyebrow">BME 404 · Biomech</div>
+              <div class="stage-title" id="stageTitle">Orthopedic Biomechanics</div>
+            </div>
+            <div class="stage-actions">
+              <button class="stage-nav" id="prevBtn" aria-label="Previous">‹</button>
+              <span class="stage-counter"><strong id="curIdx">1</strong> / <span id="totIdx">6</span></span>
+              <button class="stage-nav" id="nextBtn" aria-label="Next">›</button>
+              <a class="open-link" id="openLink" href="#" target="_blank" rel="noopener">open ↗</a>
+            </div>
+          </div>
+          <div class="pdf-frame">
+            <iframe id="pdfFrame" src="" title="Report PDF"></iframe>
+          </div>
+          <div class="stage-foot">
+            <p class="stage-desc" id="stageDesc">—</p>
+            <div class="stage-tags" id="stageTags"></div>
+          </div>
+          <div class="dots" id="dots"></div>
+        </section>
       </div>
     </div>
   </section>
+
+  <!-- ============ FEATURE 03 — PRODUCTS ============ -->
+  <section class="feature" id="products">
+    <div class="running-head">
+      <span class="rh-ghost" aria-hidden="true">03</span>
+      <span class="rh-no">03</span>
+      <div class="rh-meta">
+        <span class="rh-role">Shipped &amp; in market</span>
+        <span class="rh-cat">Products</span>
+      </div>
+      <span class="rh-spine">Apps &amp; Strategy</span>
+    </div>
+
+    <header style="padding: 8px 0 32px;">
+      <h2 class="page-title">Three products. <em>One operator.</em></h2>
+      <p class="page-lede">
+        Two iOS apps I founded and scaled, plus a marketplace where I lead growth. Each one shipped, live, and used by real people.
+      </p>
+    </header>
+
+    <div class="product-strip">
+      <article class="prod-card sec-statz">
+        <div class="prod-top">
+          <img src="STATZwhite.png" alt="Statz" class="prod-logo" />
+          <span class="prod-role">Founder &amp; CEO</span>
+        </div>
+        <h3 class="prod-name">Statz</h3>
+        <p class="prod-desc">Self-improvement, quantified. Track fitness, productivity, and personal habits with beautiful analytics and goal-setting.</p>
+        <ul class="prod-meta">
+          <li><span>Platform</span><b>iOS</b></li>
+          <li><span>Category</span><b>Lifestyle / Health</b></li>
+          <li><span>Status</span><b class="live">Live on App Store</b></li>
+        </ul>
+        <a class="prod-cta" href="https://joinstatz.com" target="_blank" rel="noopener noreferrer">Download Statz <span>↗</span></a>
+      </article>
+
+      <article class="prod-card sec-bink">
+        <div class="prod-top">
+          <img src="BINKwhite.png" alt="Bink" class="prod-logo" />
+          <span class="prod-role">Founder &amp; CEO</span>
+        </div>
+        <h3 class="prod-name">Bink</h3>
+        <p class="prod-desc">Poker bankroll, tracked. Cash, Venmo, Zelle, and crypto in one place — with clear analytics on what's winning.</p>
+        <ul class="prod-meta">
+          <li><span>Revenue</span><b>$147K</b></li>
+          <li><span>Downloads</span><b>80K+</b></li>
+          <li><span>Status</span><b class="live">Live · 6-figure ARR</b></li>
+        </ul>
+        <a class="prod-cta" href="https://binkpoker.app" target="_blank" rel="noopener noreferrer">Download Bink <span>↗</span></a>
+      </article>
+
+      <article class="prod-card sec-tfe">
+        <div class="prod-top">
+          <span class="prod-mark">TFE</span>
+          <span class="prod-role">Head of Growth</span>
+        </div>
+        <h3 class="prod-name">The Food Truck Exchange</h3>
+        <p class="prod-desc">The marketplace where food trucks get booked. I own acquisition, lifecycle, and demand across both sides of the market.</p>
+        <ul class="prod-meta">
+          <li><span>Market</span><b>Trucks &amp; events</b></li>
+          <li><span>Channels</span><b>SEO · Paid · Referral</b></li>
+          <li><span>Status</span><b class="live">Live &amp; growing</b></li>
+        </ul>
+        <a class="prod-cta" href="https://thefoodtruckexchange.com" target="_blank" rel="noopener noreferrer">Visit TFE <span>↗</span></a>
+      </article>
+    </div>
+  </section>
+
 
 </main>
 
@@ -277,6 +733,120 @@
 </footer>
 <div class="copyright">© 2025 Max Miesen LLC</div>
 
-<script src="site.js?v=20260624"></script>
+<div class="social-bar" aria-label="Social links">
+  <a class="social-btn" href="https://instagram.com/maxmiesen" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+    </svg>
+  </a>
+  <a class="social-btn" href="https://youtube.com/maxmiesen" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><span>▶</span></a>
+  <a class="social-btn" href="https://linkedin.com/in/maxmiesen" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><span>in</span></a>
+</div>
+
+<script src="site.js?v=20260628a"></script>
+<script>
+/* ---------- research viewer ---------- */
+const REPORTS = [
+  { num:"01", code:"BME 404", cat:"BME", catLabel:"Biomech", title:"Orthopedic Biomechanics", file:"BME404report.pdf", semester:"Fall 2024", desc:"Biomedical engineering analysis of orthopedic systems — medical device design and biological-systems integration. Covers load-bearing implants, joint mechanics, and the constraints of in-vivo material selection.", tags:["Biomechanics","Implants","Materials"] },
+  { num:"02", code:"BME 405", cat:"BME", catLabel:"Senior Projects", title:"Biomedical Senior Projects", file:"BME405report.pdf", semester:"Spring 2025", desc:"Biomedical systems engineering with medical-device integration and end-to-end system optimization. Documents design tradeoffs, validation methodology, and team-level engineering process.", tags:["Systems","Devices","Optimization"] },
+  { num:"03", code:"BME 410", cat:"BME", catLabel:"Tissue & Biomaterials", title:"Tissue Engineering & Biomaterials", file:"BME410report.pdf", semester:"Fall 2023", desc:"Biomedical instrumentation, sensor technologies, and measurement systems applied to medical-grade biomaterials. Examines characterization protocols and calibration strategies.", tags:["Tissue","Sensors","Measurement"] },
+  { num:"04", code:"BME 499", cat:"BME", catLabel:"Capstone", title:"Special Topics — Capstone Senior Design", file:"BME499report.pdf", semester:"Spring 2025", desc:"Capstone senior-design project consolidating biomedical engineering coursework into an end-to-end design problem. Covers ideation, prototyping, and validation under industry-style constraints.", tags:["Capstone","Design","Prototype"] },
+  { num:"05", code:"EE 202", cat:"EE", catLabel:"Linear Circuits", title:"Linear Circuits Analysis", file:"EE202report.pdf", semester:"Fall 2022", desc:"Electrical engineering fundamentals: circuit analysis, electronic design, and the application of linear-system principles in biomedical instrumentation contexts.", tags:["Circuits","EE","Analysis"] },
+  { num:"06", code:"Article", cat:"Article", catLabel:"Published", title:"Golf Performance — 3D PCA via OpenCap", file:"golfreport.pdf", semester:"2025", desc:"Published journal article: golf-swing performance analysis using OpenCap markerless motion capture and 3D principal-component analysis. Quantifies swing-plane variance across skill levels.", tags:["Biomech","PCA","Motion-capture"] }
+];
+
+const $ = (s) => document.querySelector(s);
+const sidebar = $('#sidebar');
+const dotsWrap = $('#dots');
+let visible = REPORTS.slice();
+let currentIdx = 0;
+
+function renderSidebar() {
+  sidebar.querySelectorAll('.report-card').forEach(el => el.remove());
+  visible.forEach((r, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'report-card' + (i === currentIdx ? ' active' : '');
+    btn.innerHTML = `<div class="rc-row1"><span class="rc-num">${r.num}</span><span class="rc-tag">${r.code}</span></div><div class="rc-title">${r.title}</div><div class="rc-meta">${r.semester} · ${r.catLabel}</div>`;
+    btn.addEventListener('click', () => goTo(i));
+    sidebar.appendChild(btn);
+  });
+  $('#sidebarTotal').textContent = String(visible.length).padStart(2,'0');
+  $('#totIdx').textContent = visible.length;
+  $('#viewingCount').textContent = String(visible.length).padStart(2,'0');
+}
+function renderDots() {
+  dotsWrap.innerHTML = '';
+  visible.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === currentIdx ? ' active' : '');
+    d.setAttribute('aria-label', 'Report ' + (i + 1));
+    d.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(d);
+  });
+}
+function renderStage() {
+  if (!visible.length) return;
+  const r = visible[currentIdx];
+  $('#stageEyebrow').textContent = `${r.code} · ${r.catLabel}`;
+  $('#stageTitle').textContent = r.title;
+  $('#curIdx').textContent = currentIdx + 1;
+  $('#stageDesc').textContent = r.desc;
+  $('#openLink').href = r.file;
+  const frame = $('#pdfFrame');
+  if (frame.getAttribute('data-src') !== r.file) {
+    frame.src = r.file + '#view=FitH&toolbar=0';
+    frame.setAttribute('data-src', r.file);
+  }
+  const tagsWrap = $('#stageTags');
+  tagsWrap.innerHTML = '';
+  r.tags.forEach(t => {
+    const s = document.createElement('span');
+    s.className = 'stage-tag';
+    s.textContent = t;
+    tagsWrap.appendChild(s);
+  });
+  sidebar.querySelectorAll('.report-card').forEach((el, i) => el.classList.toggle('active', i === currentIdx));
+  dotsWrap.querySelectorAll('.dot').forEach((el, i) => el.classList.toggle('active', i === currentIdx));
+}
+function goTo(i) { if (!visible.length) return; currentIdx = (i + visible.length) % visible.length; renderStage(); }
+
+$('#prevBtn').addEventListener('click', () => goTo(currentIdx - 1));
+$('#nextBtn').addEventListener('click', () => goTo(currentIdx + 1));
+document.querySelectorAll('.toc-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.toc-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    const f = chip.dataset.filter;
+    visible = (f === 'all') ? REPORTS.slice() : REPORTS.filter(r => r.cat === f);
+    currentIdx = 0;
+    renderSidebar(); renderDots(); renderStage();
+  });
+});
+
+renderSidebar(); renderDots(); renderStage();
+
+/* ---------- scroll-spy: highlight active nav tab ---------- */
+(function () {
+  const tabs = Array.from(document.querySelectorAll('.nav-tabs .nav-tab'));
+  const map = tabs.map(t => ({ tab: t, sec: document.querySelector(t.getAttribute('href')) })).filter(m => m.sec);
+  if (!map.length) return;
+  // Deterministic scroll-spy: the active tab is the last section whose top
+  // has passed a reference line 35% down the viewport. At the very top this
+  // resolves to #top (About) instead of falling through to Creative.
+  function syncActive() {
+    const line = window.scrollY + window.innerHeight * 0.35;
+    let active = map[0];
+    for (const m of map) {
+      if (m.sec.offsetTop <= line) active = m;
+    }
+    tabs.forEach(t => t.classList.toggle('active', t === active.tab));
+  }
+  window.addEventListener('scroll', syncActive, { passive: true });
+  window.addEventListener('resize', syncActive);
+  syncActive();
+})();
+</script>
 </body>
 </html>
