@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>document.documentElement.classList.add('js');</script>
+<title>Technical — Max Miesen · research, engineering &amp; products</title>
+<meta name="description" content="The technical side of Max Miesen LLC — biomedical & electrical engineering research from USC, and shipped products (Statz, Bink, The Food Truck Exchange). Numbers, not narratives." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,500;0,600;0,700;0,800;0,900;1,800;1,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="site.css?v=20260701a" />
+<style>
+  /* ============================================================
+     TECHNICAL — the engineer's half. Dark blueprint canvas,
+     cyan signal accent, monospace UI chrome, terminal window
+     framing on the research viewer. Numbers, not narratives.
+     ============================================================ */
+
+  /* dark theme: recolor the shared variables */
+  body.tech {
+    --paper:    #0a0d12;
+    --paper-2:  #11161f;
+    --paper-3:  #0d1219;
+    --line:     rgba(120,200,190,0.16);
+    --line-soft: rgba(120,200,190,0.06);
+    --line-2:   #26333f;
+    --ink:      #eef4f8;
+    --ink-2:    #b6c4d1;
+    --ink-3:    #7d8f9d;
+    --ink-4:    #566574;
+    --accent:      #2fe6c8;
+    --accent-2:    #16c9ac;
+    --accent-soft: rgba(47,230,200,0.14);
+    --ink-on-accent: #04120f;
+    --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+
+  /* dark chrome overrides for shared components */
+  body.tech .navbar { background: rgba(10,13,18,0.72); border-bottom-color: transparent; }
+  body.tech .navbar.scrolled { background: rgba(10,13,18,0.94); border-bottom-color: var(--line-2); }
+  body.tech .social-bar { background: rgba(17,22,31,0.9); }
+  body.tech ::selection { background: var(--accent); color: #04120f; }
+
+  .nav-wordmark { font-family: var(--font-display); font-weight: 900; font-size: 17px; letter-spacing: -0.01em; text-transform: uppercase; color: var(--ink); line-height: 1; }
+  .nav-wordmark .spot { color: var(--accent); }
+
+  /* discipline toggle */
+  .disc-toggle { display: inline-flex; border: 2px solid var(--line-2); }
+  .disc-toggle a { font-family: var(--font-display); font-weight: 800; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; padding: 7px 13px; color: var(--ink-3); background: transparent; }
+  .disc-toggle a + a { border-left: 2px solid var(--line-2); }
+  .disc-toggle a.on { background: var(--accent); color: var(--ink-on-accent); }
+  .disc-toggle a.cr.on { background: #b794f6; color: #160a06; }
+  .disc-toggle a:hover:not(.on) { background: rgba(120,200,190,0.08); color: var(--ink); }
+
+  /* ---------- terminal-style header ---------- */
+  .tk-cover { padding: 60px 32px 8px; position: relative; }
+  .tk-kicker { font-family: var(--mono); font-weight: 500; font-size: 13px; letter-spacing: 0.02em; color: var(--accent); margin-bottom: 18px; }
+  .tk-title {
+    font-family: var(--font-display); font-weight: 900;
+    font-size: clamp(52px, 13vw, 176px); line-height: 0.84;
+    letter-spacing: -0.045em; text-transform: uppercase; color: var(--ink); margin: 0;
+  }
+  .tk-title .cur { color: var(--accent); }
+  .tk-lede { margin-top: 24px; font-family: var(--mono); font-size: 14.5px; line-height: 1.7; color: var(--ink-2); max-width: 62ch; }
+  .tk-lede strong { color: var(--ink); font-weight: 700; }
+  .tk-lede .cmt { color: var(--ink-4); }
+
+  /* ---------- metrics band ---------- */
+  .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; border: 2px solid var(--line-2); }
+  .metric { background: var(--paper-2); padding: 26px 24px; transition: background .12s ease; }
+  .metric + .metric { border-left: 2px solid var(--line-2); }
+  .metric:hover { background: var(--paper-3); }
+  .metric-val { font-family: var(--font-display); font-weight: 900; font-size: clamp(34px,4.2vw,52px); line-height: 0.95; color: var(--accent); margin-bottom: 8px; letter-spacing: -0.035em; }
+  .metric-lbl { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+  @media (max-width: 720px) { .metric + .metric { border-left: none; border-top: 2px solid var(--line-2); } }
+
+  /* ---------- running head divider ---------- */
+  .running-head { display: flex; align-items: flex-end; gap: 22px; padding: 56px 0 16px; margin: 0 32px 36px; border-bottom: 3px solid var(--line-2); position: relative; overflow: hidden; }
+  .running-head > :not(.rh-ghost) { position: relative; z-index: 1; }
+  .rh-ghost { position: absolute; right: -8px; bottom: 4px; z-index: 0; pointer-events: none; font-family: var(--mono); font-weight: 700; font-size: clamp(110px,17vw,210px); line-height: 0.78; letter-spacing: -0.04em; color: transparent; -webkit-text-stroke: 2px var(--accent); opacity: .12; }
+  .rh-no { font-family: var(--font-display); font-weight: 900; font-size: clamp(46px,8vw,96px); line-height: 0.74; letter-spacing: -0.05em; color: var(--accent); }
+  .rh-meta { display: flex; flex-direction: column; gap: 4px; }
+  .rh-role { font-family: var(--mono); font-weight: 500; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+  .rh-cat { font-family: var(--font-display); font-weight: 900; font-size: clamp(18px,2.4vw,26px); letter-spacing: -0.01em; text-transform: uppercase; color: var(--ink); }
+  .rh-spine { margin-left: auto; align-self: stretch; display: flex; align-items: flex-end; font-family: var(--mono); font-weight: 500; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+
+  .feature { padding: 0 32px; }
+  .feature .section { padding-left: 0; padding-right: 0; }
+  .feature > header { padding: 8px 0; }
+  .page-title { font-family: var(--font-display); font-weight: 900; font-size: clamp(40px,6vw,80px); line-height: 0.96; letter-spacing: -0.035em; text-transform: uppercase; color: var(--ink); margin: 0 0 20px; }
+  .page-title em { font-style: italic; color: var(--accent); }
+  .page-lede { font-family: var(--mono); font-size: 14px; line-height: 1.7; color: var(--ink-2); max-width: 68ch; }
+
+  /* ---------- research: filter chips ---------- */
+  .toc { padding: 24px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .toc-label { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+  .toc-list { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; justify-content: center; }
+  .toc-chip { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.02em; text-transform: uppercase; color: var(--ink-2); background: var(--paper-2); border: 2px solid var(--line-2); padding: 7px 14px; cursor: pointer; transition: all .14s ease; display: inline-flex; align-items: center; gap: 8px; }
+  .toc-chip:hover { background: var(--paper-3); border-color: var(--accent); color: var(--ink); }
+  .toc-chip.active { background: var(--accent); border-color: var(--accent); color: var(--ink-on-accent); }
+  .toc-chip .num { font-size: 11px; color: var(--ink-4); }
+  .toc-chip.active .num, .toc-chip:hover .num { color: inherit; opacity: 0.8; }
+  .counter { font-family: var(--mono); font-size: 13px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .counter strong { color: var(--accent); font-weight: 700; }
+
+  /* ---------- research: terminal-window viewer ---------- */
+  .viewer-wrap { padding: 40px 0 8px; }
+  .viewer { background: var(--paper-2); border: 2px solid var(--line-2); overflow: hidden; box-shadow: 0 0 0 1px rgba(47,230,200,0.08), 12px 12px 0 0 rgba(47,230,200,0.10); display: grid; grid-template-columns: 320px 1fr; min-height: 640px; }
+  .sidebar { background: var(--paper-3); border-right: 2px solid var(--line-2); padding: 22px 20px; display: flex; flex-direction: column; gap: 8px; overflow-y: auto; max-height: 760px; }
+  .sidebar-h { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); padding: 0 4px 12px; border-bottom: 1px solid var(--line); margin-bottom: 8px; display: flex; justify-content: space-between; }
+  .report-card { text-align: left; background: transparent; border: 1px solid transparent; padding: 13px; cursor: pointer; transition: all .14s ease; position: relative; color: inherit; font-family: inherit; }
+  .report-card:hover { background: var(--paper-2); border-color: var(--line); }
+  .report-card.active { background: var(--accent-soft); border-color: var(--accent); }
+  .report-card.active::before { content: ''; position: absolute; left: -21px; top: 13px; bottom: 13px; width: 3px; background: var(--accent); }
+  .rc-row1 { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .rc-num { font-family: var(--mono); font-size: 11px; font-weight: 500; color: var(--ink-4); }
+  .report-card.active .rc-num { color: var(--accent); }
+  .rc-tag { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); padding: 2px 8px; border: 1px solid var(--line); background: var(--paper-2); }
+  .report-card.active .rc-tag { color: var(--accent); border-color: var(--accent); }
+  .rc-title { font-family: var(--font-display); font-size: 15px; font-weight: 800; text-transform: uppercase; color: var(--ink); line-height: 1.2; margin-bottom: 4px; }
+  .rc-meta { font-family: var(--mono); font-size: 11px; color: var(--ink-4); }
+  .stage { display: flex; flex-direction: column; min-width: 0; }
+  .stage-bar { display: flex; align-items: center; justify-content: space-between; padding: 16px 22px; border-bottom: 2px solid var(--line-2); background: var(--paper-3); gap: 16px; }
+  .stage-titlewrap { min-width: 0; flex: 1; }
+  .stage-eyebrow { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); margin-bottom: 5px; }
+  .stage-title { font-family: var(--font-display); font-size: 22px; font-weight: 800; text-transform: uppercase; color: var(--ink); letter-spacing: -0.015em; line-height: 1.15; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .stage-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .stage-nav { width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center; background: var(--paper-2); border: 2px solid var(--line-2); color: var(--ink); cursor: pointer; transition: all .14s ease; font-size: 16px; }
+  .stage-nav:hover { background: var(--accent); color: var(--ink-on-accent); border-color: var(--accent); }
+  .stage-counter { font-family: var(--mono); font-size: 12px; color: var(--ink-3); padding: 0 10px; font-variant-numeric: tabular-nums; }
+  .stage-counter strong { color: var(--ink); font-weight: 700; }
+  .open-link { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-on-accent); padding: 9px 14px; border: 2px solid var(--accent); background: var(--accent); transition: all .14s ease; display: inline-flex; align-items: center; gap: 6px; margin-left: 6px; }
+  .open-link:hover { background: transparent; color: var(--accent); }
+  .pdf-frame { flex: 1; background: #05080c; position: relative; min-height: 480px; }
+  .pdf-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+  .stage-foot { padding: 18px 22px; border-top: 2px solid var(--line-2); background: var(--paper-3); display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
+  .stage-desc { font-family: var(--mono); font-size: 13px; color: var(--ink-2); line-height: 1.65; max-width: 70ch; }
+  .stage-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+  .stage-tag { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); padding: 4px 9px; border: 1px solid var(--line); background: var(--paper-2); }
+  .dots { display: flex; justify-content: center; gap: 10px; padding: 24px 0 8px; }
+  .dot { width: 38px; height: 5px; background: var(--line); border: none; cursor: pointer; transition: all .25s ease; padding: 0; }
+  .dot:hover { background: var(--ink-4); }
+  .dot.active { background: var(--accent); width: 56px; }
+
+  /* ---------- products strip ---------- */
+  .product-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 2px solid var(--line-2); }
+  .prod-card { background: var(--paper-2); padding: 30px 26px 26px; display: flex; flex-direction: column; box-shadow: inset 0 6px 0 0 var(--accent); transition: background .12s ease; }
+  .prod-card + .prod-card { border-left: 2px solid var(--line-2); }
+  .prod-card:hover { background: var(--paper-3); }
+  .prod-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 30px; margin-bottom: 18px; }
+  .prod-logo { height: 24px; width: auto; display: block; }
+  .prod-mark { font-family: var(--font-display); font-weight: 900; font-size: 26px; letter-spacing: -0.02em; text-transform: uppercase; color: var(--accent); line-height: 1; }
+  .prod-role { font-family: var(--mono); font-weight: 500; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); text-align: right; }
+  .prod-name { font-family: var(--font-display); font-weight: 900; font-size: 30px; letter-spacing: -0.02em; text-transform: uppercase; color: var(--ink); line-height: 1; margin-bottom: 12px; }
+  .prod-desc { font-size: 14.5px; line-height: 1.55; color: var(--ink-2); margin-bottom: 18px; }
+  .prod-meta { list-style: none; margin: 0 0 22px; padding: 14px 0 0; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 9px; }
+  .prod-meta li { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .prod-meta span { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+  .prod-meta b { font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--ink); text-align: right; }
+  .prod-meta b.live { display: inline-flex; align-items: center; gap: 7px; color: var(--accent); }
+  .prod-meta b.live::before { content: ''; width: 8px; height: 8px; background: var(--accent); }
+  .prod-cta { margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display); font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-on-accent); background: var(--accent); border: 2px solid var(--accent); padding: 11px 16px; transition: background .14s ease, color .14s ease, transform .14s ease; }
+  .prod-cta:hover { background: transparent; color: var(--accent); transform: translateY(-2px); }
+  .prod-cta span { transition: transform .2s ease; }
+  .prod-cta:hover span { transform: translate(2px,-2px); }
+  /* per-product signal colors (brightened for the dark canvas) */
+  .sec-statz { --accent:#38bdf8; }
+  .sec-bink  { --accent:#fb923c; }
+  .sec-tfe   { --accent:#f87171; }
+
+  /* cross-link back to creative */
+  .cta-cross { margin: 24px 32px 0; padding: 30px 32px; border: 2px solid #b794f6; background: var(--paper-2); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .cta-cross h3 { font-family: var(--font-display); font-weight: 900; font-size: clamp(22px,3vw,34px); text-transform: uppercase; letter-spacing: -0.02em; color: var(--ink); }
+  .cta-cross p { color: var(--ink-3); font-size: 15px; margin-top: 6px; }
+  .cta-cross a { font-family: var(--font-display); font-weight: 800; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; color: #160a06; background: #b794f6; border: 2px solid #b794f6; padding: 13px 20px; transition: background .15s ease, color .15s ease; }
+  .cta-cross a:hover { background: transparent; color: #b794f6; }
+
+  @media (max-width: 980px) {
+    .product-strip { grid-template-columns: 1fr; }
+    .prod-card + .prod-card { border-left: none; border-top: 2px solid var(--line-2); }
+    .viewer { grid-template-columns: 1fr; }
+    .sidebar { max-height: none; border-right: none; border-bottom: 2px solid var(--line-2); }
+    .stage-foot { grid-template-columns: 1fr; }
+    .stage-tags { justify-content: flex-start; }
+  }
+  @media (max-width: 768px) {
+    .tk-cover, .feature { padding-left: 22px; padding-right: 22px; }
+    .running-head { margin-left: 22px; margin-right: 22px; flex-wrap: wrap; gap: 14px; }
+    .rh-spine, .open-link { display: none; }
+  }
+</style>
+</head>
+<body class="tech">
+<div class="crop-marks" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i></div>
+<div class="progress" id="progress"></div>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-left">
+      <a href="/" class="nav-wordmark" aria-label="Home">Max Miesen <span class="spot">LLC</span></a>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+    <div class="nav-tabs">
+      <div class="disc-toggle">
+        <a href="creative" class="cr">Creative</a>
+        <a href="technical" class="on">Technical</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="main">
+
+  <!-- ============ HEADER ============ -->
+  <header class="tk-cover">
+    <div class="tk-kicker">// engineering · research · products — Encinitas, CA</div>
+    <h1 class="tk-title">Technical<span class="cur">_</span></h1>
+    <p class="tk-lede">
+      <span class="cmt">/* the engineer's mind */</span><br />
+      Biomedical &amp; electrical engineering research from USC, plus <strong>software I've shipped and scaled</strong>. Primary sources and live products — <strong>numbers, not narratives.</strong>
+    </p>
+  </header>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Research</span><span>Engineering</span><span>Data</span><span>Biomechanics</span><span>Products</span><span>Software</span><span>Research</span><span>Engineering</span><span>Data</span><span>Biomechanics</span><span>Products</span><span>Software</span>
+    </div>
+  </div>
+
+  <section class="feature" style="padding-top: 48px;">
+    <div class="metrics">
+      <div class="metric"><div class="metric-val">6</div><div class="metric-lbl">Primary-source reports</div></div>
+      <div class="metric"><div class="metric-val">3</div><div class="metric-lbl">Products in market</div></div>
+      <div class="metric"><div class="metric-val">80K+</div><div class="metric-lbl">App downloads</div></div>
+      <div class="metric"><div class="metric-val">BS+MS</div><div class="metric-lbl">USC engineering</div></div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURE 01 — RESEARCH ============ -->
+  <section class="feature" id="research">
+    <div class="running-head">
+      <span class="rh-ghost" aria-hidden="true">01</span>
+      <span class="rh-no">01</span>
+      <div class="rh-meta">
+        <span class="rh-role">Research log · USC · 2022—2025</span>
+        <span class="rh-cat">Research &amp; technical analyses</span>
+      </div>
+      <span class="rh-spine">Engineering</span>
+    </div>
+
+    <header>
+      <h2 class="page-title">Academic <em>reports</em> &amp; technical analyses.</h2>
+      <p class="page-lede">
+        Biomedical Engineering BS and Product Development Engineering MS from USC, Data Science in Biomedicine MS from UCLA. Each report is a primary source.
+      </p>
+    </header>
+
+    <div class="toc">
+      <span class="toc-label">Filter</span>
+      <div class="toc-list" id="tocList">
+        <button class="toc-chip active" data-filter="all">All <span class="num">06</span></button>
+        <button class="toc-chip" data-filter="BME">BME <span class="num">04</span></button>
+        <button class="toc-chip" data-filter="EE">EE <span class="num">01</span></button>
+        <button class="toc-chip" data-filter="Article">Article <span class="num">01</span></button>
+      </div>
+      <span class="counter">viewing <strong id="viewingCount">06</strong> of <strong>06</strong></span>
+    </div>
+
+    <div class="viewer-wrap">
+      <div class="viewer">
+        <aside class="sidebar" id="sidebar">
+          <div class="sidebar-h"><span>Index</span><span id="sidebarTotal">06</span></div>
+        </aside>
+        <section class="stage">
+          <div class="stage-bar">
+            <div class="stage-titlewrap">
+              <div class="stage-eyebrow" id="stageEyebrow">BME 404 · Biomech</div>
+              <div class="stage-title" id="stageTitle">Orthopedic Biomechanics</div>
+            </div>
+            <div class="stage-actions">
+              <button class="stage-nav" id="prevBtn" aria-label="Previous">‹</button>
+              <span class="stage-counter"><strong id="curIdx">1</strong> / <span id="totIdx">6</span></span>
+              <button class="stage-nav" id="nextBtn" aria-label="Next">›</button>
+              <a class="open-link" id="openLink" href="#" target="_blank" rel="noopener">open ↗</a>
+            </div>
+          </div>
+          <div class="pdf-frame">
+            <iframe id="pdfFrame" src="" title="Report PDF"></iframe>
+          </div>
+          <div class="stage-foot">
+            <p class="stage-desc" id="stageDesc">—</p>
+            <div class="stage-tags" id="stageTags"></div>
+          </div>
+          <div class="dots" id="dots"></div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURE 02 — PRODUCTS ============ -->
+  <section class="feature" id="products">
+    <div class="running-head">
+      <span class="rh-ghost" aria-hidden="true">02</span>
+      <span class="rh-no">02</span>
+      <div class="rh-meta">
+        <span class="rh-role">Shipped &amp; in market</span>
+        <span class="rh-cat">Products</span>
+      </div>
+      <span class="rh-spine">Apps &amp; Strategy</span>
+    </div>
+
+    <header style="padding-bottom: 32px;">
+      <h2 class="page-title">Three products. <em>One operator.</em></h2>
+      <p class="page-lede">
+        Two iOS apps I founded and scaled, plus a marketplace where I lead growth. Each one shipped, live, and used by real people.
+      </p>
+    </header>
+
+    <div class="product-strip">
+      <article class="prod-card sec-statz">
+        <div class="prod-top">
+          <img src="STATZwhite.png" alt="Statz" class="prod-logo" />
+          <span class="prod-role">Founder &amp; CEO</span>
+        </div>
+        <h3 class="prod-name">Statz</h3>
+        <p class="prod-desc">Self-improvement, quantified. Track fitness, productivity, and personal habits with beautiful analytics and goal-setting.</p>
+        <ul class="prod-meta">
+          <li><span>Platform</span><b>iOS</b></li>
+          <li><span>Category</span><b>Lifestyle / Health</b></li>
+          <li><span>Status</span><b class="live">Live on App Store</b></li>
+        </ul>
+        <a class="prod-cta" href="https://joinstatz.com" target="_blank" rel="noopener noreferrer">Download Statz <span>↗</span></a>
+      </article>
+
+      <article class="prod-card sec-bink">
+        <div class="prod-top">
+          <img src="BINKwhite.png" alt="Bink" class="prod-logo" />
+          <span class="prod-role">Founder &amp; CEO</span>
+        </div>
+        <h3 class="prod-name">Bink</h3>
+        <p class="prod-desc">Poker bankroll, tracked. Cash, Venmo, Zelle, and crypto in one place — with clear analytics on what's winning.</p>
+        <ul class="prod-meta">
+          <li><span>Revenue</span><b>$147K</b></li>
+          <li><span>Downloads</span><b>80K+</b></li>
+          <li><span>Status</span><b class="live">Live · 6-figure ARR</b></li>
+        </ul>
+        <a class="prod-cta" href="https://binkpoker.app" target="_blank" rel="noopener noreferrer">Download Bink <span>↗</span></a>
+      </article>
+
+      <article class="prod-card sec-tfe">
+        <div class="prod-top">
+          <span class="prod-mark">TFE</span>
+          <span class="prod-role">Head of Growth</span>
+        </div>
+        <h3 class="prod-name">The Food Truck Exchange</h3>
+        <p class="prod-desc">The marketplace where food trucks get booked. I own acquisition, lifecycle, and demand across both sides of the market.</p>
+        <ul class="prod-meta">
+          <li><span>Market</span><b>Trucks &amp; events</b></li>
+          <li><span>Channels</span><b>SEO · Paid · Referral</b></li>
+          <li><span>Status</span><b class="live">Live &amp; growing</b></li>
+        </ul>
+        <a class="prod-cta" href="https://thefoodtruckexchange.com" target="_blank" rel="noopener noreferrer">Visit TFE <span>↗</span></a>
+      </article>
+    </div>
+  </section>
+
+  <!-- cross-link to the other discipline -->
+  <div class="cta-cross">
+    <div class="x-txt">
+      <h3>There's a creative side, too.</h3>
+      <p>Film, video, and graphic design — the other half of the operation.</p>
+    </div>
+    <a href="creative">Go creative →</a>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-left">
+    <div class="bigtype">Made by hand in Encinitas, California.</div>
+    <p>Max Miesen LLC<br />Always happy to talk about a new project.</p>
+  </div>
+  <div class="footer-right">
+    <span class="lbl">Find me</span>
+    <a href="https://instagram.com/maxmiesen" target="_blank" rel="noopener noreferrer">Instagram &rarr;</a>
+    <a href="https://youtube.com/maxmiesen" target="_blank" rel="noopener noreferrer">YouTube &rarr;</a>
+    <a href="https://linkedin.com/in/maxmiesen" target="_blank" rel="noopener noreferrer">LinkedIn &rarr;</a>
+    <a href="mailto:maxmiesenfilms@gmail.com">Email &rarr;</a>
+  </div>
+</footer>
+<div class="copyright">© 2025 Max Miesen LLC</div>
+
+<div class="social-bar" aria-label="Social links">
+  <a class="social-btn" href="https://instagram.com/maxmiesen" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+    </svg>
+  </a>
+  <a class="social-btn" href="https://youtube.com/maxmiesen" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><span>▶</span></a>
+  <a class="social-btn" href="https://linkedin.com/in/maxmiesen" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><span>in</span></a>
+</div>
+
+<script src="site.js?v=20260701a"></script>
+<script>
+/* ---------- research viewer ---------- */
+const REPORTS = [
+  { num:"01", code:"BME 404", cat:"BME", catLabel:"Biomech", title:"Orthopedic Biomechanics", file:"BME404report.pdf", semester:"Fall 2024", desc:"Biomedical engineering analysis of orthopedic systems — medical device design and biological-systems integration. Covers load-bearing implants, joint mechanics, and the constraints of in-vivo material selection.", tags:["Biomechanics","Implants","Materials"] },
+  { num:"02", code:"BME 405", cat:"BME", catLabel:"Senior Projects", title:"Biomedical Senior Projects", file:"BME405report.pdf", semester:"Spring 2025", desc:"Biomedical systems engineering with medical-device integration and end-to-end system optimization. Documents design tradeoffs, validation methodology, and team-level engineering process.", tags:["Systems","Devices","Optimization"] },
+  { num:"03", code:"BME 410", cat:"BME", catLabel:"Tissue & Biomaterials", title:"Tissue Engineering & Biomaterials", file:"BME410report.pdf", semester:"Fall 2023", desc:"Biomedical instrumentation, sensor technologies, and measurement systems applied to medical-grade biomaterials. Examines characterization protocols and calibration strategies.", tags:["Tissue","Sensors","Measurement"] },
+  { num:"04", code:"BME 499", cat:"BME", catLabel:"Capstone", title:"Special Topics — Capstone Senior Design", file:"BME499report.pdf", semester:"Spring 2025", desc:"Capstone senior-design project consolidating biomedical engineering coursework into an end-to-end design problem. Covers ideation, prototyping, and validation under industry-style constraints.", tags:["Capstone","Design","Prototype"] },
+  { num:"05", code:"EE 202", cat:"EE", catLabel:"Linear Circuits", title:"Linear Circuits Analysis", file:"EE202report.pdf", semester:"Fall 2022", desc:"Electrical engineering fundamentals: circuit analysis, electronic design, and the application of linear-system principles in biomedical instrumentation contexts.", tags:["Circuits","EE","Analysis"] },
+  { num:"06", code:"Article", cat:"Article", catLabel:"Published", title:"Golf Performance — 3D PCA via OpenCap", file:"golfreport.pdf", semester:"2025", desc:"Published journal article: golf-swing performance analysis using OpenCap markerless motion capture and 3D principal-component analysis. Quantifies swing-plane variance across skill levels.", tags:["Biomech","PCA","Motion-capture"] }
+];
+
+const $ = (s) => document.querySelector(s);
+const sidebar = $('#sidebar');
+const dotsWrap = $('#dots');
+let visible = REPORTS.slice();
+let currentIdx = 0;
+
+function renderSidebar() {
+  sidebar.querySelectorAll('.report-card').forEach(el => el.remove());
+  visible.forEach((r, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'report-card' + (i === currentIdx ? ' active' : '');
+    btn.innerHTML = `<div class="rc-row1"><span class="rc-num">${r.num}</span><span class="rc-tag">${r.code}</span></div><div class="rc-title">${r.title}</div><div class="rc-meta">${r.semester} · ${r.catLabel}</div>`;
+    btn.addEventListener('click', () => goTo(i));
+    sidebar.appendChild(btn);
+  });
+  $('#sidebarTotal').textContent = String(visible.length).padStart(2,'0');
+  $('#totIdx').textContent = visible.length;
+  $('#viewingCount').textContent = String(visible.length).padStart(2,'0');
+}
+function renderDots() {
+  dotsWrap.innerHTML = '';
+  visible.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === currentIdx ? ' active' : '');
+    d.setAttribute('aria-label', 'Report ' + (i + 1));
+    d.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(d);
+  });
+}
+function renderStage() {
+  if (!visible.length) return;
+  const r = visible[currentIdx];
+  $('#stageEyebrow').textContent = `${r.code} · ${r.catLabel}`;
+  $('#stageTitle').textContent = r.title;
+  $('#curIdx').textContent = currentIdx + 1;
+  $('#stageDesc').textContent = r.desc;
+  $('#openLink').href = r.file;
+  const frame = $('#pdfFrame');
+  if (frame.getAttribute('data-src') !== r.file) {
+    frame.src = r.file + '#view=FitH&toolbar=0';
+    frame.setAttribute('data-src', r.file);
+  }
+  const tagsWrap = $('#stageTags');
+  tagsWrap.innerHTML = '';
+  r.tags.forEach(t => {
+    const s = document.createElement('span');
+    s.className = 'stage-tag';
+    s.textContent = t;
+    tagsWrap.appendChild(s);
+  });
+  sidebar.querySelectorAll('.report-card').forEach((el, i) => el.classList.toggle('active', i === currentIdx));
+  dotsWrap.querySelectorAll('.dot').forEach((el, i) => el.classList.toggle('active', i === currentIdx));
+}
+function goTo(i) { if (!visible.length) return; currentIdx = (i + visible.length) % visible.length; renderStage(); }
+
+$('#prevBtn').addEventListener('click', () => goTo(currentIdx - 1));
+$('#nextBtn').addEventListener('click', () => goTo(currentIdx + 1));
+document.querySelectorAll('.toc-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.toc-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    const f = chip.dataset.filter;
+    visible = (f === 'all') ? REPORTS.slice() : REPORTS.filter(r => r.cat === f);
+    currentIdx = 0;
+    renderSidebar(); renderDots(); renderStage();
+  });
+});
+
+renderSidebar(); renderDots(); renderStage();
+</script>
+</body>
+</html>
