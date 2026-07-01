@@ -129,14 +129,14 @@
 
   /* --- TECHNICAL half: dark, blueprint, terminal --- */
   .split-half.technical {
-    background: #0c0f14; color: #e7edf3;
-    --t-accent: #2fe6c8;
+    background: #000000; color: #ededed;
+    --t-accent: #ffffff;
   }
   .split-half.technical::before {
     content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
     background-image:
-      linear-gradient(90deg, rgba(47,230,200,0.10) 1px, transparent 1px),
-      linear-gradient(rgba(47,230,200,0.10) 1px, transparent 1px);
+      linear-gradient(90deg, rgba(255,255,255,0.10) 1px, transparent 1px),
+      linear-gradient(rgba(255,255,255,0.10) 1px, transparent 1px);
     background-size: 34px 34px, 34px 34px;
     opacity: .5;
   }
@@ -146,10 +146,10 @@
   .split-half.technical .sh-enter { color: var(--t-accent); }
   .split-half.technical .sh-kicker,
   .split-half.technical .sh-enter { font-family: 'JetBrains Mono', ui-monospace, monospace; letter-spacing: 0.04em; }
-  .split-half.technical .sh-title { color: #f4f8fb; }
-  .split-half.technical .sh-desc { color: #9fb0bf; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13.5px; }
-  .split-half.technical .sh-tag { border-color: rgba(47,230,200,0.5); color: var(--t-accent); font-family: 'JetBrains Mono', ui-monospace, monospace; }
-  .split-half.technical:hover { background: #0f141b; }
+  .split-half.technical .sh-title { color: #f6f6f6; }
+  .split-half.technical .sh-desc { color: #9a9a9a; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13.5px; }
+  .split-half.technical .sh-tag { border-color: rgba(255,255,255,0.5); color: var(--t-accent); font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  .split-half.technical:hover { background: #0d0d0d; }
   .split-half.technical .sh-cursor {
     display: inline-block; width: 9px; height: 1.05em; margin-left: 2px;
     background: var(--t-accent); vertical-align: text-bottom;

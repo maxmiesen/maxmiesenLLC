@@ -12,35 +12,47 @@
 <link rel="stylesheet" href="site.css?v=20260701a" />
 <style>
   /* ============================================================
-     TECHNICAL — the engineer's half. Dark blueprint canvas,
-     cyan signal accent, monospace UI chrome, terminal window
+     TECHNICAL — the engineer's half. Black & white blueprint
+     canvas, obvious grid, monospace UI chrome, terminal window
      framing on the research viewer. Numbers, not narratives.
      ============================================================ */
 
   /* dark theme: recolor the shared variables */
   body.tech {
-    --paper:    #0a0d12;
-    --paper-2:  #11161f;
-    --paper-3:  #0d1219;
-    --line:     rgba(120,200,190,0.16);
-    --line-soft: rgba(120,200,190,0.06);
-    --line-2:   #26333f;
-    --ink:      #eef4f8;
-    --ink-2:    #b6c4d1;
-    --ink-3:    #7d8f9d;
-    --ink-4:    #566574;
-    --accent:      #2fe6c8;
-    --accent-2:    #16c9ac;
-    --accent-soft: rgba(47,230,200,0.14);
-    --ink-on-accent: #04120f;
+    --paper:    #000000;
+    --paper-2:  #0d0d0d;
+    --paper-3:  #080808;
+    --line:     rgba(255,255,255,0.18);
+    --line-soft: rgba(255,255,255,0.07);
+    --line-2:   #2c2c2c;
+    --ink:      #f4f4f4;
+    --ink-2:    #bdbdbd;
+    --ink-3:    #8a8a8a;
+    --ink-4:    #575757;
+    --accent:      #ffffff;
+    --accent-2:    #cfcfcf;
+    --accent-soft: rgba(255,255,255,0.12);
+    --ink-on-accent: #000000;
     --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   }
 
   /* dark chrome overrides for shared components */
-  body.tech .navbar { background: rgba(10,13,18,0.72); border-bottom-color: transparent; }
-  body.tech .navbar.scrolled { background: rgba(10,13,18,0.94); border-bottom-color: var(--line-2); }
-  body.tech .social-bar { background: rgba(17,22,31,0.9); }
-  body.tech ::selection { background: var(--accent); color: #04120f; }
+  body.tech .navbar { background: rgba(0,0,0,0.72); border-bottom-color: transparent; }
+  body.tech .navbar.scrolled { background: rgba(0,0,0,0.94); border-bottom-color: var(--line-2); }
+  body.tech .social-bar { background: rgba(13,13,13,0.92); }
+  body.tech ::selection { background: var(--accent); color: #000000; }
+
+  /* obvious blueprint grid — faint minor lines + brighter major lines */
+  body.tech::before {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px),
+      linear-gradient(rgba(255,255,255,0.11) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.11) 1px, transparent 1px);
+    background-size: 40px 40px, 40px 40px, 200px 200px, 200px 200px;
+    background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
+    opacity: 1;
+  }
 
   .nav-wordmark { font-family: var(--font-display); font-weight: 900; font-size: 17px; letter-spacing: -0.01em; text-transform: uppercase; color: var(--ink); line-height: 1; }
   .nav-wordmark .spot { color: var(--accent); }
@@ -51,7 +63,7 @@
   .disc-toggle a + a { border-left: 2px solid var(--line-2); }
   .disc-toggle a.on { background: var(--accent); color: var(--ink-on-accent); }
   .disc-toggle a.cr.on { background: #b794f6; color: #160a06; }
-  .disc-toggle a:hover:not(.on) { background: rgba(120,200,190,0.08); color: var(--ink); }
+  .disc-toggle a:hover:not(.on) { background: rgba(255,255,255,0.08); color: var(--ink); }
 
   /* ---------- terminal-style header ---------- */
   .tk-cover { padding: 60px 32px 8px; position: relative; }
@@ -65,6 +77,16 @@
   .tk-lede { margin-top: 24px; font-family: var(--mono); font-size: 14.5px; line-height: 1.7; color: var(--ink-2); max-width: 62ch; }
   .tk-lede strong { color: var(--ink); font-weight: 700; }
   .tk-lede .cmt { color: var(--ink-4); }
+
+  /* positioning statement */
+  .pitch { margin: 26px 32px 0; padding: 30px 0 6px; border-top: 2px solid var(--line-2); }
+  .pitch p {
+    font-family: var(--font-display); font-weight: 800;
+    font-size: clamp(24px, 3.4vw, 44px); line-height: 1.14;
+    letter-spacing: -0.025em; color: var(--ink); max-width: 26ch;
+  }
+  .pitch em { font-style: normal; background: var(--ink); color: var(--paper); padding: 0 8px; }
+  @media (max-width: 768px) { .pitch { margin-left: 22px; margin-right: 22px; } }
 
   /* ---------- metrics band ---------- */
   .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; border: 2px solid var(--line-2); }
@@ -106,7 +128,7 @@
 
   /* ---------- research: terminal-window viewer ---------- */
   .viewer-wrap { padding: 40px 0 8px; }
-  .viewer { background: var(--paper-2); border: 2px solid var(--line-2); overflow: hidden; box-shadow: 0 0 0 1px rgba(47,230,200,0.08), 12px 12px 0 0 rgba(47,230,200,0.10); display: grid; grid-template-columns: 320px 1fr; min-height: 640px; }
+  .viewer { background: var(--paper-2); border: 2px solid var(--line-2); overflow: hidden; box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 12px 12px 0 0 rgba(255,255,255,0.10); display: grid; grid-template-columns: 320px 1fr; min-height: 640px; }
   .sidebar { background: var(--paper-3); border-right: 2px solid var(--line-2); padding: 22px 20px; display: flex; flex-direction: column; gap: 8px; overflow-y: auto; max-height: 760px; }
   .sidebar-h { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); padding: 0 4px 12px; border-bottom: 1px solid var(--line); margin-bottom: 8px; display: flex; justify-content: space-between; }
   .report-card { text-align: left; background: transparent; border: 1px solid transparent; padding: 13px; cursor: pointer; transition: all .14s ease; position: relative; color: inherit; font-family: inherit; }
@@ -132,7 +154,7 @@
   .stage-counter strong { color: var(--ink); font-weight: 700; }
   .open-link { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-on-accent); padding: 9px 14px; border: 2px solid var(--accent); background: var(--accent); transition: all .14s ease; display: inline-flex; align-items: center; gap: 6px; margin-left: 6px; }
   .open-link:hover { background: transparent; color: var(--accent); }
-  .pdf-frame { flex: 1; background: #05080c; position: relative; min-height: 480px; }
+  .pdf-frame { flex: 1; background: #000000; position: relative; min-height: 480px; }
   .pdf-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
   .stage-foot { padding: 18px 22px; border-top: 2px solid var(--line-2); background: var(--paper-3); display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
   .stage-desc { font-family: var(--mono); font-size: 13px; color: var(--ink-2); line-height: 1.65; max-width: 70ch; }
@@ -216,6 +238,9 @@
   <header class="tk-cover">
     <div class="tk-kicker">// engineering · research · products — Encinitas, CA</div>
     <h1 class="tk-title">Technical<span class="cur">_</span></h1>
+    <div class="pitch">
+      <p>I help B2B SaaS founders book <em>20+ sales calls a month</em> using outbound systems that run without them.</p>
+    </div>
   </header>
 
   <div class="marquee" aria-hidden="true">
