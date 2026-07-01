@@ -53,6 +53,20 @@
     color: var(--ink-2); max-width: 52ch;
   }
   .cr-lede strong { color: var(--ink); font-weight: 700; }
+
+  /* positioning statements — sit right above the marquee band */
+  .pitch-band {
+    padding: 44px 32px 52px; margin-top: 40px;
+    border-top: 2px solid var(--line-2);
+    display: grid; gap: 22px;
+  }
+  .pitch-line {
+    font-family: var(--font-display); font-weight: 800;
+    font-size: clamp(22px, 2.9vw, 40px); line-height: 1.16;
+    letter-spacing: -0.02em; color: var(--ink); max-width: 42ch;
+  }
+  .pitch-line em { font-style: italic; color: var(--accent); }
+  @media (max-width: 768px) { .pitch-band { padding: 34px 22px 40px; } }
   /* floating sticker */
   .cr-sticker {
     position: absolute; right: 40px; top: 70px; z-index: 3;
@@ -186,6 +200,11 @@
       Film production, marketing content, and visual identity — built to ship. I shoot and cut the kind of work that makes a brand look its <strong>best</strong>, end to end. A selection of recent work below.
     </p>
   </header>
+
+  <section class="pitch-band">
+    <p class="pitch-line">I help <em>B2B SaaS founders</em> book 20+ sales calls a month using outbound systems that run without them.</p>
+    <p class="pitch-line">I grow <em>consumer apps</em> to hit download and sales targets without burning cash on influencers who don't convert.</p>
+  </section>
 
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">

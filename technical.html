@@ -78,16 +78,6 @@
   .tk-lede strong { color: var(--ink); font-weight: 700; }
   .tk-lede .cmt { color: var(--ink-4); }
 
-  /* positioning statement */
-  .pitch { margin: 26px 32px 0; padding: 30px 0 6px; border-top: 2px solid var(--line-2); }
-  .pitch p {
-    font-family: var(--font-display); font-weight: 800;
-    font-size: clamp(24px, 3.4vw, 44px); line-height: 1.14;
-    letter-spacing: -0.025em; color: var(--ink); max-width: 26ch;
-  }
-  .pitch em { font-style: normal; background: var(--ink); color: var(--paper); padding: 0 8px; }
-  @media (max-width: 768px) { .pitch { margin-left: 22px; margin-right: 22px; } }
-
   /* ---------- metrics band ---------- */
   .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; border: 2px solid var(--line-2); }
   .metric { background: var(--paper-2); padding: 26px 24px; transition: background .12s ease; }
@@ -238,9 +228,6 @@
   <header class="tk-cover">
     <div class="tk-kicker">// engineering · research · products — Encinitas, CA</div>
     <h1 class="tk-title">Technical<span class="cur">_</span></h1>
-    <div class="pitch">
-      <p>I help B2B SaaS founders book <em>20+ sales calls a month</em> using outbound systems that run without them.</p>
-    </div>
   </header>
 
   <div class="marquee" aria-hidden="true">
