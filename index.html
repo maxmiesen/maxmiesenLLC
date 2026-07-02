@@ -26,7 +26,10 @@
   .nav-wordmark .spot { color: var(--accent); }
 
   /* ---------- masthead ---------- */
-  .cover { padding: 30px 32px 8px; }
+  /* no navbar on the cover — reclaim the fixed-nav offset from site.css,
+     and let the cover run the full width of the screen */
+  .main { padding-top: 0; max-width: none; }
+  .cover { padding: 44px 32px 8px; }
   .masthead-bar {
     display: flex; align-items: center; justify-content: space-between;
     gap: 16px; flex-wrap: wrap;
@@ -59,15 +62,24 @@
     position: relative; isolation: isolate;
     min-height: 560px;
   }
+  /* desktop: masthead + split + marquee fill the viewport exactly,
+     with the two halves absorbing the spare height */
+  @media (min-width: 861px) {
+    .main { display: flex; flex-direction: column; min-height: 100vh; min-height: 100svh; }
+    .split { flex: 1; }
+  }
   .split-half {
     position: relative; overflow: hidden;
     display: flex; flex-direction: column;
     padding: 40px 40px 34px;
     color: var(--ink);
-    transition: flex-basis .3s ease;
     text-decoration: none;
+    cursor: pointer;
+    transition: transform .22s cubic-bezier(.2,.8,.3,1), box-shadow .22s cubic-bezier(.2,.8,.3,1), background .22s ease;
   }
   .split-half + .split-half { border-left: 2px solid var(--line-2); }
+  .split-half:hover, .split-half:focus-visible { transform: translate(-6px, -6px); z-index: 2; outline: none; }
+  .split-half:active { transform: translate(-2px, -2px); transition-duration: .08s; }
 
   .sh-kicker {
     font-family: var(--font-display); font-weight: 800;
@@ -92,13 +104,17 @@
     padding: 6px 11px; border: 2px solid currentColor;
   }
   .sh-enter {
-    margin-top: auto; padding-top: 30px;
+    margin-top: auto; align-self: flex-start;
     font-family: var(--font-display); font-weight: 800;
     font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase;
     display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 18px; border: 2px solid currentColor;
+    transition: background .18s ease, color .18s ease, border-color .18s ease;
   }
+  .sh-tags { margin-bottom: 30px; }
   .sh-enter .arw { transition: transform .2s ease; }
-  .split-half:hover .sh-enter .arw { transform: translateX(6px); }
+  .split-half:hover .sh-enter .arw,
+  .split-half:focus-visible .sh-enter .arw { transform: translateX(6px); }
 
   /* --- CREATIVE half: warm paper, artistic --- */
   .split-half.creative { background: var(--paper); color: var(--ink); }
@@ -124,7 +140,22 @@
   .split-half.creative .sh-stars .s2 { left: 78%; top: 66%; font-size: 24px; }
   .split-half.creative .sh-stars .s3 { left: 50%; top: 78%; font-size: 30px; }
   .split-half.creative > * { position: relative; z-index: 1; }
-  .split-half.creative:hover { background: var(--paper-3); }
+  .split-half.creative::before { transition: transform .35s ease, opacity .35s ease; }
+  .split-half.creative .sh-stars span { transition: transform .35s ease; }
+  .split-half.creative:hover, .split-half.creative:focus-visible {
+    background: var(--paper-3);
+    box-shadow: 10px 10px 0 0 var(--accent);
+  }
+  .split-half.creative:active { box-shadow: 4px 4px 0 0 var(--accent); }
+  .split-half.creative:hover::before { transform: scale(1.3); opacity: .55; }
+  .split-half.creative:hover .sh-stars { opacity: .4; }
+  .split-half.creative:hover .sh-stars .s1 { transform: rotate(20deg) scale(1.2); }
+  .split-half.creative:hover .sh-stars .s2 { transform: rotate(-15deg) scale(1.3); }
+  .split-half.creative:hover .sh-stars .s3 { transform: rotate(12deg) scale(1.15); }
+  .split-half.creative:hover .sh-enter,
+  .split-half.creative:focus-visible .sh-enter {
+    background: var(--accent); border-color: var(--accent); color: var(--ink-on-accent);
+  }
   .split-half.creative .sh-title em { font-style: italic; color: var(--accent); }
 
   /* --- TECHNICAL half: dark, blueprint, terminal --- */
@@ -149,7 +180,19 @@
   .split-half.technical .sh-title { color: #f6f6f6; }
   .split-half.technical .sh-desc { color: #9a9a9a; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13.5px; }
   .split-half.technical .sh-tag { border-color: rgba(255,255,255,0.5); color: var(--t-accent); font-family: 'JetBrains Mono', ui-monospace, monospace; }
-  .split-half.technical:hover { background: #0d0d0d; }
+  .split-half.technical:hover, .split-half.technical:focus-visible {
+    background: #0d0d0d;
+    box-shadow: 10px 10px 0 0 var(--t-accent);
+  }
+  .split-half.technical:active { box-shadow: 4px 4px 0 0 var(--t-accent); }
+  .split-half.technical:hover::before { animation: grid-pan 5s linear infinite; opacity: .7; }
+  @keyframes grid-pan { to { background-position: 34px 34px, 34px 34px; } }
+  .split-half.technical:hover .sh-enter,
+  .split-half.technical:focus-visible .sh-enter {
+    background: var(--t-accent); border-color: var(--t-accent); color: #000;
+  }
+  .split-half.technical:hover .sh-cursor,
+  .split-half.technical:focus-visible .sh-cursor { background: #000; }
   .split-half.technical .sh-cursor {
     display: inline-block; width: 9px; height: 1.05em; margin-left: 2px;
     background: var(--t-accent); vertical-align: text-bottom;
@@ -168,6 +211,14 @@
     font-family: var(--font-display); font-weight: 900; font-size: 13px;
     letter-spacing: 0.02em; text-transform: uppercase;
     pointer-events: none;
+    transition: transform .25s cubic-bezier(.2,.8,.3,1);
+  }
+  .split:has(.split-half:hover) .split-seam { transform: translate(-50%, -50%) scale(1.18) rotate(-8deg); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .split-half, .split-half::before, .split-seam,
+    .sh-enter, .sh-enter .arw, .sh-stars span { transition: none !important; animation: none !important; }
+    .split-half:hover, .split-half:focus-visible, .split-half:active { transform: none; }
   }
 
   /* ---------- identity / about band ---------- */
@@ -227,20 +278,6 @@
 <body>
 <div class="crop-marks" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i></div>
 <div class="progress" id="progress"></div>
-
-<nav class="navbar">
-  <div class="nav-container">
-    <div class="nav-left">
-      <a href="/" class="nav-wordmark" aria-label="Home">Max Miesen <span class="spot">LLC</span></a>
-    </div>
-    <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
-    <div class="nav-tabs">
-      <a href="/" class="nav-tab active" aria-current="page">Cover</a>
-      <a href="creative.html" class="nav-tab">Creative</a>
-      <a href="technical.html" class="nav-tab">Technical</a>
-    </div>
-  </div>
-</nav>
 
 <main class="main">
 
