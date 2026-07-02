@@ -1,0 +1,18 @@
+# Render Blueprint — static site.
+# Deploy: Render dashboard → New + → Blueprint → pick this repo.
+# Serves the repo root as static files, with clean-URL rewrites so
+# /creative and /technical resolve to the .html files.
+services:
+  - type: web
+    name: maxmiesenllc
+    runtime: static
+    branch: main
+    buildCommand: ""
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /creative
+        destination: /creative.html
+      - type: rewrite
+        source: /technical
+        destination: /technical.html
