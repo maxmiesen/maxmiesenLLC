@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script>document.documentElement.classList.add('js');</script>
 <title>Technical — Max Miesen · research, engineering &amp; products</title>
-<meta name="description" content="The technical side of Max Miesen LLC — biomedical & electrical engineering research from USC, and shipped products (Statz, Bink, The Food Truck Exchange). Numbers, not narratives." />
+<meta name="description" content="The technical side of Max Miesen LLC — biomedical & electrical engineering research from USC, and shipped products (Statz, Bink, The Food Truck Exchange, Zontal). Numbers, not narratives." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,500;0,600;0,700;0,800;0,900;1,800;1,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -156,7 +156,7 @@
   .dot.active { background: var(--accent); width: 56px; }
 
   /* ---------- products strip ---------- */
-  .product-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 2px solid var(--line-2); }
+  .product-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 2px solid var(--line-2); }
   .prod-card { background: var(--paper-2); padding: 30px 26px 26px; display: flex; flex-direction: column; box-shadow: inset 0 6px 0 0 var(--accent); transition: background .12s ease; }
   .prod-card + .prod-card { border-left: 2px solid var(--line-2); }
   .prod-card:hover { background: var(--paper-3); }
@@ -177,9 +177,10 @@
   .prod-cta span { transition: transform .2s ease; }
   .prod-cta:hover span { transform: translate(2px,-2px); }
   /* per-product signal colors (brightened for the dark canvas) */
-  .sec-statz { --accent:#38bdf8; }
-  .sec-bink  { --accent:#fb923c; }
-  .sec-tfe   { --accent:#f87171; }
+  .sec-statz  { --accent:#38bdf8; }
+  .sec-bink   { --accent:#fb923c; }
+  .sec-tfe    { --accent:#f87171; }
+  .sec-zontal { --accent:#facc15; }
 
   /* cross-link back to creative */
   .cta-cross { margin: 24px 32px 0; padding: 30px 32px; border: 2px solid #b794f6; background: var(--paper-2); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
@@ -188,9 +189,16 @@
   .cta-cross a { font-family: var(--font-display); font-weight: 800; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; color: #160a06; background: #b794f6; border: 2px solid #b794f6; padding: 13px 20px; transition: background .15s ease, color .15s ease; }
   .cta-cross a:hover { background: transparent; color: #b794f6; }
 
+  @media (max-width: 1280px) {
+    .product-strip { grid-template-columns: repeat(2, 1fr); }
+    .prod-card + .prod-card { border-left: none; }
+    .prod-card:nth-child(even) { border-left: 2px solid var(--line-2); }
+    .prod-card:nth-child(n+3) { border-top: 2px solid var(--line-2); }
+  }
   @media (max-width: 980px) {
     .product-strip { grid-template-columns: 1fr; }
-    .prod-card + .prod-card { border-left: none; border-top: 2px solid var(--line-2); }
+    .prod-card:nth-child(even) { border-left: none; }
+    .prod-card + .prod-card { border-top: 2px solid var(--line-2); }
     .viewer { grid-template-columns: 1fr; }
     .sidebar { max-height: none; border-right: none; border-bottom: 2px solid var(--line-2); }
     .stage-foot { grid-template-columns: 1fr; }
@@ -240,7 +248,7 @@
   <section class="feature" style="padding-top: 48px;">
     <div class="metrics">
       <div class="metric"><div class="metric-val">6</div><div class="metric-lbl">Primary-source reports</div></div>
-      <div class="metric"><div class="metric-val">3</div><div class="metric-lbl">Products in market</div></div>
+      <div class="metric"><div class="metric-val">4</div><div class="metric-lbl">Products in market</div></div>
       <div class="metric"><div class="metric-val">80K+</div><div class="metric-lbl">App downloads</div></div>
       <div class="metric"><div class="metric-val">BS+MS</div><div class="metric-lbl">USC engineering</div></div>
     </div>
@@ -320,9 +328,9 @@
     </div>
 
     <header style="padding-bottom: 32px;">
-      <h2 class="page-title">Three products. <em>One operator.</em></h2>
+      <h2 class="page-title">Four products. <em>One operator.</em></h2>
       <p class="page-lede">
-        Two iOS apps I founded and scaled, plus a marketplace where I lead growth. Each one shipped, live, and used by real people.
+        Two iOS apps I founded and scaled, a marketplace where I lead growth, and one still in stealth. Each one shipped, live, and used by real people.
       </p>
     </header>
 
@@ -370,6 +378,21 @@
           <li><span>Status</span><b class="live">Live &amp; growing</b></li>
         </ul>
         <a class="prod-cta" href="https://thefoodtruckexchange.com" target="_blank" rel="noopener noreferrer">Visit TFE <span>↗</span></a>
+      </article>
+
+      <article class="prod-card sec-zontal">
+        <div class="prod-top">
+          <span class="prod-mark">Zontal</span>
+          <span class="prod-role">Founder</span>
+        </div>
+        <h3 class="prod-name">Zontal</h3>
+        <p class="prod-desc">We're pre-seed and in stealth right now. That's all we can say.</p>
+        <ul class="prod-meta">
+          <li><span>Stage</span><b>Pre-seed</b></li>
+          <li><span>Details</span><b>Under wraps</b></li>
+          <li><span>Status</span><b class="live">Stealth</b></li>
+        </ul>
+        <a class="prod-cta" href="https://zontal.app" target="_blank" rel="noopener noreferrer">Visit Zontal <span>↗</span></a>
       </article>
     </div>
   </section>
