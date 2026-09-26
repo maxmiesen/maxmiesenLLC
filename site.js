@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     '.card', '.metric', '.about-block', '.cta-panel',
     '.product-art', '.portrait', '.reel-embed', '.video-frame',
     '.toc', '.viewer-wrap', '.dots', '.hello-line',
-    '.rate-card', '.tfe-wordmark', '.now-list',
+    '.rate-card', '.now-list',
   ];
   const revealEls = new Set();
   revealSelectors.forEach((sel) => {

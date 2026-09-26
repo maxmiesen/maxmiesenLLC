@@ -254,16 +254,6 @@ body::after { display: none; }
 }
 .section-title em { font-family: var(--font-display); font-style: italic; font-weight: 800; color: var(--accent); }
 
-/* ---------- only the Bink card keeps the original coral accent ----------
-   Custom properties inherit, so scoping them to .sec-bink recolors every
-   var(--accent) inside that one card; the rest of the site stays purple. */
-.sec-bink {
-  --accent:      #ff5b35;
-  --accent-2:    #e84320;
-  --accent-soft: rgba(255,91,53,0.14);
-  --sun:         #ffb066;
-}
-
 /* ---------- card grid ---------- */
 .card-grid {
   display: grid;
