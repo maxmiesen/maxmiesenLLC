@@ -26,6 +26,13 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         path = self.path.split("?", 1)[0]
+        # Preserve old portfolio links as anchors on the unified page.
+        section = path.strip("/").removesuffix(".html")
+        if section in ("creative", "technical"):
+            self.send_response(302)
+            self.send_header("Location", "/#" + section)
+            self.end_headers()
+            return
         # /foo.html -> 301 /foo  (match production clean-URL redirect)
         if path.endswith(".html") and path != "/index.html":
             self.send_response(301)

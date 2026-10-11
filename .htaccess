@@ -1,6 +1,8 @@
 # Serve extensionless clean URLs (e.g. /creative -> creative.html).
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  # Both former portfolio pages now live on the scrolling home page.
+  RewriteRule ^(creative|technical)(\.html)?/?$ /#$1 [R=302,L,NE]
   # Redirect direct .html requests to the clean URL (browser address bar updates).
   # THE_REQUEST matches only the original client request, so the internal rewrite below
   # doesn't trigger a redirect loop.
