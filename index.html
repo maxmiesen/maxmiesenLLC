@@ -5,19 +5,22 @@
 <meta name="description" content="Film, design, engineering, and research. Explore the creative and technical work of Max Miesen, together in one place.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Shippori+Mincho:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="portfolio.css?v=20261025-redesign">
-<link rel="stylesheet" href="glass.css?v=20261025-2">
+<link rel="stylesheet" href="portfolio.css?v=8b269f13a45a">
+<link rel="stylesheet" href="glass.css?v=ea05ee44e285">
+<link rel="stylesheet" href="experience.css?v=f78fcc90e0d6">
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("mm-theme")==="night"?"night":"dawn"}catch(e){}</script>
 </head><body>
 <a class="skip-link" href="#creative">Skip to work</a>
 <nav class="portfolio-nav" aria-label="Main navigation">
   <a class="wordmark" href="#top" aria-label="Max Miesen home">max miesen<span class="brand-dot" aria-hidden="true">.</span><small>Independent practice</small></a>
   <div class="page-links"><a href="#creative">Work <span>01</span></a><a href="#services">Services <span>02</span></a><a href="#technical">Research <span>03</span></a><a class="nav-contact" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a></div>
 </nav>
+<div class="experience-bar"><div class="experience-controls"><div class="segmented" role="group" aria-label="Color theme"><button type="button" data-theme-choice="dawn" aria-pressed="true">Dawn</button><button type="button" data-theme-choice="night" aria-pressed="false">Night</button></div><button type="button" id="cursorToggle" aria-pressed="true">Custom cursor</button></div></div>
 <main>
 <header class="poster-hero" id="top">
   <div class="hero-kicker"><span class="eyeline">Creative thinking. Technical precision.</span><span class="eyeline">Encinitas, California / Working everywhere</span></div>
   <div class="hero-composition">
-    <div class="hero-statement"><span class="hero-chapter">01 — Form &amp; intuition</span><h1><span>Art meets</span><span class="hero-second">science<span class="hero-period">.</span></span></h1><p class="hero-note">A dialogue between instinct<br>and the carefully considered.</p></div>
+    <div class="hero-statement"><span class="hero-chapter">01 — Form &amp; intuition</span><h1><span>Art meets</span><span class="hero-second">science<span class="hero-period">.</span></span></h1><p class="hero-note">Films, visual identity, and creative direction.</p></div>
     <div class="glass-landscape" aria-hidden="true">
       <div class="landscape-grid"></div><div class="sun-disc"></div><div class="orbit-ring"></div>
       <div class="ink-stone stone-back"></div><div class="ink-stone stone-front"></div>
@@ -29,7 +32,12 @@
   <div class="hero-foot"><span>Film &amp; photography</span><span>Design &amp; direction</span><span>Engineering &amp; research</span></div>
 </header>
 <section class="chapter-intro" id="creative"><span class="eyeline">01 / The creative practice</span><h2>A different way<br>of <em>seeing things.</em></h2><p>Film production, marketing content, and visual identity — stories shot, cut, and built to ship.</p></section>
-  <section class="pitch-band">
+<section class="feature interactive-section" id="project-gallery" aria-labelledby="galleryTitle">
+  <div class="section-eyebrow">Selected work / Explore the practice</div><h2 class="section-title" id="galleryTitle">One curiosity.<br><em>Different expressions.</em></h2>
+  <div class="gallery-toolbar"><div class="segmented" role="group" aria-label="Filter projects"><button type="button" data-project-filter="all" aria-pressed="true">All</button><button type="button" data-project-filter="Art" aria-pressed="false">Creative</button><button type="button" data-project-filter="Film" aria-pressed="false">Film</button><button type="button" data-project-filter="Engineering" aria-pressed="false">Engineering</button></div><p id="projectCount" role="status" aria-live="polite"></p></div>
+  <div id="projectGrid" class="project-grid"></div><noscript><p>The films, services, and reports are available below.</p></noscript>
+</section>
+<section class="pitch-band">
     <p class="pitch-line">I help <em>B2B SaaS founders</em> book 20+ sales calls a month using outbound systems that run without them.</p>
     <p class="pitch-line">I grow <em>consumer apps and products</em> to hit download and sales targets without burning cash on influencers who don't convert.</p>
   </section>
@@ -214,8 +222,9 @@
               <a class="open-link" id="openLink" href="BME404report.pdf" target="_blank" rel="noopener">Open PDF ↗</a>
             </div>
           </div>
-          <div class="pdf-frame">
-            <iframe loading="lazy" id="pdfFrame" src="BME404report.pdf#view=FitH&amp;toolbar=0" title="Report PDF"></iframe>
+          <div class="report-preview"><span class="eyeline">Before you open the report</span><h4>At a glance</h4><p id="reportOverview"></p><dl><div><dt>Reading takeaway</dt><dd id="reportTakeaway"></dd></div><div><dt>Methods &amp; themes</dt><dd id="reportMethods"></dd></div></dl><button type="button" id="reportPreviewToggle" aria-expanded="false" aria-controls="pdfContainer">Show embedded PDF</button></div>
+          <div class="pdf-frame" id="pdfContainer" hidden>
+            <iframe loading="lazy" id="pdfFrame" title="Report PDF"></iframe>
           </div>
           <div class="stage-foot">
             <p class="stage-desc" id="stageDesc">—</p>
@@ -234,5 +243,6 @@
 </section>
 </main>
 <footer class="footer"><div class="footer-top"><a class="wordmark" href="#top">max miesen<span class="brand-dot" aria-hidden="true">.</span></a><p>Rooted in curiosity.<br>Made in Encinitas, California.</p><div class="footer-right"><a href="https://instagram.com/maxmiesen" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://youtube.com/maxmiesen" target="_blank" rel="noopener noreferrer">YouTube ↗</a><a href="https://linkedin.com/in/maxmiesen" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div></div><div class="footer-bottom"><span>© 2026 Max Miesen LLC</span><a href="#top">Back to top ↑</a><span>Art × Science</span></div></footer>
-<script src="research.js?v=20261025-redesign"></script><script src="portfolio.js?v=20261025-redesign"></script>
+<dialog id="projectDialog" aria-labelledby="projectDialogTitle"><div class="dialog-top"><span id="projectDialogCategory" class="eyeline"></span><button type="button" id="closeProject" aria-label="Close project">Close ×</button></div><div id="projectDialogArt" aria-hidden="true"></div><h2 id="projectDialogTitle"></h2><p id="projectDialogStory"></p><dl id="projectDialogDetails"></dl><a id="projectDialogLink" class="btn-primary">Explore project ↗</a></dialog>
+<script src="experience-core.js?v=ba31a50f578c"></script><script src="research.js?v=aeb426f3d6d6"></script><script src="portfolio.js?v=c8a2c80a6d07"></script><script src="experience.js?v=8f820706e8e3"></script>
 </body></html>

@@ -8,6 +8,14 @@ const REPORTS = [
   { num:"06", code:"Article", cat:"Article", catLabel:"Published", title:"Golf Performance — 3D PCA via OpenCap", file:"golfreport.pdf", semester:"2025", desc:"Published journal article: golf-swing performance analysis using OpenCap markerless motion capture and 3D principal-component analysis. Quantifies swing-plane variance across skill levels.", tags:["Biomech","PCA","Motion-capture"] }
 ];
 
+const REPORT_TAKEAWAYS = [
+  "Explore how joint loads and material constraints inform implant design.",
+  "Follow the design tradeoffs and validation process behind a biomedical system.",
+  "Explore how sensing, calibration, and characterization support biomaterial measurement.",
+  "Follow a design problem from ideation through prototyping and validation.",
+  "Connect circuit-analysis principles to biomedical instrumentation.",
+  "Explore how markerless motion capture and PCA can describe golf-swing variation."
+];
 const $ = (s) => document.querySelector(s);
 const sidebar = $('#sidebar');
 const dotsWrap = $('#dots');
@@ -49,11 +57,18 @@ function renderStage() {
   $('#nextBtn').disabled = visible.length < 2;
   $('#stageDesc').textContent = r.desc;
   $('#openLink').href = r.file;
+  $('#reportOverview').textContent = r.desc;
+  $('#reportTakeaway').textContent = REPORT_TAKEAWAYS[REPORTS.indexOf(r)];
+  $('#reportMethods').textContent = r.tags.join(' · ');
   const frame = $('#pdfFrame');
   frame.title = r.title + ' — PDF report';
+  const container = $('#pdfContainer');
   if (frame.getAttribute('data-src') !== r.file) {
-    frame.src = r.file + '#view=FitH&toolbar=0';
+    frame.removeAttribute('src');
     frame.setAttribute('data-src', r.file);
+    container.hidden = true;
+    $('#reportPreviewToggle').setAttribute('aria-expanded', 'false');
+    $('#reportPreviewToggle').textContent = 'Show embedded PDF';
   }
   const tagsWrap = $('#stageTags');
   tagsWrap.innerHTML = '';
@@ -93,3 +108,12 @@ document.querySelectorAll('.toc-chip').forEach(chip => {
 });
 
 renderSidebar(); renderDots(); renderStage();
+
+$('#reportPreviewToggle').addEventListener('click', () => {
+  const container = $('#pdfContainer');
+  container.hidden = !container.hidden;
+  $('#reportPreviewToggle').setAttribute('aria-expanded', String(!container.hidden));
+  $('#reportPreviewToggle').textContent = container.hidden ? 'Show embedded PDF' : 'Hide embedded PDF';
+  const frame = $('#pdfFrame');
+  if (!container.hidden && !frame.getAttribute('src')) frame.src = frame.getAttribute('data-src') + '#view=FitH&toolbar=0';
+});

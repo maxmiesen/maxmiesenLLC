@@ -6,7 +6,8 @@ behavior used on Apache hosts:
   - extensionless clean URLs (e.g. /creative) are served from the matching
     .html file,
   - /foo.html 301-redirects to /foo so the address bar shows the clean URL,
-  - HTML is sent no-cache; css/js cache for a year; images cache for a week.
+  - Localhost previews disable caching for every asset.
+  - Production HTML is sent no-cache; css/js cache for a year; images cache for a week.
 
 Binds 0.0.0.0 on $PORT (Render sets PORT); defaults to 8000 for local use.
 Run locally: python3 server.py
@@ -52,6 +53,11 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         super().end_headers()
 
     def _set_cache_headers(self):
+        if HOST in ("127.0.0.1", "localhost", "::1"):
+            self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
+            self.send_header("Pragma", "no-cache")
+            self.send_header("Expires", "0")
+            return
         path = self.path.split("?", 1)[0].lower()
         ext = os.path.splitext(path)[1]
         if ext == ".html" or path.rstrip("/") == "" or not ext:
