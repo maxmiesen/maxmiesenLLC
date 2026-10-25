@@ -6,16 +6,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Shippori+Mincho:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="portfolio.css?v=8b269f13a45a">
-<link rel="stylesheet" href="glass.css?v=ea05ee44e285">
-<link rel="stylesheet" href="experience.css?v=f78fcc90e0d6">
-<script>try{document.documentElement.dataset.theme=localStorage.getItem("mm-theme")==="night"?"night":"dawn"}catch(e){}</script>
+<link rel="stylesheet" href="glass.css?v=d9fa343569d3">
+<link rel="stylesheet" href="experience.css?v=dfd9e20ff6c7">
 </head><body>
 <a class="skip-link" href="#creative">Skip to work</a>
 <nav class="portfolio-nav" aria-label="Main navigation">
   <a class="wordmark" href="#top" aria-label="Max Miesen home">max miesen<span class="brand-dot" aria-hidden="true">.</span><small>Independent practice</small></a>
   <div class="page-links"><a href="#creative">Work <span>01</span></a><a href="#services">Services <span>02</span></a><a href="#technical">Research <span>03</span></a><a class="nav-contact" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a></div>
 </nav>
-<div class="experience-bar"><div class="experience-controls"><div class="segmented" role="group" aria-label="Color theme"><button type="button" data-theme-choice="dawn" aria-pressed="true">Dawn</button><button type="button" data-theme-choice="night" aria-pressed="false">Night</button></div><button type="button" id="cursorToggle" aria-pressed="true">Custom cursor</button></div></div>
+<div class="experience-bar"><div class="experience-controls"><button type="button" id="cursorToggle" role="switch" aria-checked="true" aria-label="Custom cursor" title="Custom cursor on — switch to standard cursor"><span class="cursor-switch-thumb" aria-hidden="true"></span><span class="cursor-option cursor-standard" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 3v16l4.5-4 3 6 3-1.5-3-6H19L5 3Z" fill="currentColor" stroke="white" stroke-width="1.2" stroke-linejoin="round"/></svg></span><span class="cursor-option cursor-custom" aria-hidden="true"><img src="assets/cursor-arrow.svg" width="25" height="25" alt=""></span></button></div></div>
 <main>
 <header class="poster-hero" id="top">
   <div class="hero-kicker"><span class="eyeline">Creative thinking. Technical precision.</span><span class="eyeline">Encinitas, California / Working everywhere</span></div>
@@ -154,6 +153,37 @@
 
 
 <section class="technical-section" id="technical"><div class="chapter-intro"><span class="eyeline">03 / The technical practice</span><h2>Curiosity.<br><em>Put to work.</em></h2><p>I build data-driven software for healthcare operations and medtech. Explore the research and engineering behind the work.</p></div>
+  <div class="feature product-features">
+  <section class="airloom-feature" aria-labelledby="airloomTitle">
+    <div class="airloom-story">
+      <img class="airloom-icon" src="assets/airloom-icon.png?v=a00e9173d765" width="1254" height="1254" loading="lazy" alt="Airloom tomato pincushion icon">
+      <span class="eyeline">Fashion × Product development</span>
+      <h3 id="airloomTitle">Airloom</h3>
+      <p>A shared workspace for taking a clothing collection from idea to production. Airloom brings garment records, fabrics and trims, collection planning, and tech packs together so the details stay with the work.</p>
+      <p>Organize a collection, develop its specifications, and keep production information in one place.</p>
+      <a class="airloom-app-link" href="https://airloom-mvp-roan.vercel.app/home" target="_blank" rel="noopener noreferrer">Explore Airloom <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="airloom-social">
+      <a class="instagram-summary" href="https://www.instagram.com/airloom.life/" target="_blank" rel="noopener noreferrer"><span class="instagram-summary-label">Instagram</span><span class="instagram-summary-handle">@airloom.life</span><span class="instagram-summary-followers" data-instagram-followers="airloom.life">View followers on Instagram <span aria-hidden="true">↗</span></span></a>
+    </div>
+  </section>
+  <section class="bink-feature" aria-labelledby="binkTitle">
+    <img class="bink-logo" src="assets/bink-logo.png" width="7715" height="2375" loading="lazy" alt="Bink logo">
+    <span class="eyeline">Consumer product · 2022–2023</span>
+    <h3 id="binkTitle">Bink</h3>
+    <p>Grew Bink from zero to 80K+ users and six-figure annual recurring revenue through purely organic marketing.</p>
+    <p>Started with $0 invested into the company. Built from the ground up, with organic marketing driving growth from day one.</p>
+    <dl class="bink-results">
+      <div><dt>Users</dt><dd>80K+</dd></div>
+      <div><dt>Annual recurring revenue</dt><dd>6-figure</dd></div>
+      <div><dt>Starting investment</dt><dd>$0</dd></div>
+      <div><dt>Marketing</dt><dd>100% organic</dd></div>
+    </dl>
+    <div class="airloom-social bink-social">
+      <a class="instagram-summary" href="https://www.instagram.com/bink.app/" target="_blank" rel="noopener noreferrer"><span class="instagram-summary-label">Instagram</span><span class="instagram-summary-handle">@bink.app</span><span class="instagram-summary-followers" data-instagram-followers="bink.app">View followers on Instagram <span aria-hidden="true">↗</span></span></a>
+    </div>
+  </section>
+  </div>
   <section class="feature" >
     <div class="metrics">
       <div class="metric"><div class="metric-val">6</div><div class="metric-lbl">Primary-source reports</div></div>
@@ -231,5 +261,5 @@
 </section>
 </main>
 <footer class="footer"><div class="footer-top"><a class="wordmark" href="#top">max miesen<span class="brand-dot" aria-hidden="true">.</span></a><p>Rooted in curiosity.<br>Made in Encinitas, California.</p><div class="footer-right"><a href="https://instagram.com/maxmiesen" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://youtube.com/maxmiesen" target="_blank" rel="noopener noreferrer">YouTube ↗</a><a href="https://linkedin.com/in/maxmiesen" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div></div><div class="footer-bottom"><span>© 2026 Max Miesen LLC</span><a href="#top">Back to top ↑</a><span>Art × Science</span></div></footer>
-<script src="experience-core.js?v=ba31a50f578c"></script><script src="research.js?v=aeb426f3d6d6"></script><script src="portfolio.js?v=c8a2c80a6d07"></script><script src="experience.js?v=2984d39be690"></script>
+<script src="research.js?v=aeb426f3d6d6"></script><script src="portfolio.js?v=c8a2c80a6d07"></script><script src="experience.js?v=ff2c3fbdab68"></script>
 </body></html>

@@ -1,30 +1,17 @@
 (() => {
   'use strict';
   const root = document.documentElement;
-  const core = window.ExperienceCore;
   const q = selector => document.querySelector(selector);
   const qa = selector => [...document.querySelectorAll(selector)];
   const save = (key, value) => { try { localStorage.setItem(key, value); } catch (_) { /* Settings still work without storage. */ } };
   const read = key => { try { return localStorage.getItem(key); } catch (_) { return null; } };
 
-  const themeButtons = qa('[data-theme-choice]');
-  function setTheme(value) {
-    const theme = core.themeValue(value);
-    root.dataset.theme = theme;
-    themeButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.themeChoice === theme)));
-  }
-  setTheme(read('mm-theme'));
-  themeButtons.forEach(button => button.addEventListener('click', () => {
-    setTheme(button.dataset.themeChoice);
-    save('mm-theme', button.dataset.themeChoice);
-  }));
-
   // Use a native CSS cursor: no lag, no hidden system cursor, no tracking loop.
   const cursorToggle = q('#cursorToggle');
   function setCursor(enabled) {
     root.dataset.cursor = enabled ? 'pixel' : 'system';
-    cursorToggle.setAttribute('aria-pressed', String(enabled));
-    cursorToggle.textContent = enabled ? 'Custom cursor: on' : 'Custom cursor: off';
+    cursorToggle.setAttribute('aria-checked', String(enabled));
+    cursorToggle.title = enabled ? 'Custom cursor on — switch to standard cursor' : 'Standard cursor on — switch to custom cursor';
   }
   setCursor(read('mm-cursor') !== 'system');
   cursorToggle.addEventListener('click', () => {

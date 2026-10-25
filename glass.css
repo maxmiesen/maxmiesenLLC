@@ -1,23 +1,24 @@
-/* Ancient futurism: indigo, lavender, blue and layered architectural glass.
+/* White glass, soft lavender gradients, and purple accents.
    The landscape is static CSS geometry; there are no motion or image assets. */
 :root {
-  --paper: #eeedf7;
-  --surface: #e3e5f5;
+  color-scheme: light;
+  --paper: #ffffff;
+  --surface: #f6f3fc;
   --ink: #25243e;
   --muted: #4c4e6b;
-  --line: #b9bdd6;
+  --line: #d9d2e8;
   --accent: #6342b5;
   --on-accent: #faf8ff;
-  --glass: rgba(245, 246, 255, .56);
-  --glass-edge: rgba(250, 250, 255, .78);
-  --glass-shadow: 0 16px 48px rgba(55, 48, 106, .08), inset 0 1px 0 rgba(255, 255, 255, .65);
+  --glass: rgba(255, 255, 255, .72);
+  --glass-edge: rgba(218, 210, 237, .72);
+  --glass-shadow: 0 16px 48px rgba(81, 57, 130, .06), inset 0 1px 0 rgba(255, 255, 255, .65);
   --font-poetic: 'Shippori Mincho', Georgia, serif;
 }
 body {
   background:
-    radial-gradient(ellipse at 90% 5%, #b6c8ee 0, transparent 23%),
-    radial-gradient(ellipse at 5% 27%, #c9bbeb 0, transparent 23%),
-    radial-gradient(ellipse at 90% 48%, #becaf3 0, transparent 22%),
+    radial-gradient(ellipse at 90% 5%, #f2edfc 0, transparent 23%),
+    radial-gradient(ellipse at 5% 27%, #eee6fa 0, transparent 23%),
+    radial-gradient(ellipse at 90% 48%, #f5effc 0, transparent 22%),
     var(--paper);
 }
 h1, h2, h3, h4 { font-weight: 400; letter-spacing: -.045em; }
@@ -39,7 +40,7 @@ a:focus-visible, button:focus-visible { outline-color: var(--accent); }
 .wordmark { font-weight: 500; font-size: 26px; }
 .wordmark small { font-size: 9px; letter-spacing: .16em; }
 .page-links .nav-contact {
-  background: rgba(47, 46, 87, .92);
+  background: var(--accent);
   color: #f4f2ff;
   border: 1px solid rgba(255, 255, 255, .2);
   border-radius: 2px;
@@ -127,43 +128,43 @@ a:focus-visible, button:focus-visible { outline-color: var(--accent); }
 .running-head { border-color: var(--line); }
 .reel-embed, .video-frame { padding: 10px 10px 0; border: 1px solid var(--glass-edge); background: var(--glass); border-radius: 5px; box-shadow: var(--glass-shadow); }
 .media-link { background: transparent; border: 0; }
-.media-link:hover { background: #dce0f6; color: var(--ink); }
+.media-link:hover { background: var(--surface); color: var(--ink); }
 .dg-star { font-size: 0; width: 12px; height: 12px; border: 1px solid var(--accent); border-radius: 50%; }
 .card-grid { gap: 20px; border: 0; position: relative; }
-.card-grid::before { content: ''; position: absolute; inset: 5% 0; pointer-events: none; z-index: -1; background: radial-gradient(ellipse at 25% 25%, #c5b5ec 0, transparent 60%), radial-gradient(ellipse at 75% 80%, #adc4ee 0, transparent 55%); }
+.card-grid::before { content: ''; position: absolute; inset: 5% 0; pointer-events: none; z-index: -1; background: radial-gradient(ellipse at 25% 25%, #f0e8fc 0, transparent 60%), radial-gradient(ellipse at 75% 80%, #f6f0ff 0, transparent 55%); }
 .card { border: 1px solid var(--glass-edge); border-radius: 4px; background: var(--glass); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); box-shadow: var(--glass-shadow); }
 .card:hover { background: rgba(246,247,255,.74); border-color: #b4b8d6; }
 .card-num { border: 1px solid #b4b8d6; width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; font-size: 10px; }
 .card-title { font-weight: 500; }
-/* The archive uses smoked glass over an deep indigo field. */
+/* The product and research sections share the same light glass palette. */
 .technical-section {
-  --paper: #22233e;
-  --surface: #2e3354;
-  --ink: #f3f0ff;
-  --muted: #ced0e9;
-  --line: #70799d;
-  --accent: #cbb9ff;
-  --on-accent: #22233e;
-  background: radial-gradient(ellipse at 95% 0, #4c4c80 0, transparent 45%), radial-gradient(ellipse at 0 70%, #354b78 0, transparent 50%), #22233e;
-  border-block: 1px solid #727fa8;
+  --paper: #ffffff;
+  --surface: #f6f3fc;
+  --ink: #25243e;
+  --muted: #4c4e6b;
+  --line: #d9d2e8;
+  --accent: #6342b5;
+  --on-accent: #ffffff;
+  background: linear-gradient(145deg, rgba(255,255,255,.88), rgba(245,239,252,.65) 55%, rgba(255,255,255,.92));
+  border-block: 1px solid var(--line);
 }
 .technical-section em { color: var(--accent); }
-.metrics { padding: 0 28px; border: 1px solid #adafe040; background: #d9d5ff0a; border-radius: 3px; }
+.metrics { padding: 0 28px; border: 1px solid var(--glass-edge); background: var(--glass); border-radius: 3px; }
 .metric-val { font-family: var(--font-poetic); }
-.viewer { background: #d4deff0c; border-color: #b5b4e352; border-radius: 4px; -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); box-shadow: 0 24px 80px #17152f40, inset 0 1px 0 #ffffff17; }
-.sidebar { background: #171b3433; }
+.viewer { background: var(--glass); border-color: var(--glass-edge); border-radius: 4px; -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); box-shadow: var(--glass-shadow); }
+.sidebar { background: rgba(255,255,255,.45); }
 .report-card { border-radius: 3px; }
-.report-card.active { background: #e4d9ff14; }
+.report-card.active { background: var(--surface); }
 .toc-chip, .stage-nav, .open-link { border-radius: 2px; }
-.stage-bar, .stage-foot { background: #c4ceff08; }
+.stage-bar, .stage-foot { background: rgba(255,255,255,.45); }
 .pdf-frame { border-block: 1px solid var(--line); }
 /* A quiet closing panel, rather than a separate visual language. */
 .contact-section { position: relative; }
 .cta-panel { padding: 48px; border: 1px solid var(--glass-edge); border-radius: 4px; background: var(--glass); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); box-shadow: var(--glass-shadow); gap: 40px; }
 .cta-panel h2 { font-size: clamp(48px, 6vw, 84px); line-height: 1.1; }
-.btn-primary { background: #4256a3; border: 1px solid #7883bd; border-radius: 2px; box-shadow: inset 0 1px 0 #ffffff1c; }
+.btn-primary { background: var(--accent); border: 1px solid var(--accent); border-radius: 2px; box-shadow: inset 0 1px 0 #ffffff1c; }
 .btn-primary:hover { background: var(--accent); color: #faf8ff; }
-.footer { background: rgba(230,232,250,.3); }
+.footer { background: rgba(255,255,255,.6); }
 @media (min-width: 1600px) {
   .poster-hero h1 { font-size: 136px; }
 }
@@ -225,12 +226,12 @@ a:focus-visible, button:focus-visible { outline-color: var(--accent); }
 }
 /* Solid substrates when backdrop blur or transparency preferences require them. */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .portfolio-nav, .hero-bottom, .pitch-line, .card, .cta-panel { background: #efeffb; }
+  .portfolio-nav, .hero-bottom, .pitch-line, .card, .cta-panel { background: #fff; }
   .glass-plane { background: rgba(225,230,250,.85); }
-  .viewer { background: #2e3354; }
+  .viewer { background: #fff; }
 }
 @media (prefers-reduced-transparency: reduce) {
-  .portfolio-nav, .hero-bottom, .pitch-line, .card, .cta-panel { background: #efeffb; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .portfolio-nav, .hero-bottom, .pitch-line, .card, .cta-panel { background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none; }
   .glass-plane { background: #dfe3f5; -webkit-backdrop-filter: none; backdrop-filter: none; }
-  .viewer { background: #2e3354; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .viewer { background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
