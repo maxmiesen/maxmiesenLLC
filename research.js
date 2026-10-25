@@ -19,6 +19,7 @@ function renderSidebar() {
   visible.forEach((r, i) => {
     const btn = document.createElement('button');
     btn.className = 'report-card' + (i === currentIdx ? ' active' : '');
+    btn.setAttribute('aria-pressed', String(i === currentIdx));
     btn.innerHTML = `<div class="rc-row1"><span class="rc-num">${r.num}</span><span class="rc-tag">${r.code}</span></div><div class="rc-title">${r.title}</div><div class="rc-meta">${r.semester} · ${r.catLabel}</div>`;
     btn.addEventListener('click', () => goTo(i));
     sidebar.appendChild(btn);
@@ -32,7 +33,8 @@ function renderDots() {
   visible.forEach((_, i) => {
     const d = document.createElement('button');
     d.className = 'dot' + (i === currentIdx ? ' active' : '');
-    d.setAttribute('aria-label', 'Report ' + (i + 1));
+    d.setAttribute('aria-label', visible[i].title);
+    d.setAttribute('aria-pressed', String(i === currentIdx));
     d.addEventListener('click', () => goTo(i));
     dotsWrap.appendChild(d);
   });
@@ -43,9 +45,12 @@ function renderStage() {
   $('#stageEyebrow').textContent = `${r.code} · ${r.catLabel}`;
   $('#stageTitle').textContent = r.title;
   $('#curIdx').textContent = currentIdx + 1;
+  $('#prevBtn').disabled = visible.length < 2;
+  $('#nextBtn').disabled = visible.length < 2;
   $('#stageDesc').textContent = r.desc;
   $('#openLink').href = r.file;
   const frame = $('#pdfFrame');
+  frame.title = r.title + ' — PDF report';
   if (frame.getAttribute('data-src') !== r.file) {
     frame.src = r.file + '#view=FitH&toolbar=0';
     frame.setAttribute('data-src', r.file);
@@ -58,17 +63,28 @@ function renderStage() {
     s.textContent = t;
     tagsWrap.appendChild(s);
   });
-  sidebar.querySelectorAll('.report-card').forEach((el, i) => el.classList.toggle('active', i === currentIdx));
-  dotsWrap.querySelectorAll('.dot').forEach((el, i) => el.classList.toggle('active', i === currentIdx));
+  sidebar.querySelectorAll('.report-card').forEach((el, i) => {
+    el.classList.toggle('active', i === currentIdx);
+    el.setAttribute('aria-pressed', String(i === currentIdx));
+  });
+  dotsWrap.querySelectorAll('.dot').forEach((el, i) => {
+    el.classList.toggle('active', i === currentIdx);
+    el.setAttribute('aria-pressed', String(i === currentIdx));
+  });
 }
 function goTo(i) { if (!visible.length) return; currentIdx = (i + visible.length) % visible.length; renderStage(); }
 
 $('#prevBtn').addEventListener('click', () => goTo(currentIdx - 1));
 $('#nextBtn').addEventListener('click', () => goTo(currentIdx + 1));
 document.querySelectorAll('.toc-chip').forEach(chip => {
+  chip.setAttribute('aria-pressed', String(chip.classList.contains('active')));
   chip.addEventListener('click', () => {
-    document.querySelectorAll('.toc-chip').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.toc-chip').forEach(c => {
+      c.classList.remove('active');
+      c.setAttribute('aria-pressed', 'false');
+    });
     chip.classList.add('active');
+    chip.setAttribute('aria-pressed', 'true');
     const f = chip.dataset.filter;
     visible = (f === 'all') ? REPORTS.slice() : REPORTS.filter(r => r.cat === f);
     currentIdx = 0;
