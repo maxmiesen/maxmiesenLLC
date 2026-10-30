@@ -1,17 +1,6 @@
 /* Interactive layer. Native controls retain keyboard and touch behavior. */
 [hidden] { display: none !important; }
-.experience-bar { max-width: 1440px; margin: 20px auto 0; padding: 0 var(--gutter); display: flex; justify-content: space-between; align-items: center; gap: 16px; color: var(--muted); font-size: 11px; }
-.experience-controls { display: flex; gap: 12px; align-items: center; }
 #reportPreviewToggle { min-height: 44px; padding: 10px 16px; border: 1px solid transparent; border-radius: 2px; color: var(--ink); background: transparent; font-size: 12px; }
-#cursorToggle:hover { background: var(--surface); }
-#cursorToggle { position:relative; display:inline-grid; grid-template-columns:44px 44px; align-items:center; width:102px; height:56px; padding:5px; gap:2px; border:1px solid var(--line); border-radius:999px; background:rgba(246,242,252,.8); box-shadow:inset 0 1px 2px #35204d08; color:var(--ink); }
-.cursor-switch-thumb { position:absolute; top:5px; left:5px; width:44px; height:44px; border-radius:50%; background:#fff; border:1px solid #e4dcee; box-shadow:0 2px 8px #42245c15; transition:transform .2s ease; }
-#cursorToggle[aria-checked="true"] .cursor-switch-thumb { transform:translateX(46px); }
-.cursor-option { display:grid; place-items:center; width:44px; height:44px; position:relative; opacity:.45; transition:opacity .2s ease; }
-#cursorToggle[aria-checked="false"] .cursor-standard, #cursorToggle[aria-checked="true"] .cursor-custom { opacity:1; }
-.cursor-option img { display:block; }
-#cursorToggle:hover { border-color:var(--accent); }
-#cursorToggle:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
 .report-preview dt { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
 .report-preview dd { margin: 0; font-size: 14px; }
 .report-preview { padding: 28px; border-top: 1px solid var(--line); background: rgba(255,255,255,.5); }
@@ -23,16 +12,8 @@
 .light-panel { position: relative; isolation: isolate; }
 .light-panel::after { content: ''; position: absolute; inset: 0; pointer-events: none; border-radius: inherit; opacity: 0; background: radial-gradient(240px circle at var(--light-x,50%) var(--light-y,50%), #a79aff40, transparent 75%); transition: opacity .2s; z-index: -1; }
 .light-panel.glass-lit::after { opacity: 1; }
-@media (hover:hover) and (pointer:fine) {
-  html[data-cursor="pixel"], html[data-cursor="pixel"] body { cursor:url('assets/cursor-arrow.svg') 3 3,auto; }
-  html[data-cursor="pixel"] :is(a,button,label,summary,input[type="range"],input[type="checkbox"],select) { cursor:url('assets/cursor-arrow.svg') 3 3,pointer; }
-  html[data-cursor="pixel"] :is(input:not([type="checkbox"]):not([type="range"]),textarea) { cursor:text; }
-  html[data-cursor="pixel"] button:disabled { cursor:not-allowed; }
-}
-@media (hover:none), (pointer:coarse) { #cursorToggle { display:none; } }
+
 @media (max-width:767px) {
-  .experience-bar { padding-inline:var(--gutter); flex-wrap:wrap; gap:8px; }
-  .experience-controls { flex-wrap:wrap; }
   .report-preview { padding:20px; }
   .report-preview dl { grid-template-columns:1fr; }
 }

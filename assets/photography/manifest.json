@@ -1,0 +1,392 @@
+[
+  {
+    "source": "02.jpg",
+    "alt": "Ornate temple tower above a shaded entrance",
+    "width": 1080,
+    "height": 1080,
+    "variants": [
+      "assets/photography/02-720.webp",
+      "assets/photography/02-1440.webp"
+    ]
+  },
+  {
+    "source": "04.jpg",
+    "alt": "Tropical palms and banana plants rising from green water",
+    "width": 1080,
+    "height": 1080,
+    "variants": [
+      "assets/photography/04-720.webp",
+      "assets/photography/04-1440.webp"
+    ]
+  },
+  {
+    "source": "05.jpg",
+    "alt": "A giant tortoise eating on a shaded path",
+    "width": 1080,
+    "height": 1080,
+    "variants": [
+      "assets/photography/05-720.webp",
+      "assets/photography/05-1440.webp"
+    ]
+  },
+  {
+    "source": "06.jpg",
+    "alt": "Sailboats anchored near a beach at sunset",
+    "width": 1080,
+    "height": 1080,
+    "variants": [
+      "assets/photography/06-720.webp",
+      "assets/photography/06-1440.webp"
+    ]
+  },
+  {
+    "source": "07.jpg",
+    "alt": "A tropical beach beneath rounded granite cliffs",
+    "width": 1080,
+    "height": 1080,
+    "variants": [
+      "assets/photography/07-720.webp",
+      "assets/photography/07-1440.webp"
+    ]
+  },
+  {
+    "source": "88864F1C-2B56-448B-A18F-083E4E49F130.jpg",
+    "alt": "Small figures walking across a sweeping sand dune",
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      "assets/photography/88864f1c-2b56-448b-a18f-083e4e49f130-720.webp",
+      "assets/photography/88864f1c-2b56-448b-a18f-083e4e49f130-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC00368.JPG",
+    "alt": "A tall palm tree against a clear blue sky",
+    "width": 4000,
+    "height": 6000,
+    "variants": [
+      "assets/photography/dsc00368-720.webp",
+      "assets/photography/dsc00368-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC00470.JPG",
+    "alt": "Sailboats anchored in still, misty water",
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      "assets/photography/dsc00470-720.webp",
+      "assets/photography/dsc00470-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC00475.JPG",
+    "alt": "A sailboat silhouetted against golden evening light",
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      "assets/photography/dsc00475-720.webp",
+      "assets/photography/dsc00475-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC00497.JPG",
+    "alt": "Surf breaking along a lush tropical coastline",
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      "assets/photography/dsc00497-720.webp",
+      "assets/photography/dsc00497-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC00822.JPG",
+    "alt": "Hikers among towering red canyon walls",
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      "assets/photography/dsc00822-720.webp",
+      "assets/photography/dsc00822-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC00916_Original.JPG",
+    "alt": "Friends walking along the crest of a sand dune",
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      "assets/photography/dsc00916-original-720.webp",
+      "assets/photography/dsc00916-original-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC00917_Original.JPG",
+    "alt": "Friends climbing a sandy slope beneath a blue sky",
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      "assets/photography/dsc00917-original-720.webp",
+      "assets/photography/dsc00917-original-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC00931_Original.JPG",
+    "alt": "Figures spread along the ridge of a sand dune",
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      "assets/photography/dsc00931-original-720.webp",
+      "assets/photography/dsc00931-original-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC00938_Original.JPG",
+    "alt": "Friends resting and sliding on a steep sand dune",
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      "assets/photography/dsc00938-original-720.webp",
+      "assets/photography/dsc00938-original-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC00942_Original.JPG",
+    "alt": "Friends playing on the crest of a dune",
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      "assets/photography/dsc00942-original-720.webp",
+      "assets/photography/dsc00942-original-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC00944_Original.JPG",
+    "alt": "A person running across a dune with friends behind",
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      "assets/photography/dsc00944-original-720.webp",
+      "assets/photography/dsc00944-original-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC00950_Original.JPG",
+    "alt": "Friends peeking over the edge of a sand dune",
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      "assets/photography/dsc00950-original-720.webp",
+      "assets/photography/dsc00950-original-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC00954_Original.JPG",
+    "alt": "A group with boards preparing to descend a dune",
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      "assets/photography/dsc00954-original-720.webp",
+      "assets/photography/dsc00954-original-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC01031.jpg",
+    "alt": "A crowd carrying protest signs on a city street",
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      "assets/photography/dsc01031-720.webp",
+      "assets/photography/dsc01031-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC01072_Original.JPG",
+    "alt": "A hand-lettered sign held above a protest crowd",
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      "assets/photography/dsc01072-original-720.webp",
+      "assets/photography/dsc01072-original-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC01093.jpg",
+    "alt": "A Black Lives Matter sign raised above a crowd",
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      "assets/photography/dsc01093-720.webp",
+      "assets/photography/dsc01093-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC01228.JPG",
+    "alt": "Palm trees silhouetted against the setting sun",
+    "width": 6000,
+    "height": 3376,
+    "variants": [
+      "assets/photography/dsc01228-720.webp",
+      "assets/photography/dsc01228-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC01234.JPG",
+    "alt": "Sunlit palm fronds overlooking blue ocean water",
+    "width": 6000,
+    "height": 3376,
+    "variants": [
+      "assets/photography/dsc01234-720.webp",
+      "assets/photography/dsc01234-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC01242.JPG",
+    "alt": "Coastal palms seen from above beside the sea",
+    "width": 6000,
+    "height": 3376,
+    "variants": [
+      "assets/photography/dsc01242-720.webp",
+      "assets/photography/dsc01242-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC01474.JPG",
+    "alt": "Palm silhouettes beneath a soft evening sky",
+    "width": 6000,
+    "height": 3376,
+    "variants": [
+      "assets/photography/dsc01474-720.webp",
+      "assets/photography/dsc01474-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC01512.JPG",
+    "alt": "Bright flames rising against a dark background",
+    "width": 6000,
+    "height": 3376,
+    "variants": [
+      "assets/photography/dsc01512-720.webp",
+      "assets/photography/dsc01512-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC01592.JPG",
+    "alt": "Hands holding a cluster of dark shell-covered rocks",
+    "width": 6000,
+    "height": 3376,
+    "variants": [
+      "assets/photography/dsc01592-720.webp",
+      "assets/photography/dsc01592-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC01592_Original.JPG",
+    "alt": "Surfers waiting beneath a large green wave",
+    "width": 3936,
+    "height": 2624,
+    "variants": [
+      "assets/photography/dsc01592-original-720.webp",
+      "assets/photography/dsc01592-original-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC01688.JPG",
+    "alt": "A surfer raising both arms as a wave breaks",
+    "width": 3936,
+    "height": 2624,
+    "variants": [
+      "assets/photography/dsc01688-720.webp",
+      "assets/photography/dsc01688-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC01940.JPG",
+    "alt": "Two people walking beneath string lights on a night street",
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      "assets/photography/dsc01940-720.webp",
+      "assets/photography/dsc01940-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC01942.JPG",
+    "alt": "A vertical neon Chop Suey sign glowing at night",
+    "width": 4000,
+    "height": 6000,
+    "variants": [
+      "assets/photography/dsc01942-720.webp",
+      "assets/photography/dsc01942-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC01945.JPG",
+    "alt": "A person in a red shirt beneath neon street signs",
+    "width": 4000,
+    "height": 6000,
+    "variants": [
+      "assets/photography/dsc01945-720.webp",
+      "assets/photography/dsc01945-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC01963.JPG",
+    "alt": "Food vendors cooking in a smoky outdoor night market",
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      "assets/photography/dsc01963-720.webp",
+      "assets/photography/dsc01963-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC01965.JPG",
+    "alt": "Night-market vendors beneath warm lights",
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      "assets/photography/dsc01965-720.webp",
+      "assets/photography/dsc01965-1440.webp"
+    ]
+  },
+  {
+    "source": "DSC02075_Original.JPG",
+    "alt": "Sailboats in a harbor framed by misty hills",
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      "assets/photography/dsc02075-original-720.webp",
+      "assets/photography/dsc02075-original-1440.webp"
+    ]
+  },
+  {
+    "source": "FullSizeRender.jpg",
+    "alt": "A group walking along a neon-lit street at night",
+    "width": 4000,
+    "height": 6000,
+    "variants": [
+      "assets/photography/fullsizerender-720.webp",
+      "assets/photography/fullsizerender-1440.webp"
+    ]
+  },
+  {
+    "source": "G0223117.JPG",
+    "alt": "An underwater view through a sunlit ocean wave",
+    "width": 4000,
+    "height": 3000,
+    "variants": [
+      "assets/photography/g0223117-720.webp",
+      "assets/photography/g0223117-1440.webp"
+    ]
+  },
+  {
+    "source": "IMG_9078.JPG",
+    "alt": "A snowy mountain landscape beneath a pink sunset",
+    "width": 2878,
+    "height": 1619,
+    "variants": [
+      "assets/photography/img-9078-720.webp",
+      "assets/photography/img-9078-1440.webp"
+    ]
+  }
+]
