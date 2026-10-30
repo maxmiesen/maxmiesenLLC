@@ -1,6 +1,7 @@
 .photography-entry { max-width: 1440px; margin: auto; padding: 24px var(--gutter) 80px; }
 .photography-link { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 32px 0; border-block: 1px solid var(--line); }
 .photography-link h2 { font-size: clamp(32px, 7vw, 100px); text-transform: uppercase; }
+.photography-link h2 small { display: block; margin-top: 12px; }
 .photography-link > span { font-size: clamp(32px, 5vw, 72px); transition: transform .24s ease; }
 .photography-link:hover { color: var(--ink); }
 .photography-link:hover > span { transform: translate(5px,-5px); }
