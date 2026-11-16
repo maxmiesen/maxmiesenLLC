@@ -5,3 +5,5 @@ _backup_pre_webflow/
 .DS_Store
 *.swp
 *~
+.vercel
+.env*
